@@ -1,24 +1,24 @@
-/******************************************************************************
+ï»¿/******************************************************************************
 Copyright (C) 2020 Querda Electronic Technology All Rights Reserved
 
 This software and code can be freely used for study and research. 
 For commercial purposes, please contact the owner for permission.
 
-File  : DbgIf.c Debug uartÍ¨Ñ¶½Ó¿Ú
+File  : DbgIf.c Debug uartÍ¨Ñ¶ï¿½Ó¿ï¿½
 Author: Steven 
 ******************************************************************************/
 #include "DbgIf.h"
 #include "DbgIf_Cbk.h"
 #include "Ucs.h"
-//#include "updata_module.h"
-#include "stdarg.h"
-#include "string.h"
-#include "stdio.h"
-#include "lpuart.h"
+#include <stdarg.h>
+#include <string.h>
+#include <stdio.h>
+#include "Uart.h"
 /******************************************************************************
-º¯ÊýÃû³Æ: void DbgIf_UartTxCallback(uint8 Ch)
-º¯ÊýËµÃ÷: 
-×îºóÐÞ¸Ä: Steven
+* Function Name: DbgIf_UartTxCallback
+* Description  : 
+* Arguments    : None
+* Return Value : None
 ******************************************************************************/
 void DbgIf_UartTxCallback(uint8 Ch)
 {
@@ -26,26 +26,29 @@ void DbgIf_UartTxCallback(uint8 Ch)
 }
 
 /******************************************************************************
-º¯ÊýÃû³Æ: uint16 DbgIf_UartRxCallback(uint8 Ch, const uint8* Data, uint16 Length)
-º¯ÊýËµÃ÷: 
-×îºóÐÞ¸Ä: Steven
+* Function Name: DbgIf_UartRxCallback
+* Description  : 
+* Arguments    : None
+* Return Value : None
 ******************************************************************************/
 uint16 DbgIf_UartRxCallback(uint8 Ch, const uint8* Data, uint16 Length)
 {
     (void)Ch;
-//    (void)Data;
-//	Ucs_Write(UCS_CH_DEBUG, (uint8*)Data, Length);
-	for(int i = 0;i<Length;i++)
-	{
-		//data_analysis(Data[i]);
-	}
-    return Length;
+// //    (void)Data;
+// //	Ucs_Write(UCS_CH_DEBUG, (uint8*)Data, Length);
+// 	for(int i = 0;i<Length;i++)
+// 	{
+// 		//data_analysis(Data[i]);
+// 	}
+//     return Length;
+	return 0;
 }
 
 /******************************************************************************
-º¯ÊýÃû³Æ: int Dbgif_printf(const char *format, ...)
-º¯ÊýËµÃ÷: 
-×îºóÐÞ¸Ä: Wander
+* Function Name: Dbgif_printf
+* Description  : 
+* Arguments    : None
+* Return Value : None
 ******************************************************************************/
 int Dbgif_printf(const char *format, ...)
 {
@@ -53,14 +56,14 @@ int Dbgif_printf(const char *format, ...)
 	va_list ap;
 	//char *pScr = buff;
 	int size;
-
 	va_start(ap, format);
-	size = vsnprintf((char *)buff, sizeof(buff) - 1, format, ap);
+	//cs+buzhi
+	//size = vsnprintf((char *)buff, sizeof(buff) - 1, format, ap);
 	va_end(ap);
 
     if (size > 0)
     {
-		Lpuart2_transmit_n_size(buff, size);
+		Uart_transmit_n_size(buff, size);
 	}
 	
 	return size;

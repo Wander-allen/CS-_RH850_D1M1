@@ -11,8 +11,6 @@ Author: Wander
 /******************************************************************************
 Pragma directive
 ******************************************************************************/
-/* Start user code for pragma. Do not edit comment generated here */
-/* End user code. Do not edit comment generated here */
 
 /******************************************************************************
 Includes
@@ -31,7 +29,7 @@ Define Register(n : Group  m : Pin)
 #define    JPORTUn_Base     (0xFF620000)    /* Group JP0 */
 #define    JPORTOn_Base     (0xFFC20000)    /* Group JP0 */
 
-/* PCRn 寄存器结构体定义 */
+/* PCRn 寄存器结构体定义  The small end format */
 typedef union 
 {
     uint32 Value;
@@ -111,7 +109,6 @@ Global variables and functions
 ******************************************************************************/
 extern const Port_ConfigType* const PortCfgPtr;
 
-
 /******************************************************************************
 * Function Name: Port_Init
 * Description  : 端口初始化
@@ -125,8 +122,6 @@ void Port_Init(void)
     const Port_PpcrCfgType * const PpcrCfg = PortCfgPtr->PpcrCfg;
     const uint8 PpcrNum = PortCfgPtr->PpcrNum;
     uint8 i;
-
-    //ConfigPtr;  /* 防止编译警告 */
 
     /* 端口配置 */
     for (i = 0; i < GpioNum; i++)
@@ -175,7 +170,7 @@ void Port_Init(void)
 }
 
 /******************************************************************************
-* Function Name: uint16 Port_Read(uint8 PortId)
+* Function Name: Port_Read
 * Description  : 
 * Arguments    : None
 * Return Value : None
@@ -196,7 +191,7 @@ uint16 Port_Read(Port_ChannelType Channel)
 }
 
 /******************************************************************************
-* Function Name: uint16 Port_Read(uint8 PortId)
+* Function Name: Port_Write
 * Description  : 
 * Arguments    : None
 * Return Value : None
@@ -217,7 +212,7 @@ void Port_Write(Port_ChannelType Channel, uint32 Levels)
 }
 
 /******************************************************************************
-* Function Name: uint16 Port_Read(uint8 PortId)
+* Function Name: Port_ReadPin
 * Description  : 
 * Arguments    : None
 * Return Value : None
@@ -238,7 +233,7 @@ Std_StatusType Port_ReadPin(Port_ChannelType Channel, uint8 PinId)
 }
 
 /******************************************************************************
-* Function Name: uint16 Port_Read(uint8 PortId)
+* Function Name: Port_WritePin
 * Description  : 
 * Arguments    : None
 * Return Value : None
@@ -259,7 +254,7 @@ void Port_WritePin(Port_ChannelType Channel, uint8 PinId, Std_StatusType Level)
 }
 
 /******************************************************************************
-* Function Name: uint16 Port_Read(uint8 PortId)
+* Function Name: Port_FlipPin
 * Description  : 
 * Arguments    : None
 * Return Value : None
@@ -283,7 +278,7 @@ Std_StatusType Port_FlipPin(Port_ChannelType Channel, uint8 PinId)
 }
 
 /******************************************************************************
-* Function Name: uint16 Port_Read(uint8 PortId)
+* Function Name: Port_SetPinIO
 * Description  : 
 * Arguments    : None
 * Return Value : None
@@ -304,7 +299,7 @@ void Port_SetPinIO(Port_ChannelType Channel, uint8 PinId, Std_StatusType Status)
 }
 
 /******************************************************************************
-* Function Name: uint16 Port_Read(uint8 PortId)
+* Function Name: Port_GetPinIO
 * Description  : 
 * Arguments    : None
 * Return Value : None
@@ -325,7 +320,7 @@ Std_StatusType Port_GetPinIO(Port_ChannelType Channel, uint8 PinId)
 }
 
 /******************************************************************************
-* Function Name: uint16 Port_Read(uint8 PortId)
+* Function Name: Port_SetPinFun
 * Description  : 
 * Arguments    : None
 * Return Value : None

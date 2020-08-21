@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W3.02.00 )             21-Aug-2020 11:15:50
+Renesas Optimizing Linker (W3.02.00 )             21-Aug-2020 18:24:23
 
 *** Options ***
 
@@ -24,6 +24,11 @@ Renesas Optimizing Linker (W3.02.00 )             21-Aug-2020 11:15:50
 -input=DefaultBuild\SchM.obj
 -input=DefaultBuild\Clock.obj
 -input=DefaultBuild\Interrupts.obj
+-input=DefaultBuild\Det.obj
+-input=DefaultBuild\Uart_PBcfg.obj
+-input=DefaultBuild\Ucs_PBcfg.obj
+-input=DefaultBuild\Ucs.obj
+-input=DefaultBuild\DbgIf.obj
 -debug
 -nocompress
 -NOOPtimize
@@ -47,18 +52,18 @@ RESET
 EIINTTBL
                                   00000200  000005ff       400   200
 .const
-                                  00008000  00008157       158   4
+                                  00008000  000081cf       1d0   4
 .INIT_DSEC.const
-                                  00008158  00008163         c   4
+                                  000081d0  000081db         c   4
 .INIT_BSEC.const
-                                  00008164  0000816b         8   4
+                                  000081dc  000081e3         8   4
 .text
-                                  0000816c  0000bb53      39e8   2
+                                  000081e4  0000bd8b      3ba8   2
 .data
-                                  0000bb54  0000c3c4       871   4
+                                  0000bd8c  0000c628       89d   4
 .data.R
-                                  fed80000  fed80870       871   4
+                                  fed80000  fed8089c       89d   4
 .bss
-                                  fed80874  fed857d9      4f66   4
+                                  fed808a0  fed85805      4f66   4
 .stack.bss
-                                  fed857dc  fed859db       200   4
+                                  fed85808  fed85a07       200   4

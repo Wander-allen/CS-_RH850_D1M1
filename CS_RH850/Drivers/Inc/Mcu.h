@@ -24,7 +24,18 @@ extern "C" {
 #include "Std_Types.h"
 #include "Mcu_Types.h"
 
+/* 保护寄存器写入 */
+#define protected_write(preg,pstatus,reg,value)\
+do{\
+    (preg)=0xa5u;\
+    (reg)=(value);\
+    (reg)=~(value);\
+    (reg)=(value);\
+}while((pstatus)==1u)
+
 extern void Mcu_Init(void);
+
+
 
 #if 0
 extern void Mcu_Init(const Mcu_ConfigType * ConfigPtr);

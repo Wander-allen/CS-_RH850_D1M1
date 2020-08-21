@@ -103,16 +103,16 @@ void EcuM_Start(void)
 {
     BaseType_t xReturn;
 
-    // xReturn = xTaskCreate((TaskFunction_t )AppTaskCreate,  
-    //                         (const char*    )"AppTaskCreate",
-    //                         (uint16_t       )512,  
-    //                         (void*          )NULL,
-    //                         (UBaseType_t    )1, 
-    //                         (TaskHandle_t*  )&AppTaskCreate_Handle); 
-    // if (xReturn < 0)
-    // {
-    //     //printf("任务创建失败\n");
-    // }
+    xReturn = xTaskCreate((TaskFunction_t )AppTaskCreate,  
+                            (const char*    )"AppTaskCreate",
+                            (uint16_t       )512,  
+                            (void*          )NULL,
+                            (UBaseType_t    )1, 
+                            (TaskHandle_t*  )&AppTaskCreate_Handle); 
+    if (xReturn < 0)
+    {
+        //printf("任务创建失败\n");
+    }
 
     vTaskStartScheduler();
 }

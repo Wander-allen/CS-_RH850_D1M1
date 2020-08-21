@@ -32,27 +32,73 @@ typedef enum
     PORT_NUM
 }Port_ChannelType;
 
-#if 0
 typedef enum
 {
-    GPIO_OUT    = 0xF0,
-    GPIO_IN     = 0xF1,
-    ALT_OUT1    = 0x00,
-    ALT_IN1     = 0x01,
-    ALT_OUT2    = 0x10,
-    ALT_IN2     = 0x11,
-    ALT_OUT3    = 0x20,
-    ALT_IN3     = 0x21,
-    ALT_OUT4    = 0x30,
-    ALT_IN4     = 0x31,
-    ALT_OUT5    = 0x40,
-    ALT_IN5     = 0x41,
-    ALT_OUT6    = 0x50,
-    ALT_IN6     = 0x51,
-    
-}Port_FunType;
-#endif
+	PIN0 	= 0,
+	PIN1	=1,
+	PIN2	=2,
+	PIN3	=3,
+	PIN4	=4,
+	PIN5	=5,
+	PIN6	=6,
+	PIN7	=7,
+	PIN8	=8,
+	PIN9	=9,
+	PIN10	=10,
+	PIN11	=11,
+	PIN12	=12,
+	PIN13	=13,
+	PIN14	=14,
+	PIN15	=15,
+}Pin_IdType;
 
+typedef enum
+{
+	Pin_Out,	
+	Pin_In,
+}Port_ModType;
+
+typedef enum
+{
+	Normal_Port,
+	Alter_Func1,
+	Alter_Func2,
+	Alter_Func3,
+	Alter_Func4,
+	Alter_Func5,
+	Alter_Func6,
+}Port_FuncType;
+
+typedef enum
+{
+	Port_IP_SoftCtl,
+	Port_IP_DirCtl,	
+}Port_IPCtlType;
+
+typedef enum
+{
+	PuPd_No_Set,
+	Port_Pu,
+	Port_Pd,
+}Port_pUpDType;
+
+typedef enum
+{
+	Port_IB_Off,
+	Port_IB_On,
+}Port_IBType;
+
+typedef enum
+{
+	Port_PBD_Off,
+	Port_PBD_On,
+}T_Port_PBDType;
+
+typedef enum
+{
+	Port_Push_Pull,
+	Port_Open_Drain,	
+}T_Port_OPBFType;
 
 #ifdef __cplusplus
 }

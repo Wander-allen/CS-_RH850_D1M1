@@ -7,14 +7,6 @@ For commercial purposes, please contact the owner for permission.
 File  : Port.h 
 Author: Wander 
 ******************************************************************************/
-
-/******************************************************************************
-* File Name    : Port.h
-* Version      : 1.0.0.0
-* Device(s)    : R7F701442
-* Description  : This file implements SMC pin code generation.
-* Creation Date: 2020-08-11
-******************************************************************************/
 #ifndef PORT_H
 #define PORT_H
 #ifdef __cplusplus

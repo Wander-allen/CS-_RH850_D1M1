@@ -1,6 +1,6 @@
 ****..\App\Test\Test.c
 v2 
-:1597979747
+:1598005459
 #1
 F "__nop" - I!1 T!2 ?17-2 
 T "void" KBV I!2 0x0 
@@ -137,35 +137,51 @@ T "Std_VersionType" KT I!132 T!126 !62-4 0x8
 T "" KE I!133 T!134 0x4 EM0:"MCU_PLL_STATUS_UNDEFINED" EM1:"MCU_PLL_STATUS_LOCKED" EM2:"MCU_PLL_STATUS_UNLOCKED" 
 T "int" KBS I!134 0x4 
 T "Mcu_PllStatusType" KT I!135 T!133 !30-6 0x4 
-F "Uart_Init" - I!136 T!2 ?17-3 
-F "Uart_transmit_string" - I!137 T!2 ?18-3 37-1 38-1 49-1 50-1 P!138 
-V "" - I!138 O!137 T!139 .1 0x0 
-T "" KA0 I!139 T!140 0x0 
-T "char" KBCS I!140 0x1 
-F "Uart_transmit_n_size" - I!141 T!2 ?19-3 P!142 P!144 
-V "" - I!142 O!141 T!143 .1 0x0 
-T "" KA0 I!143 T!140 0x0 
-V "" - I!144 O!141 T!104 .2 0x2 
-F "Test_Init" - I!145 T!2 #35-1 !36,39-1-1 
-F "Test_Task" - I!146 T!2 #47-1 !48,53-1-1 
-F "vTaskDelay" - I!147 T!134 52-1 
+F "Uart_Init" - I!136 T!2 ?19-3 
+F "Uart_DeInit" - I!137 T!2 ?20-3 
+F "Uart_Write" - I!138 T!124 ?22-3 P!139 P!140 
+V "" - I!139 O!138 T!102 .1 0x1 
+V "" - I!140 O!138 T!104 .2 0x2 
+F "Uart_SetRxFun" - I!141 T!2 ?24-3 P!142 P!143 
+V "" - I!142 O!141 T!102 .1 0x1 
+V "" - I!143 O!141 T!124 .1 0x1 
+F "Uart_SetTxFun" - I!144 T!2 ?25-3 P!145 P!146 
+V "" - I!145 O!144 T!102 .1 0x1 
+V "" - I!146 O!144 T!124 .1 0x1 
+F "Uart_SetRxIrq" - I!147 T!2 ?27-3 P!148 P!149 
+V "" - I!148 O!147 T!102 .1 0x1 
+V "" - I!149 O!147 T!124 .1 0x1 
+F "Uart_SetTxIrq" - I!150 T!2 ?28-3 P!151 P!152 
+V "" - I!151 O!150 T!102 .1 0x1 
+V "" - I!152 O!150 T!124 .1 0x1 
+F "Uart_transmit_string" - I!153 T!2 ?30-3 37-1 38-1 49-1 P!154 
+V "" - I!154 O!153 T!155 .1 0x0 
+T "" KA0 I!155 T!156 0x0 
+T "char" KBCS I!156 0x1 
+F "Uart_transmit_n_size" - I!157 T!2 ?31-3 P!158 P!160 
+V "" - I!158 O!157 T!159 .1 0x0 
+T "" KA0 I!159 T!156 0x0 
+V "" - I!160 O!157 T!104 .2 0x2 
+F "Test_Init" - I!161 T!2 #35-1 !36,39-1-1 
+F "Test_Task" - I!162 T!2 #47-1 !48,52-1-1 
+F "vTaskDelay" - I!163 T!134 51-1 
 ****%CxSystemPath%\inc\builtin.h
 v2 
-:1597979747
+:1598005459
 #2
 ****..\Drivers\Inc\Uart.h
 v2 
-:1597979747
+:1598005459
 #3
 ****..\Configs\Std_Types.h
 v2 
-:1597979747
+:1598005459
 #4
 ****..\Configs\Compiler.h
 v2 
-:1597979747
+:1598005459
 #5
 ****..\Drivers\Inc\Mcu_Types.h
 v2 
-:1597979747
+:1598005459
 #6

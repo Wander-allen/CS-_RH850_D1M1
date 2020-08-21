@@ -232,12 +232,12 @@ static void prvSetupTimerInterrupt( void )
 	TM0CE =     1;	/* TMM0 operation enable */
 #endif
 
-    // OSTM0.CMP = 0x7530;/* 1MS */
-    // OSTM0.CTL.UINT8 = 0x01; /* interval timer mode */
-    // //ostm0.emu.uint8 = 0;/* stop when debug */
-    // OSTM0.TS.UINT8 = 1; /* start */
-    // PBG.FSGD0BPROT0.UINT32 = 0x07FFFFFF; /* INTC2 Protect unlock register */
-    // INTC2.EIC125.UINT16 = 0X00; /* priority 0, interupt Vector method is direct branching method on priority */
+    OSTM0.CMP = 0x7530;/* 1MS */
+    OSTM0.CTL.UINT8 = 0x01; /* interval timer mode */
+    //ostm0.emu.uint8 = 0;/* stop when debug */
+    OSTM0.TS.UINT8 = 1; /* start */
+    PBG.FSGD0BPROT0.UINT32 = 0x07FFFFFF; /* INTC2 Protect unlock register */
+    INTC2.EIC125.UINT16 = 0X00; /* priority 0, interupt Vector method is direct branching method on priority */
 }
 /*-----------------------------------------------------------*/
 
@@ -246,7 +246,7 @@ static void prvSetupTimerInterrupt( void )
 #pragma inline_asm trap_set
 void trap_set(void)
 {
-    //trap 0x00
+    trap 0x00
 }
 
 

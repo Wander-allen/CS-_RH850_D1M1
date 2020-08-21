@@ -46,9 +46,8 @@ void Test_Init(void)
 ******************************************************************************/
 void Test_Task(void)
 {
-    Uart_transmit_string("hello world\r\n");
-    Uart_transmit_string("Test_Init Success\r\n");
+    Uart_transmit_string("this is a Uart test task runing\r\n");
     
-    vTaskDelay(100);
+    vTaskDelay(1000);
 }
     

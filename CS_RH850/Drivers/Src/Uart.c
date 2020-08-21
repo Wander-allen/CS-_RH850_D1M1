@@ -11,23 +11,45 @@ Author: Wander
 /******************************************************************************
 Pragma directive
 ******************************************************************************/
-/* Start user code for pragma. Do not edit comment generated here */
-/* End user code. Do not edit comment generated here */
 
 /******************************************************************************
 Includes
 ******************************************************************************/
 #include "ioDefine.h"
+#include "Det.h"
+#include "Uart_PBcfg.h"
 #include "Uart.h"
+#include <assert.h>
 
 /******************************************************************************
 #Define
 ******************************************************************************/
 
+/* 中断寄存器 n:Number of Interrupt Channel*/
+#define INT1_EICn(n)       (*(volatile uint16*)(0xFFFEEA00UL + (n) * 2))
+#define INT2_EICn(n)       (*(volatile uint16*)(0xFFFFB040UL + (n) * 2))
+#define PBG_FSGD0BPROT0    (*(volatile uint32*)(0xFFC4C000UL))
+
+/* RLN3n寄存器 */
+#define RLN3n(RLN3n_base)  (*(volatile struct __tag4827 *)RLN3n_base) 
+
 /******************************************************************************
 Global variables and functions
 ******************************************************************************/
-void Uart_write(char send);
+extern const Uart_ConfigType* const UartCfgPtr; /* 初始化配置数据 */
+
+const Uart_ConfigType* const UartInterCfgPtr = &UartCfgPtr;
+
+/******************************************************************************
+* Function Name: Uart_Init
+* Description  : Uart初始化
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void Uart_TestInit(void)
+{
+    assert_para((UartInterCfgPtr == NULL));
+}
 
 /******************************************************************************
 * Function Name: Uart_Init
@@ -37,11 +59,17 @@ void Uart_write(char send);
 ******************************************************************************/
 void Uart_Init(void)
 {
+    Uart_TestInit();
     /* mask the interrupt */
-    PBG.FSGD0BPROT0.UINT32 = 0x07FFFFFF; /* INTC2 Protect unlock register */
-    INTC2.EIC81.UINT16 = 0x0080; /*  Interrupt processing is disabled */
-    INTC2.EIC82.UINT16 = 0x0080; /*  Interrupt processing is disabled */
-    INTC2.EIC83.UINT16 = 0x0080; /*  Interrupt processing is disabled */
+    // PBG.FSGD0BPROT0.UINT32 = 0x07FFFFFF; /* INTC2 Protect unlock register */
+    // INTC2.EIC81.UINT16 = 0x0080; /*  Interrupt processing is disabled */
+    // INTC2.EIC82.UINT16 = 0x0080; /*  Interrupt processing is disabled */
+    // INTC2.EIC83.UINT16 = 0x0080; /*  Interrupt processing is disabled */
+    PBG_FSGD0BPROT0 = 0x07FFFFFF;
+    INT2_EICn(81) = 0x0080;
+    INT2_EICn(82) = 0x0080;
+    INT2_EICn(83) = 0x0080;
+
 
     /* Choose the shift to a reset mode.
     RLN3nLCUC      - UART Control Register
@@ -83,7 +111,7 @@ void Uart_Init(void)
     b2               OERE      - Overrun Error Detection Enable - Enables overrun error detection
     b1                         - Reserved set to 0
     b0               BERE      - Bit Error Detection Enable     - Enables bit error detection */
-    RLN30.LEDE.UINT8                 = 0x00U;
+    RLN30.LEDE.UINT8                 = 0x0CU;
 
     /* Enables or disables detection of the framing error , overrun error and bit error.
     RLN3nLBFC      - UART Configuration Register
@@ -115,9 +143,12 @@ void Uart_Init(void)
     }
 
     /* Set the interrupt flags */
-    INTC2.EIC81.UINT16	=	0x0047;
-    INTC2.EIC82.UINT16	=	0x0047;
-    INTC2.EIC83.UINT16	=	0x0047;
+    // INTC2.EIC81.UINT16	=	0x0047;
+    // INTC2.EIC82.UINT16	=	0x0047;
+    // INTC2.EIC83.UINT16	=	0x0047;
+    INT2_EICn(81) = 0x0047;
+    INT2_EICn(82) = 0x0047;
+    INT2_EICn(83) = 0x0047;
 
     /* Enables reception and transmission
     RLN3nLUOER     - UART Operation Enable Register
@@ -126,7 +157,18 @@ void Uart_Init(void)
     b0               UTOE      - Transmission Enable  - Enables transmission */
     RLN30.LUOER.UINT8 	= 	0x03U;
 }
-uint16 Ticktimer = 0;
+
+/******************************************************************************
+* Function Name: Uart_DeInit
+* Description  : Uart取消初始化
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void Uart_DeInit(void)
+{
+
+}
+
 /******************************************************************************
 * Function Name: Uart_write
 * Description  : Uart写一个字符

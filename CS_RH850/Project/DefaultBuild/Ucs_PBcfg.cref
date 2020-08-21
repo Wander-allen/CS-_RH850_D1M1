@@ -1,0 +1,193 @@
+****..\Configs\Ucs_PBcfg.c
+v2 
+:1598005460
+#1
+F "__nop" - I!1 T!2 ?17-2 
+T "void" KBV I!2 0x0 
+F "__halt" - I!3 T!2 ?18-2 
+F "__satadd" - I!4 T!5 ?20-2 P!6 P!7 
+T "long" KBS I!5 0x4 
+V "" - I!6 O!4 T!5 .4 0x4 
+V "" - I!7 O!4 T!5 .4 0x4 
+F "__satsub" - I!8 T!5 ?21-2 P!9 P!10 
+V "" - I!9 O!8 T!5 .4 0x4 
+V "" - I!10 O!8 T!5 .4 0x4 
+F "__bsh" - I!11 T!5 ?23-2 P!12 
+V "" - I!12 O!11 T!5 .4 0x4 
+F "__bsw" - I!13 T!5 ?24-2 P!14 
+V "" - I!14 O!13 T!5 .4 0x4 
+F "__hsw" - I!15 T!5 ?25-2 P!16 
+V "" - I!16 O!15 T!5 .4 0x4 
+F "__mul32" - I!17 T!5 ?27-2 P!18 P!19 
+V "" - I!18 O!17 T!5 .4 0x4 
+V "" - I!19 O!17 T!5 .4 0x4 
+F "__mul32u" - I!20 T!21 ?28-2 P!22 P!23 
+T "unsigned long" KBU I!21 0x4 
+V "" - I!22 O!20 T!21 .4 0x4 
+V "" - I!23 O!20 T!21 .4 0x4 
+F "__sch0l" - I!24 T!5 ?30-2 P!25 
+V "" - I!25 O!24 T!5 .4 0x4 
+F "__sch0r" - I!26 T!5 ?31-2 P!27 
+V "" - I!27 O!26 T!5 .4 0x4 
+F "__sch1l" - I!28 T!5 ?32-2 P!29 
+V "" - I!29 O!28 T!5 .4 0x4 
+F "__sch1r" - I!30 T!5 ?33-2 P!31 
+V "" - I!31 O!30 T!5 .4 0x4 
+F "__ldsr" - I!32 T!2 ?35-2 P!33 P!34 
+V "" - I!33 O!32 T!5 .4 0x4 
+V "" - I!34 O!32 T!21 .4 0x4 
+F "__ldsr_rh" - I!35 T!2 ?36-2 P!36 P!37 P!38 
+V "" - I!36 O!35 T!5 .4 0x4 
+V "" - I!37 O!35 T!5 .4 0x4 
+V "" - I!38 O!35 T!21 .4 0x4 
+F "__stsr" - I!39 T!21 ?37-2 P!40 
+V "" - I!40 O!39 T!5 .4 0x4 
+F "__stsr_rh" - I!41 T!21 ?38-2 P!42 P!43 
+V "" - I!42 O!41 T!5 .4 0x4 
+V "" - I!43 O!41 T!5 .4 0x4 
+F "__caxi" - I!44 T!5 ?40-2 P!45 P!47 P!48 
+V "" - I!45 O!44 T!46 .4 0x4 
+T "" KP I!46 T!5 0x4 
+V "" - I!47 O!44 T!5 .4 0x4 
+V "" - I!48 O!44 T!5 .4 0x4 
+F "__DI" - I!49 T!2 ?42-2 
+F "__EI" - I!50 T!2 ?43-2 
+F "__set_il_rh" - I!51 T!2 ?44-2 P!52 P!53 
+V "" - I!52 O!51 T!5 .4 0x4 
+V "" - I!53 O!51 T!54 .4 0x4 
+T "" KP I!54 T!2 0x4 
+F "__clr1" - I!55 T!2 ?46-2 P!56 P!59 
+V "" - I!56 O!55 T!57 .4 0x4 
+T "" KP I!57 T!58 0x4 
+T "unsigned char" KBU I!58 0x1 
+V "" - I!59 O!55 T!5 .4 0x4 
+F "__set1" - I!60 T!2 ?47-2 P!61 P!62 
+V "" - I!61 O!60 T!57 .4 0x4 
+V "" - I!62 O!60 T!5 .4 0x4 
+F "__not1" - I!63 T!2 ?48-2 P!64 P!65 
+V "" - I!64 O!63 T!57 .4 0x4 
+V "" - I!65 O!63 T!5 .4 0x4 
+F "__ldlw" - I!66 T!5 ?50-2 P!67 
+V "" - I!67 O!66 T!46 .4 0x4 
+F "__stcw" - I!68 T!5 ?51-2 P!69 P!70 
+V "" - I!69 O!68 T!46 .4 0x4 
+V "" - I!70 O!68 T!5 .4 0x4 
+F "__synce" - I!71 T!2 ?53-2 
+F "__synci" - I!72 T!2 ?54-2 
+F "__syncm" - I!73 T!2 ?55-2 
+F "__syncp" - I!74 T!2 ?56-2 
+F "__dbcp" - I!75 T!2 ?58-2 
+F "__dbpush" - I!76 T!2 ?59-2 P!77 P!78 
+V "" - I!77 O!76 T!5 .4 0x4 
+V "" - I!78 O!76 T!5 .4 0x4 
+F "__dbtag" - I!79 T!2 ?60-2 P!80 
+V "" - I!80 O!79 T!5 .4 0x4 
+F "__clipb" - I!81 T!5 ?62-2 P!82 
+V "" - I!82 O!81 T!5 .4 0x4 
+F "__clipbu" - I!83 T!21 ?63-2 P!84 
+V "" - I!84 O!83 T!21 .4 0x4 
+F "__cliph" - I!85 T!5 ?64-2 P!86 
+V "" - I!86 O!85 T!5 .4 0x4 
+F "__cliphu" - I!87 T!21 ?65-2 P!88 
+V "" - I!88 O!87 T!21 .4 0x4 
+F "__ldlbu" - I!89 T!5 ?67-2 P!90 
+V "" - I!90 O!89 T!57 .4 0x4 
+F "__ldlhu" - I!91 T!5 ?68-2 P!92 
+V "" - I!92 O!91 T!93 .4 0x4 
+T "" KP I!93 T!94 0x4 
+T "unsigned short" KBU I!94 0x2 
+F "__stcb" - I!95 T!5 ?69-2 P!96 P!97 
+V "" - I!96 O!95 T!57 .4 0x4 
+V "" - I!97 O!95 T!58 .1 0x1 
+F "__stch" - I!98 T!5 ?70-2 P!99 P!100 
+V "" - I!99 O!98 T!93 .4 0x4 
+V "" - I!100 O!98 T!94 .2 0x2 
+T "boolean" KT I!101 T!58 !15-4 0x1 
+T "uint8" KT I!102 T!58 !16-4 0x1 
+T "uint08" KT I!103 T!58 !17-4 0x1 
+T "uint16" KT I!104 T!94 !18-4 0x2 
+T "uint32" KT I!105 T!21 !19-4 0x4 
+T "sint8" KT I!106 T!107 !20-4 0x1 
+T "signed char" KBS I!107 0x1 
+T "sint08" KT I!108 T!107 !21-4 0x1 
+T "sint16" KT I!109 T!110 !22-4 0x2 
+T "short" KBS I!110 0x2 
+T "sint32" KT I!111 T!5 !23-4 0x4 
+T "uint8_least" KT I!112 T!58 !24-4 0x1 
+T "uint08_least" KT I!113 T!58 !25-4 0x1 
+T "uint16_least" KT I!114 T!94 !26-4 0x2 
+T "uint32_least" KT I!115 T!21 !27-4 0x4 
+T "sint08_least" KT I!116 T!107 !28-4 0x1 
+T "sint8_least" KT I!117 T!107 !29-4 0x1 
+T "sint16_least" KT I!118 T!110 !30-4 0x2 
+T "sint32_least" KT I!119 T!5 !31-4 0x4 
+T "float32" KT I!120 T!121 !32-4 0x4 
+T "float" KBF I!121 0x4 
+T "float64" KT I!122 T!123 !33-4 0x8 
+T "double" KBF I!123 0x8 
+T "Std_ReturnType" KT I!124 T!102 !39-4 0x1 
+T "Std_StatusType" KT I!125 T!102 !53-4 0x1 
+T "" KS I!126 !56-4 0x8 VM!127 VM!128 VM!129 VM!130 VM!131 
+V "VendorID" - I!127 O!126 T!104 !57-4 .2 0x2 BO0 BIS16 
+V "ModuleID" - I!128 O!126 T!104 !58-4 .2 0x2 BO16 BIS16 
+V "MajorVer" - I!129 O!126 T!102 !59-4 .1 0x1 BO32 BIS8 
+V "MinorVer" - I!130 O!126 T!102 !60-4 .1 0x1 BO40 BIS8 
+V "PatchVer" - I!131 O!126 T!102 !61-4 .1 0x1 BO48 BIS8 
+T "Std_VersionType" KT I!132 T!126 !62-4 0x8 
+T "" KS I!133 !16-3 0x1c VM!134 VM!141 VM!145 VM!146 VM!147 VM!148 VM!149 VM!150 VM!151 VM!153 VM!154 VM!155 
+V "URxCallback" - I!134 O!133 T!135 !17-3 .4 0x4 BO0 BIS32 
+T "" KP I!135 T!136 0x4 
+T "" KF I!136 T!104 0x0 P!137 P!138 P!140 
+V "" - I!137 O!136 T!102 .1 0x1 
+V "" - I!138 O!136 T!139 .4 0x4 
+T "" MOD"C" KP I!139 T!102 0x4 
+V "" - I!140 O!136 T!104 .2 0x2 
+V "UTxCallback" - I!141 O!133 T!142 !18-3 .4 0x4 BO32 BIS32 
+T "" KP I!142 T!143 0x4 
+T "" KF I!143 T!2 0x0 P!144 
+V "" - I!144 O!143 T!102 .1 0x1 
+V "UartCh" - I!145 O!133 T!102 !19-3 .1 0x1 BO64 BIS8 
+V "URxCh" - I!146 O!133 T!102 !20-3 .1 0x1 BO72 BIS8 
+V "UTxCh" - I!147 O!133 T!102 !21-3 .1 0x1 BO80 BIS8 
+V "Reserved" - I!148 O!133 T!102 !22-3 .1 0x1 BO88 BIS8 
+V "MinRecLen" - I!149 O!133 T!104 !23-3 .2 0x2 BO96 BIS16 
+V "RxOverTime" - I!150 O!133 T!104 !24-3 .2 0x2 BO112 BIS16 
+V "RxBuffer" - I!151 O!133 T!152 !25-3 .4 0x4 BO128 BIS32 
+T "" KP I!152 T!102 0x4 
+V "TxBuffer" - I!153 O!133 T!152 !26-3 .4 0x4 BO160 BIS32 
+V "RxBufSize" - I!154 O!133 T!104 !27-3 .2 0x2 BO192 BIS16 
+V "TxBufSize" - I!155 O!133 T!104 !28-3 .2 0x2 BO208 BIS16 
+T "Ucs_ChCfgType" KT I!156 T!133 !29-3 0x1c 
+T "" KS I!157 !32-3 0x8 VM!158 VM!160 
+V "ChCfg" - I!158 O!157 T!159 !33-3 .4 0x4 BO0 BIS32 
+T "" MOD"C" KP I!159 T!156 0x4 
+V "ChNum" - I!160 O!157 T!102 !34-3 .1 0x1 BO32 BIS8 
+T "Ucs_ConfigType" KT I!161 T!157 !35-3 0x8 
+V "UcsCh0RxBuf" GS I!162 T!163 !14-1 .1 0xc8 
+T "" KA200 I!163 T!102 0xc8 
+V "UcsCh0TxBuf" GS I!164 T!165 !15-1 .1 0xc8 
+T "" KA200 I!165 T!102 0xc8 
+V "UcsCh1RxBuf" GS I!166 T!167 !16-1 .1 0x40 
+T "" KA64 I!167 T!102 0x40 
+V "UcsCh1TxBuf" GS I!168 T!169 !17-1 .1 0xc8 
+T "" KA200 I!169 T!102 0xc8 
+****%CxSystemPath%\inc\builtin.h
+v2 
+:1598005460
+#2
+****..\Configs\Ucs_PBcfg.h
+v2 
+:1598005460
+#3
+****..\Configs\Std_Types.h
+v2 
+:1598005460
+#4
+****..\Configs\Compiler.h
+v2 
+:1598005460
+#5
+****..\Configs\Uart_Define.h
+v2 
+:1598005460
+#6
