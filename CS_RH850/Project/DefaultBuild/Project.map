@@ -1,0 +1,64 @@
+Renesas Optimizing Linker (W3.02.00 )             21-Aug-2020 11:15:50
+
+*** Options ***
+
+-MAKEUD=DefaultBuild\Project.lk.ud
+-subcommand=DefaultBuild\Project.clnk
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\croutine.obj
+-input=DefaultBuild\event_groups.obj
+-input=DefaultBuild\list.obj
+-input=DefaultBuild\queue.obj
+-input=DefaultBuild\tasks.obj
+-input=DefaultBuild\timers.obj
+-input=DefaultBuild\heap_4.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\Pin.obj
+-input=DefaultBuild\Pin_PBcfg.obj
+-input=DefaultBuild\Mcu.obj
+-input=DefaultBuild\Uart.obj
+-input=DefaultBuild\Test.obj
+-input=DefaultBuild\EcuM.obj
+-input=DefaultBuild\SchM.obj
+-input=DefaultBuild\Clock.obj
+-input=DefaultBuild\Interrupts.obj
+-debug
+-nocompress
+-NOOPtimize
+-output=DefaultBuild\Project.abs
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list=DefaultBuild\Project.map
+-start=RESET,EIINTTBL/0,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FED80000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+RESET
+                                  00000000  000001f7       1f8   200
+EIINTTBL
+                                  00000200  000005ff       400   200
+.const
+                                  00008000  00008157       158   4
+.INIT_DSEC.const
+                                  00008158  00008163         c   4
+.INIT_BSEC.const
+                                  00008164  0000816b         8   4
+.text
+                                  0000816c  0000bb53      39e8   2
+.data
+                                  0000bb54  0000c3c4       871   4
+.data.R
+                                  fed80000  fed80870       871   4
+.bss
+                                  fed80874  fed857d9      4f66   4
+.stack.bss
+                                  fed857dc  fed859db       200   4
