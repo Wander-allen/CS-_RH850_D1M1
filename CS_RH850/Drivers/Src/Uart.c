@@ -18,7 +18,6 @@ Includes
 #include "ioDefine.h"
 #include "Det.h"
 #include "Uart_PBcfg.h"
-#include "Uart.h"
 #include <assert.h>
 
 /******************************************************************************
@@ -38,8 +37,9 @@ Global variables and functions
 ******************************************************************************/
 extern const Uart_ConfigType* const UartCfgPtr; /* 初始化配置数据 */
 
-const Uart_ConfigType* const UartInterCfgPtr = &UartCfgPtr;
+uint16   dummy;
 
+#if 0
 /******************************************************************************
 * Function Name: Uart_Init
 * Description  : Uart初始化
@@ -50,7 +50,7 @@ void Uart_TestInit(void)
 {
     assert_para((UartInterCfgPtr == NULL));
 }
-
+#else
 /******************************************************************************
 * Function Name: Uart_Init
 * Description  : Uart初始化
@@ -59,7 +59,7 @@ void Uart_TestInit(void)
 ******************************************************************************/
 void Uart_Init(void)
 {
-    Uart_TestInit();
+    //Uart_TestInit();
     /* mask the interrupt */
     // PBG.FSGD0BPROT0.UINT32 = 0x07FFFFFF; /* INTC2 Protect unlock register */
     // INTC2.EIC81.UINT16 = 0x0080; /*  Interrupt processing is disabled */
@@ -157,7 +157,7 @@ void Uart_Init(void)
     b0               UTOE      - Transmission Enable  - Enables transmission */
     RLN30.LUOER.UINT8 	= 	0x03U;
 }
-
+#endif
 /******************************************************************************
 * Function Name: Uart_DeInit
 * Description  : Uart取消初始化
@@ -225,4 +225,76 @@ void Uart_transmit_n_size(char data_string[], uint16 size)
         Uart_transmit_char(data_string[i]);
     }
 }
+
+/******************************************************************************
+* Function Name: INTRLIN30UR0_IsrHandle
+* Description  : RLIN3 UART transmission interrupt service routine
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void INTRLIN30UR0_IsrHandle(void)
+{    
+	INTC2.EIC83.UINT16 &= 0xEFFF;
+}    
+
+char buff[2048] = {0};
+uint8 index = 0;
+
+/******************************************************************************
+* Function Name: INTRLIN30UR1_IsrHandle
+* Description  : RLIN3 UART reception interrupt service routine
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void INTRLIN30UR1_IsrHandle(void)
+{  
+
+    char rev;
+
+    //	RLN32LUTDR = RLN32LURDR;
+    INTC2.EIC82.UINT16 &= 0xEFFF;
+
+    while ((RLN30.LST.UINT8 & 0x10) == 0x10)
+    {
+        /* Transmission is operated */
+    }
+
+    rev = RLN30.LURDR.BIT.URD;
+    buff[index++] = rev;
+
+    /*  the stop bit is being received. */
+    if ((RLN30.LST.UINT8 & 0x20) == 0x20)
+    {
+        RLN30.LUWTDR.BIT.UWTD = rev;
+    }
+    else
+    {
+        RLN30.LUTDR.BIT.UTD = rev;
+    }
+}    
+
+/******************************************************************************
+* Function Name: INTRLIN30UR2_IsrHandle
+* Description  : RLIN3 UART status interrupt service routine
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void INTRLIN30UR2_IsrHandle(void)
+{     
+	if ( RLN30.LEST.UINT8 & 0x4CU )	/* Overrun error, Framing error, Parity error  */
+	{                       
+	    dummy            = RLN30.LEST.UINT8;        /* Clear UART reception data register          */
+	}
+	/* Clear error status
+	RLN3nLEST  - UART Error Status Register
+	b7                   - Reserved set to 0
+	b6           UPER    - Parity Error Flag           - Clear the Parity Error Flag
+	b5           IDMT    - ID Matching Flag            - Clear the ID Matching Flag
+	b4           EXBT    - Expanded Bit Detection Flag - Clear the Expanded Bit Detection Flag
+	b3           FER     - Framing Error Flag          - Clear the Framing Error Flag
+	b2           OER     - Overrun Error Flag          - Clear the Overrun Error Flag
+	b1                   - Reserved set to 0
+	b0           BER     - Bit Error Flag              - Clear the Bit Error Flag */
+	RLN30.LEST.UINT8 = 0x00U;
+}    
 

@@ -20,6 +20,7 @@
     .extern _INTRLIN30UR0
     .extern _INTRLIN30UR1
     .extern _INTRLIN30UR2
+	.extern _INTTAUB0I0
     
 	.section "RESET", text
 	.align	512
@@ -157,7 +158,7 @@
 	.dw			#_Dummy_EI								; EIINT_CH_14
 	.dw			#_Dummy_EI								; EIINT_CH_15
 	.dw			#_Dummy_EI								; EIINT_CH_16
-	.dw			#_Dummy_EI								; EIINT_CH_17
+	.dw			#_INTTAUB0I0								; EIINT_CH_17
 	.dw			#_Dummy_EI								; EIINT_CH_18
 	.dw			#_Dummy_EI								; EIINT_CH_19
 	.dw			#_Dummy_EI								; EIINT_CH_20

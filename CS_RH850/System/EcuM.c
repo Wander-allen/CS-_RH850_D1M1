@@ -22,6 +22,7 @@ Author: Wander
 #include "Mcu.h"
 #include "Uart.h"
 #include "Clock.h"
+#include "Taub.h"
 #include "Test.h"
 
 /******************************************************************************
@@ -90,6 +91,7 @@ void EcuM_Init(void)
     Mcu_Init();
     Port_Init();
     Uart_Init();
+    Taub_Init();
     Test_Init();
 }
 
@@ -209,7 +211,7 @@ static void  vEcu_10ms_Task(void *pvParameters)
 {
     for( ;; )
     {     
-        Port_FlipPin(PORT_P17, 9);
+        //Port_FlipPin(PORT_P17, 9);
         
         vTaskDelay(10/portTICK_RATE_MS);
     }

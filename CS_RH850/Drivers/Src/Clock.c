@@ -136,7 +136,9 @@ static void Clock_GeneratorInit(void)
     /* Configure the CLKFIX to PLLFIXCLK/6, (PLL0CLK(480MHz) / 6 = 80MHz) */
     UNLOCK_REGISTER(SYS.PROTCMDD1.UINT32, SYS.CKSC_ICLKJITS_CTL.UINT32, 1);         /* Unlock the Protect Rigister */
                                                                                     /* Source clock selection for CLKJIT CKDV_ICLKJITD_CTL */
-    while (SYS.CKSC_ICLKJITS_ACT.UINT32 != 1){}                                     /* Wait until Current active CLKJITS source clock selection */
+    while (SYS.CKSC_ICLKJITS_ACT.UINT32 != 1){}                                     /* Wait until Current active */
+    
+
 
 
 }
@@ -159,5 +161,11 @@ static void Clock_DomainInit(void)
     UNLOCK_REGISTER(SYS.PROTCMDD1.UINT32, SYS.CKSC_IRLINS_CTL.UINT32, 2);   /* Unlock the Protect Rigister */
                                                                             /* clock selection for Clock divider setting*/
     while (SYS.CKSC_IRLINS_ACT.UINT32 != 2){}                               /* Wait Until Current active RLINS source clock selection*/
+
+    /* Configure the C_ISO_TAUB01 to  CLKFIX /1, (CLKFIX(80MHz) / 1 = 80MHz) */
+    UNLOCK_REGISTER(SYS.PROTCMDD1.UINT32, SYS.CKSC_ITAUB01S_CTL.UINT32, 1); /* Unlock the Protect Rigister */
+                                                                            /* Source clock selection for CLKJIT C_ISO_TAUB01 */
+    while (SYS.CKSC_ITAUB01S_ACT.UINT32 != 1){}                             /* Wait until Current active C_ISO_TAUB01 source clock selection */
+
 }
 

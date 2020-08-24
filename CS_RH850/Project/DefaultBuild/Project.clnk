@@ -17,12 +17,14 @@
 -input=DefaultBuild\EcuM.obj
 -input=DefaultBuild\SchM.obj
 -input=DefaultBuild\Clock.obj
--input=DefaultBuild\Interrupts.obj
 -input=DefaultBuild\Det.obj
 -input=DefaultBuild\Uart_PBcfg.obj
 -input=DefaultBuild\Ucs_PBcfg.obj
 -input=DefaultBuild\Ucs.obj
 -input=DefaultBuild\DbgIf.obj
+-input=DefaultBuild\Taub.obj
+-input=DefaultBuild\Interrupts.obj
+-input=DefaultBuild\Taub_PBcfg.obj
 -debug
 -nocompress
 -NOOPtimize

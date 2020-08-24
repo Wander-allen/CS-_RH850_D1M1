@@ -1,6 +1,6 @@
 ****..\App\Test\Test.c
 v2 
-:1598005459
+:1598266374
 #1
 F "__nop" - I!1 T!2 ?17-2 
 T "void" KBV I!2 0x0 
@@ -158,30 +158,26 @@ F "Uart_transmit_string" - I!153 T!2 ?30-3 37-1 38-1 49-1 P!154
 V "" - I!154 O!153 T!155 .1 0x0 
 T "" KA0 I!155 T!156 0x0 
 T "char" KBCS I!156 0x1 
-F "Uart_transmit_n_size" - I!157 T!2 ?31-3 P!158 P!160 
-V "" - I!158 O!157 T!159 .1 0x0 
-T "" KA0 I!159 T!156 0x0 
-V "" - I!160 O!157 T!104 .2 0x2 
-F "Test_Init" - I!161 T!2 #35-1 !36,39-1-1 
-F "Test_Task" - I!162 T!2 #47-1 !48,52-1-1 
-F "vTaskDelay" - I!163 T!134 51-1 
+F "Test_Init" - I!157 T!2 #35-1 !36,39-1-1 
+F "Test_Task" - I!158 T!2 #47-1 !48,52-1-1 
+F "vTaskDelay" - I!159 T!134 51-1 
 ****%CxSystemPath%\inc\builtin.h
 v2 
-:1598005459
+:1598266374
 #2
 ****..\Drivers\Inc\Uart.h
 v2 
-:1598005459
+:1598266374
 #3
 ****..\Configs\Std_Types.h
 v2 
-:1598005459
+:1598266374
 #4
 ****..\Configs\Compiler.h
 v2 
-:1598005459
+:1598266374
 #5
 ****..\Drivers\Inc\Mcu_Types.h
 v2 
-:1598005459
+:1598266374
 #6

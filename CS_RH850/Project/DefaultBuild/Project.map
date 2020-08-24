@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W3.02.00 )             21-Aug-2020 18:24:23
+Renesas Optimizing Linker (W3.02.00 )             24-Aug-2020 18:52:57
 
 *** Options ***
 
@@ -23,12 +23,14 @@ Renesas Optimizing Linker (W3.02.00 )             21-Aug-2020 18:24:23
 -input=DefaultBuild\EcuM.obj
 -input=DefaultBuild\SchM.obj
 -input=DefaultBuild\Clock.obj
--input=DefaultBuild\Interrupts.obj
 -input=DefaultBuild\Det.obj
 -input=DefaultBuild\Uart_PBcfg.obj
 -input=DefaultBuild\Ucs_PBcfg.obj
 -input=DefaultBuild\Ucs.obj
 -input=DefaultBuild\DbgIf.obj
+-input=DefaultBuild\Taub.obj
+-input=DefaultBuild\Interrupts.obj
+-input=DefaultBuild\Taub_PBcfg.obj
 -debug
 -nocompress
 -NOOPtimize
@@ -52,18 +54,18 @@ RESET
 EIINTTBL
                                   00000200  000005ff       400   200
 .const
-                                  00008000  000081cf       1d0   4
+                                  00008000  000081db       1dc   4
 .INIT_DSEC.const
-                                  000081d0  000081db         c   4
+                                  000081dc  000081e7         c   4
 .INIT_BSEC.const
-                                  000081dc  000081e3         8   4
+                                  000081e8  000081ef         8   4
 .text
-                                  000081e4  0000bd8b      3ba8   2
+                                  000081f0  0000bfdf      3df0   2
 .data
-                                  0000bd8c  0000c628       89d   4
+                                  0000bfe0  0000c883       8a4   4
 .data.R
-                                  fed80000  fed8089c       89d   4
+                                  fed80000  fed808a3       8a4   4
 .bss
-                                  fed808a0  fed85805      4f66   4
+                                  fed808a4  fed85809      4f66   4
 .stack.bss
-                                  fed85808  fed85a07       200   4
+                                  fed8580c  fed85a0b       200   4

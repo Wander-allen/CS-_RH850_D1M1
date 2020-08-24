@@ -28,7 +28,6 @@ extern void Uart_SetRxIrq(uint8 ch, Std_ReturnType status); /* 打开或关闭�
 extern void Uart_SetTxIrq(uint8 ch, Std_ReturnType status); /* 打开或关闭发送中断功能 */
 
 void Uart_transmit_string(char data_string[]);
-void Uart_transmit_n_size(char data_string[], uint16 size);
 #ifdef __cplusplus
 }
 #endif
