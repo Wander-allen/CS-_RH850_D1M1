@@ -23,6 +23,7 @@ Author: Wander
 #include "Uart.h"
 #include "Clock.h"
 #include "Taub.h"
+#include "rscan.h"
 #include "Test.h"
 
 /******************************************************************************
@@ -92,6 +93,7 @@ void EcuM_Init(void)
     Port_Init();
     Uart_Init();
     Taub_Init();
+    RS_CAN_init();
     Test_Init();
 }
 

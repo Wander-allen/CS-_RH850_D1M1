@@ -14,7 +14,7 @@ Author: Steven
 static const Port_GpioCfgType PortGpioCfg[] = 
 {
     /* Channel   PMC_JPMC  PM_JPM  PIBC_JPIBC P_JP*/
-    {  PORT_P0 ,  0x0300,  0xFEBF,  0x0000,  0x0000  },
+    {  PORT_P0 ,  0x03C0,  0xFEBF,  0x0000,  0x0000  },
     {  PORT_P1 ,  0x0000,  0xFFFE,  0x0000,  0x0000  },
     {  PORT_P3 ,  0x0000,  0xFFFD,  0x0008,  0x0000  },
     {  PORT_P10,  0x0000,  0xFFFF,  0x0000,  0x0000  },

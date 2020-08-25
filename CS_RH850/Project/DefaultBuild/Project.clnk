@@ -25,6 +25,8 @@
 -input=DefaultBuild\Taub.obj
 -input=DefaultBuild\Interrupts.obj
 -input=DefaultBuild\Taub_PBcfg.obj
+-input=DefaultBuild\can_table.obj
+-input=DefaultBuild\rscan.obj
 -debug
 -nocompress
 -NOOPtimize

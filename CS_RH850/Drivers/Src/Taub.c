@@ -81,5 +81,4 @@ void INTTAUB0I0_IsrHandle(void)
     {
         (TaubCfgPtr->TimeCfg->TickCallback)();
     }
-
 }

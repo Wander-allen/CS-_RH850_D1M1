@@ -1,8 +1,7 @@
-Renesas Optimizing Linker (W3.02.00 )             24-Aug-2020 18:52:57
+Renesas Optimizing Linker (W3.02.00 )             25-Aug-2020 18:37:54
 
 *** Options ***
 
--MAKEUD=DefaultBuild\Project.lk.ud
 -subcommand=DefaultBuild\Project.clnk
 -input=DefaultBuild\boot.obj
 -input=DefaultBuild\cstart.obj
@@ -31,6 +30,8 @@ Renesas Optimizing Linker (W3.02.00 )             24-Aug-2020 18:52:57
 -input=DefaultBuild\Taub.obj
 -input=DefaultBuild\Interrupts.obj
 -input=DefaultBuild\Taub_PBcfg.obj
+-input=DefaultBuild\can_table.obj
+-input=DefaultBuild\rscan.obj
 -debug
 -nocompress
 -NOOPtimize
@@ -54,18 +55,18 @@ RESET
 EIINTTBL
                                   00000200  000005ff       400   200
 .const
-                                  00008000  000081db       1dc   4
+                                  00008000  000082af       2b0   4
 .INIT_DSEC.const
-                                  000081dc  000081e7         c   4
+                                  000082b0  000082bb         c   4
 .INIT_BSEC.const
-                                  000081e8  000081ef         8   4
+                                  000082bc  000082c3         8   4
 .text
-                                  000081f0  0000bfdf      3df0   2
+                                  000082c4  0000c371      40ae   2
 .data
-                                  0000bfe0  0000c883       8a4   4
+                                  0000c374  0000cc33       8c0   4
 .data.R
-                                  fed80000  fed808a3       8a4   4
+                                  fed80000  fed808bf       8c0   4
 .bss
-                                  fed808a4  fed85809      4f66   4
+                                  fed808c0  fed8582b      4f6c   4
 .stack.bss
-                                  fed8580c  fed85a0b       200   4
+                                  fed8582c  fed85a2b       200   4

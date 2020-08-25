@@ -167,5 +167,7 @@ static void Clock_DomainInit(void)
                                                                             /* Source clock selection for CLKJIT C_ISO_TAUB01 */
     while (SYS.CKSC_ITAUB01S_ACT.UINT32 != 1){}                             /* Wait until Current active C_ISO_TAUB01 source clock selection */
 
+    
+
 }
 
