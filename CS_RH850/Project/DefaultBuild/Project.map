@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W3.02.00 )             25-Aug-2020 18:37:54
+Renesas Optimizing Linker (W3.02.00 )             26-Aug-2020 16:17:16
 
 *** Options ***
 
@@ -61,9 +61,9 @@ EIINTTBL
 .INIT_BSEC.const
                                   000082bc  000082c3         8   4
 .text
-                                  000082c4  0000c371      40ae   2
+                                  000082c4  0000c3e5      4122   2
 .data
-                                  0000c374  0000cc33       8c0   4
+                                  0000c3e8  0000cca7       8c0   4
 .data.R
                                   fed80000  fed808bf       8c0   4
 .bss

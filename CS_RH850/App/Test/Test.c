@@ -66,7 +66,7 @@ void Test_Init(void)
 
 
 /******************************************************************************
-* Function Name: Test_Init
+* Function Name: Test_CallBack
 * Description  : Mcu初始化
 * Arguments    : None
 * Return Value : None
@@ -80,26 +80,26 @@ void Test_CallBack(void)
         CANRecData.DB[0]=0x0;
     }
 
-//   ul_interrupt_counter++;               /* count interrupt occurences */
-//   if(ul_interrupt_counter>9)
-//   {
-//     ul_interrupt_counter=0;
-//     //PORT_ISOPNOT16=0x02u;                 /* toggle port P16.1 (LED26 on main board) */
-//     if(CAN_Trans_Data.ID<0xFF)
-//       CAN_Trans_Data.ID++;
-//     else
-//       CAN_Trans_Data.ID=0x01;
+  ul_interrupt_counter++;               /* count interrupt occurences */
+  if(ul_interrupt_counter>9)
+  {
+    ul_interrupt_counter=0;
+    //PORT_ISOPNOT16=0x02u;                 /* toggle port P16.1 (LED26 on main board) */
+    if(CAN_Trans_Data.ID<0xFF)
+      CAN_Trans_Data.ID++;
+    else
+      CAN_Trans_Data.ID=0x01;
 
-// #if 0
-//     if(CAN_Trans_Data.DB[0]<0xFF)
-//       CAN_Trans_Data.DB[0]++;       /* change DB0 (first data byte send) */
-//     else
-// #else
-//       CAN_Trans_Data.DB[0]=0x01;    /* always send "0x01" as DB0 (first data byte) */
-// #endif
+#if 0
+    if(CAN_Trans_Data.DB[0]<0xFF)
+      CAN_Trans_Data.DB[0]++;       /* change DB0 (first data byte send) */
+    else
+#else
+      CAN_Trans_Data.DB[0]=0x01;    /* always send "0x01" as DB0 (first data byte) */
+#endif
 
-//     Can_C0TrmByTxBuf(0,&CAN_Trans_Data);
-//   }
+    Can_C0TrmByTxBuf(17, &CAN_Trans_Data);
+  }
 }
 
 
@@ -115,6 +115,6 @@ void Test_Task(void)
     Uart_transmit_string("this is a Uart test task runing\r\n");
     Test_CallBack();
     
-    vTaskDelay(1000);
+    vTaskDelay(100);
 }
     

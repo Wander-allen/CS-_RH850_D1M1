@@ -24,7 +24,7 @@ Author: Wander
 ******************************************************************************/
 
 /******************************************************************************
-* Function Name: Ecu_Init
+* Function Name: Det_Init
 * Description  : Mcu初始化
 * Arguments    : None
 * Return Value : None

@@ -177,12 +177,12 @@ static void AppTaskCreate(void)
     /* 任务创建 */
     for (i = 0; i < TASK_MAX; i++)
     {
-            xReturn = xTaskCreate((TaskFunction_t )Os_OS_TASKParamter[i].pxTaskCode,  
-                                    (const char*    )Os_OS_TASKParamter[i].pcName,
-                                    (uint16_t       )Os_OS_TASKParamter[i].usStackDepth,  
-                                    (void*          )Os_OS_TASKParamter[i].pvParameters,
-                                    (UBaseType_t    )Os_OS_TASKParamter[i].uxPriority, 
-                                    (TaskHandle_t*  )Os_OS_TASKParamter[i].pxCreatedTask); 
+        xReturn = xTaskCreate((TaskFunction_t )Os_OS_TASKParamter[i].pxTaskCode,
+                                (const char*    )Os_OS_TASKParamter[i].pcName,
+                                (uint16_t       )Os_OS_TASKParamter[i].usStackDepth,
+                                (void*          )Os_OS_TASKParamter[i].pvParameters,
+                                (UBaseType_t    )Os_OS_TASKParamter[i].uxPriority,
+                                (TaskHandle_t*  )Os_OS_TASKParamter[i].pxCreatedTask);
     }
     vTaskDelete(AppTaskCreate_Handle);
 }
