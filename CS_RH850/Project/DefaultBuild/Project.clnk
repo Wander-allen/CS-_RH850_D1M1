@@ -27,6 +27,7 @@
 -input=DefaultBuild\Taub_PBcfg.obj
 -input=DefaultBuild\can_table.obj
 -input=DefaultBuild\rscan.obj
+-input=DefaultBuild\Adc.obj
 -debug
 -nocompress
 -NOOPtimize

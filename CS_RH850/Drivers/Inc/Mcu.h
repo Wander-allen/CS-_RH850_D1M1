@@ -34,6 +34,7 @@ do{\
 }while((pstatus)==1u)
 
 extern void Mcu_Init(void);
+extern void module_reset_release(void);
 
 
 

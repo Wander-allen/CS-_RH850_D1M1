@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W3.02.00 )             26-Aug-2020 16:17:16
+Renesas Optimizing Linker (W3.02.00 )             27-Aug-2020 16:50:51
 
 *** Options ***
 
@@ -32,6 +32,7 @@ Renesas Optimizing Linker (W3.02.00 )             26-Aug-2020 16:17:16
 -input=DefaultBuild\Taub_PBcfg.obj
 -input=DefaultBuild\can_table.obj
 -input=DefaultBuild\rscan.obj
+-input=DefaultBuild\Adc.obj
 -debug
 -nocompress
 -NOOPtimize
@@ -61,12 +62,12 @@ EIINTTBL
 .INIT_BSEC.const
                                   000082bc  000082c3         8   4
 .text
-                                  000082c4  0000c3e5      4122   2
+                                  000082c4  0000c5c9      4306   2
 .data
-                                  0000c3e8  0000cca7       8c0   4
+                                  0000c5cc  0000ced7       90c   4
 .data.R
-                                  fed80000  fed808bf       8c0   4
+                                  fed80000  fed8090b       90c   4
 .bss
-                                  fed808c0  fed8582b      4f6c   4
+                                  fed8090c  fed85877      4f6c   4
 .stack.bss
-                                  fed8582c  fed85a2b       200   4
+                                  fed85878  fed85a77       200   4

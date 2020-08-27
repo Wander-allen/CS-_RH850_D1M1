@@ -18,24 +18,12 @@ Pragma directive
 Includes
 ******************************************************************************/
 #include "ioDefine.h"
+#include "Mcu.h"
 #include "Clock.h"
 
 /******************************************************************************
 #Define
 ******************************************************************************/
-/**
-  * @brief  Unlock the Protected Rigister 
-  * @param  CLUSTER：  protection command register
-  * @param  RIGISTER： Write-Protected Registers 
-  * @param  VALUE：    The value being written 
-  */
-#define UNLOCK_REGISTER(CLUSTER, RIGISTER, VALUE)   \
-do{                                                 \
-    (CLUSTER) = 0x000000A5;                         \
-    (RIGISTER) = VALUE;                             \
-    (RIGISTER) = ~((uint32)VALUE);                  \
-    (RIGISTER) = VALUE;                             \
-}while(0);                                          \
 
 /******************************************************************************
 Global variables and functions
@@ -47,6 +35,12 @@ static void Clock_DomainInit(void);
 /******************************************************************************
 * Function Name: Clock_Init
 * Description  : 时钟初始化 
+                start MainOSC(8 MHz) and PLL   
+                PLL0 = 480 MHz (PLL0CLK = 480 MHz)
+                PLL1 = 480 MHz (PLL1CLK = 480 MHz)
+                CLKFIX = 80 MHz
+                CLKJIT = 80 MHz       
+                PLLFIXCLK = 480 MHz (PLL1CLK)
 * Arguments    : None
 * Return Value : None
 ******************************************************************************/
@@ -69,7 +63,7 @@ static void Clock_OscInit(void)
     SYS.MOSCC.BIT.MOSCAMPSEL = 1;                               /* Select the MainOsc frequency 8MHz*/
     SYS.MOSCST.BIT.MOSCCLKST = 0x8000;                          /* Select the correct MainOsc stabilization time */
                                                                 /* 0x8000 / frh = 4ms */
-    UNLOCK_REGISTER(SYS.PROTCMD0.UINT32, SYS.MOSCE.UINT32, 1);  /* Unlock the Protect Rigister and Start the MainOsc */
+    protected_write(SYS.PROTCMD0.UINT32, SYS.PROTS0.UINT32 ,SYS.MOSCE.UINT32, 1);/* trigger enable (protected write) */
     while (SYS.MOSCS.BIT.MOSCCLKACT == 0){}                     /* Wait until MainOsc active*/
 
     /* Configure the PLL0 clock generators 480MHz */
@@ -77,7 +71,7 @@ static void Clock_OscInit(void)
     SYS.PLL0C.BIT.M = 0;                                        /* mr = 1 */
     SYS.PLL0C.BIT.P = 0;                                        /* Pr = 1 */
                                                                 /* fPLL0= 480MHz fout = fin * (Nr + 1) / ((Mr +1) * (Pr + 1)) */
-    UNLOCK_REGISTER(SYS.PROTCMD1.UINT32, SYS.PLL0E.UINT32, 1);  /* Unlock the Protect Rigister and Start the PLL0 */
+    protected_write(SYS.PROTCMD1.UINT32, SYS.PROTS1.UINT32 ,SYS.PLL0E.UINT32, 1);/* Start the PLL0 (protected write) */
     while (SYS.PLL0S.BIT.PLL0CLKACT == 0){}                     /* Wait until PLL0 active */
     SYS.CKSC_IPLL0S_CTL.BIT.PLL0SSTP = 1;                       /* Enable the PLL0CLK clock*/
     while (SYS.CKSC_IPLL0S_ACT.BIT.PLL0SACT == 0){}             /* Wait until PLL0CLK active */
@@ -87,8 +81,7 @@ static void Clock_OscInit(void)
     SYS.PLL1C.BIT.M = 0;                                        /* mr = 1 */
     SYS.PLL1C.BIT.P = 0;                                        /* Pr = 1 */ 
                                                                 /* fPLL1= 480MHz fout = fin * (Nr + 1) / ((Mr +1) * (Pr + 1)) */
-
-    UNLOCK_REGISTER(SYS.PROTCMD1.UINT32, SYS.PLL1E.UINT32, 1);  /* Unlock the Protect Rigister and Start the PLL1 */
+    protected_write(SYS.PROTCMD1.UINT32, SYS.PROTS1.UINT32, SYS.PLL1E.UINT32, 1);/* Start the PLL1 (protected write) */
     while (SYS.PLL1S.BIT.PLL1CLKACT == 0){}                     /* Wait until PLL1 active */
     SYS.CKSC_IPLL1S_CTL.BIT.PLL1SSTP = 1;                       /* Enable the PLL1CLK clock*/
     while (SYS.CKSC_IPLL1S_ACT.BIT.PLL1SACT == 0){}             /* Wait until PLL1CLK active */
@@ -96,51 +89,48 @@ static void Clock_OscInit(void)
     /* Configure the SubOsc */
     SYS.SOSCST.BIT.SOSCCLKST = 0x8000;                          /* Select correct SubOsc stabilization time */
                                                                 /* 0x8000 / frh = 4ms */
-    UNLOCK_REGISTER(SYS.PROTCMD0.UINT32, SYS.SOSCE.UINT32, 1);  /* Unlock the Protect Rigister and Start the PLL1 */
+    protected_write(SYS.PROTCMD0.UINT32, SYS.PROTS0.UINT32, SYS.SOSCE.UINT32, 1);/* Start the SubOsc (protected write) */
     while (SYS.SOSCS.BIT.SOSCCLKACT == 0){}                     /* Wait until SubOsc active */
 }
 
 /******************************************************************************
-* Function Name: Clock_OscInit
+* Function Name: Clock_GeneratorInit
 * Description  : 
 * Arguments    : None
 * Return Value : None
 ******************************************************************************/
 static void Clock_GeneratorInit(void)
 {
-    /* Configure the Clock divider for C_ISO_CPUCLK, divider /4 */
-    UNLOCK_REGISTER(SYS.PROTCMD1.UINT32, SYS.CKSC_ICPUCLKD_CTL.UINT32, 3);          /* Unlock the Protect Rigister */
-                                                                                    /* clock selection for Clock divider setting for C_ISO_CPUCLK */
-    while (SYS.CKSC_ICPUCLKD_ACT.UINT32 != 3){}                                     /* Current active CPUCLKD clock divider */
+    /* Set CPU clock divider to 4 */
+    protected_write(SYS.PROTCMD1.UINT32, SYS.PROTS1.UINT32, SYS.CKSC_ICPUCLKD_CTL.UINT32, 3);
+                                                                    /* divider 2 (protected write) */
+    while (SYS.CKSC_ICPUCLKD_ACT.UINT32 != 3){}                     /* Current active CPUCLKD clock divider */
 
-    /* Configure the C_ISO_CPUCLK to PLL0CLK 120MHz*/
-    UNLOCK_REGISTER(SYS.PROTCMD1.UINT32, SYS.CKSC_ICPUCLKS_CTL.UINT32, 3);          /* Unlock the Protect Rigister */
-                                                                                    /* Source clock selection for C_ISO_CPUCLK  */
-    while (SYS.CKSC_ICPUCLKS_ACT.UINT32 != 3){}                                     /* Wait until Current active CPUCLKS source clock selection */
+    /* Set CPU clock to PLL1CLK / 4 (120MHz) */
+    protected_write(SYS.PROTCMD1.UINT32, SYS.PROTS1.UINT32, SYS.CKSC_ICPUCLKS_CTL.UINT32, 3);
+                                                                    /* PLL1CLK / 4 (protected write) */
+    while (SYS.CKSC_ICPUCLKS_ACT.UINT32 != 3){}                     /* Wait until Current active */
 
+    /* Set CLKFIX clock divider to 6 */
+    protected_write(SYS.PROTCMDD1.UINT32, SYS.PROTSD1.UINT32, SYS.CKSC_ICLKFIXS_CTL.UINT32, 1);
+                                                                    /* divider 6 (protected write) */
+    while (SYS.CKSC_ICLKFIXS_ACT.UINT32 != 1){}                     /* Wait unit selected and active clock */
 
-    /* Configure the Clock divider for CLKFIX, divider/6 */
-    UNLOCK_REGISTER(SYS.PROTCMDD1.UINT32, SYS.CKSC_ICLKFIXS_CTL.UINT32, 1);         /* Unlock the Protect Rigister */
-    while (SYS.CKSC_ICLKFIXS_ACT.UINT32 != 1){}                                     /* Wait unit selected and active clock */
-
-    /* Configure the CLKFIX to PLLFIXCLK/6, (PLLFIXCLK=PLL1CLK(480MHz) / 6 = 80MHz) */
-    UNLOCK_REGISTER(SYS.PROTCMDD1.UINT32, SYS.CKSC_ICLKFIXS_CTL.UINT32 , 1);        /* Unlock the Protect Rigister */
-    while (SYS.CKSC_ICLKFIXS_ACT.UINT32 != 1){}                                     /* Wait unit selected and active clock */
-
-
-    /* Configure the Clock divider for CLKJIT, divider/6 */
-    UNLOCK_REGISTER(SYS.PROTCMDD1.UINT32, SYS.CKDV_ICLKJITD_CTL.UINT32, 6);         /* Unlock the Protect Rigister */
-                                                                                    /* clock selection for Clock divider setting for CLKJIT */
-    while (SYS.CKDV_ICLKJITD_STAT.UINT32 != 3){}                                    /* Wait until CLKJIT active */
-
-    /* Configure the CLKFIX to PLLFIXCLK/6, (PLL0CLK(480MHz) / 6 = 80MHz) */
-    UNLOCK_REGISTER(SYS.PROTCMDD1.UINT32, SYS.CKSC_ICLKJITS_CTL.UINT32, 1);         /* Unlock the Protect Rigister */
-                                                                                    /* Source clock selection for CLKJIT CKDV_ICLKJITD_CTL */
-    while (SYS.CKSC_ICLKJITS_ACT.UINT32 != 1){}                                     /* Wait until Current active */
-    
+    /* Set CLKFIX clock to PLLFIXCLK/6, (PLLFIXCLK=PLL1CLK(480MHz) / 6 = 80MHz) */
+    protected_write(SYS.PROTCMDD1.UINT32, SYS.PROTSD1.UINT32, SYS.CKSC_ICLKFIXS_CTL.UINT32, 1);
+                                                                    /* PLLFIXCLK / 6 (protected write) */
+    while (SYS.CKSC_ICLKFIXS_ACT.UINT32 != 1){}                     /* Wait unit selected and active clock */
 
 
+    /* Set CLKJIT clock divider to 6 */
+    protected_write(SYS.PROTCMDD1.UINT32, SYS.PROTSD1.UINT32, SYS.CKDV_ICLKJITD_CTL.UINT32, 6);
+                                                                    /* divider 6 (protected write) */
+    while (SYS.CKDV_ICLKJITD_STAT.UINT32 != 3){}                    /* Wait until CLKJIT active */
 
+    /* Set CLKFIX clock to PLLFIXCLK/6, (PLL0CLK(480MHz) / 6 = 80MHz)  */
+    protected_write(SYS.PROTCMDD1.UINT32, SYS.PROTSD1.UINT32, SYS.CKSC_ICLKJITS_CTL.UINT32, 1);
+                                                                    /* PLLFIXCLK/6 (protected write) */
+    while (SYS.CKSC_ICLKJITS_ACT.UINT32 != 1){}                     /* Wait until Current active */
 }
 
 /******************************************************************************
@@ -151,23 +141,25 @@ static void Clock_GeneratorInit(void)
 ******************************************************************************/
 static void Clock_DomainInit(void)
 {
-    /* Configure the C_ISO_OSTM  C_ISO_CPUCLK / 4 = 30 MHz*/
-    UNLOCK_REGISTER(SYS.PROTCMDD1.UINT32, SYS.CKSC_IOSTMS_CTL.UINT32, 2);   /* Unlock the Protect Rigister */
-                                                                            /* clock selection for Clock divider setting*/
-    while (SYS.CKSC_IOSTMS_CTL.UINT32 != 2){}                               /* Wait Until Current active RLINS source clock selection*/
+    /* Set C_ISO_OSTM clock to C_ISO_CPUCLK / 4 = 30 MHz */
+    protected_write(SYS.PROTCMDD1.UINT32, SYS.PROTSD1.UINT32, SYS.CKSC_IOSTMS_CTL.UINT32, 2);
+                                                                    /* C_ISO_CPUCLK / 4 (protected write) */
+    while (SYS.CKSC_IOSTMS_CTL.UINT32 != 2){}                       /* Wait Until Current active RLINS source clock selection*/
 
+    /* Set C_ISO_IRLINS clock to CLKJIT / 1 = 80 MHz */
+    protected_write(SYS.PROTCMDD1.UINT32, SYS.PROTSD1.UINT32, SYS.CKSC_IRLINS_CTL.UINT32, 2);
+                                                                    /* CLKJIT / 1 (protected write) */
+    while (SYS.CKSC_IRLINS_ACT.UINT32 != 2){}                       /* Wait Until Current active RLINS source clock selection*/
 
-    /* Configure the C_ISO_RLIN  CLKJIT / 1 = 80 MHz*/
-    UNLOCK_REGISTER(SYS.PROTCMDD1.UINT32, SYS.CKSC_IRLINS_CTL.UINT32, 2);   /* Unlock the Protect Rigister */
-                                                                            /* clock selection for Clock divider setting*/
-    while (SYS.CKSC_IRLINS_ACT.UINT32 != 2){}                               /* Wait Until Current active RLINS source clock selection*/
+    /* Set C_ISO_TAUB01 clock to CLKFIX /1, (CLKFIX(80MHz) / 1 = 80MHz) */
+    protected_write(SYS.PROTCMDD1.UINT32, SYS.PROTSD1.UINT32, SYS.CKSC_ITAUB01S_CTL.UINT32, 1);
+                                                                    /* CLKJIT / 1 (protected write) */
+    while (SYS.CKSC_ITAUB01S_ACT.UINT32 != 1){}                     /* Wait until Current active C_ISO_TAUB01 */
 
-    /* Configure the C_ISO_TAUB01 to  CLKFIX /1, (CLKFIX(80MHz) / 1 = 80MHz) */
-    UNLOCK_REGISTER(SYS.PROTCMDD1.UINT32, SYS.CKSC_ITAUB01S_CTL.UINT32, 1); /* Unlock the Protect Rigister */
-                                                                            /* Source clock selection for CLKJIT C_ISO_TAUB01 */
-    while (SYS.CKSC_ITAUB01S_ACT.UINT32 != 1){}                             /* Wait until Current active C_ISO_TAUB01 source clock selection */
-
-    
+    /* Set C_ISO_ADCE clock to CKLJIT /2 (40 MHz) */
+    protected_write(SYS.PROTCMDD1.UINT32, SYS.PROTSD1.UINT32, SYS.CKSC_IRLINS_CTL.UINT32, 1);
+                                                                    /* CKLJIT /2 (protected write) */
+    while (SYS.CKSC_IADCED_ACT.UINT32 != 1){}                       /* Wait until Current active C_ISO_TAUB01  */
 
 }
 

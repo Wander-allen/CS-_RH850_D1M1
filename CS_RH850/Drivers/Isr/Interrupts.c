@@ -19,6 +19,7 @@ Includes
 #include "ioDefine.h"
 #include "Uart_Isr.h"
 #include "Taub_Isr.h"
+#include "Adc_Isr.h"
 
 /******************************************************************************
 #Define
@@ -71,6 +72,13 @@ void INTRLIN30UR2(void)
 void INTTAUB0I0(void)
 {
     INTTAUB0I0_IsrHandle();
+}
+
+/* ADCE0 Scan group 1 interrupt (INTADCE0I1) service routine */
+#pragma interrupt INTADCE0I1( enable = false, channel = 66, callt = false, fpu = false )
+void INTADCE0I1(void)
+{
+    INTADCE0I1_IsrHandle();
 }
 
 

@@ -24,6 +24,7 @@ Author: Wander
 #include "Clock.h"
 #include "Taub.h"
 #include "rscan.h"
+#include "Adc.h"
 #include "Test.h"
 
 /******************************************************************************
@@ -88,12 +89,15 @@ END_OSCREATE()
 ******************************************************************************/
 void EcuM_Init(void)
 {
+    module_reset_release();
     Clock_Init();
     Mcu_Init();
     Port_Init();
     Uart_Init();
     Taub_Init();
     RS_CAN_init();
+    ADC0_Init();
+    ADC0_Start();
     Test_Init();
 }
 

@@ -38,3 +38,15 @@ void Mcu_Init(void)
 {
     //Clock_Init();
 }
+
+/******************************************************************************
+* Function Name: module_reset_release
+* Description  : Mcu初始化
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void module_reset_release()
+{
+  /* deactivate reset for all modules */
+  protected_write(SYS.PROTCMDMRST.UINT32,SYS.PROTSMRST.UINT32,SYS.MRSTC.UINT32,(0x00003fff)); 
+}

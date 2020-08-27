@@ -4,20 +4,20 @@ Copyright (C) 2020 Querda Electronic Technology All Rights Reserved
 This software and code can be freely used for study and research. 
 For commercial purposes, please contact the owner for permission.
 
-File  : Interrupts.h 
+File  : Adc.h 
 Author: Wander 
 ******************************************************************************/
-#ifndef INTERRUPPTS_H
-#define INTERRUPPTS_H
+#ifndef ADC_H
+#define ADC_H
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern void INTRLIN30UR0( void );
-extern void INTRLIN30UR1( void );
-extern void INTRLIN30UR2( void );
-extern void INTTAUB0I0(void);
-extern void INTADCE0I1(void);
+#include "Std_Types.h"
+
+extern void ADC0_Init(void);
+extern void ADC0_Start(void);
+extern void ADC0_Stop(void);
 
 #ifdef __cplusplus
 }
