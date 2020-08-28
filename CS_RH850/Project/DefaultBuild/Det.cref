@@ -1,6 +1,6 @@
 ****..\System\Det.c
 v2 
-:1598518250
+:1598609383
 #1
 F "__nop" - I!1 T!2 ?17-2 
 T "void" KBV I!2 0x0 
@@ -102,7 +102,252 @@ V "" - I!97 O!95 T!58 .1 0x1
 F "__stch" - I!98 T!5 ?70-2 P!99 P!100 
 V "" - I!99 O!98 T!93 .4 0x4 
 V "" - I!100 O!98 T!94 .2 0x2 
+T "ptrdiff_t" KT I!101 T!102 !17-4 0x4 
+T "int" KBS I!102 0x4 
+T "size_t" KT I!103 T!21 !18-4 0x4 
+T "va_list" KT I!104 T!105 !17-5 0x4 
+T "" KP I!105 T!106 0x4 
+T "char" KBCS I!106 0x1 
+F "__builtin_va_start" - I!107 T!2 ?25-5 P!108 
+V "" - I!108 O!107 T!104 .4 0x4 
+T "" KS I!109 !24-3 0xc VM!110 VM!111 VM!113 
+V "mode" - I!110 O!109 T!102 !25-3 .4 0x4 BO0 BIS32 
+V "handle" - I!111 O!109 T!112 !26-3 .4 0x4 BO32 BIS32 
+T "unsigned int" KBU I!112 0x4 
+V "unget_c" - I!113 O!109 T!102 !27-3 .4 0x4 BO64 BIS32 
+T "FILE" KT I!114 T!109 !28-3 0xc 
+T "fpos_t" KT I!115 T!102 !29-3 0x4 
+F "_REL_stdin" - I!116 T!117 ?54-3 
+T "" KP I!117 T!114 0x4 
+F "_REL_stdout" - I!118 T!117 ?55-3 
+F "_REL_stderr" - I!119 T!117 ?56-3 
+F "fprintf" - I!120 T!102 ?61-3 P!121 P!122 VARARG 
+V "" - I!121 O!120 T!117 .4 0x4 
+V "" - I!122 O!120 T!123 .4 0x4 
+T "" MOD"C" KP I!123 T!106 0x4 
+F "fscanf" - I!124 T!102 ?62-3 P!125 P!126 VARARG 
+V "" - I!125 O!124 T!117 .4 0x4 
+V "" - I!126 O!124 T!123 .4 0x4 
+F "printf" - I!127 T!102 ?63-3 P!128 VARARG 
+V "" - I!128 O!127 T!123 .4 0x4 
+F "scanf" - I!129 T!102 ?64-3 P!130 VARARG 
+V "" - I!130 O!129 T!123 .4 0x4 
+F "sprintf" - I!131 T!102 ?65-3 P!132 P!133 VARARG 
+V "" - I!132 O!131 T!105 .4 0x4 
+V "" - I!133 O!131 T!123 .4 0x4 
+F "sscanf" - I!134 T!102 ?66-3 P!135 P!136 VARARG 
+V "" - I!135 O!134 T!123 .4 0x4 
+V "" - I!136 O!134 T!123 .4 0x4 
+F "vfprintf" - I!137 T!102 ?67-3 P!138 P!139 P!140 
+V "" - I!138 O!137 T!117 .4 0x4 
+V "" - I!139 O!137 T!123 .4 0x4 
+V "" - I!140 O!137 T!104 .4 0x4 
+F "vprintf" - I!141 T!102 ?68-3 P!142 P!143 
+V "" - I!142 O!141 T!123 .4 0x4 
+V "" - I!143 O!141 T!104 .4 0x4 
+F "vsprintf" - I!144 T!102 ?69-3 P!145 P!146 P!147 
+V "" - I!145 O!144 T!105 .4 0x4 
+V "" - I!146 O!144 T!123 .4 0x4 
+V "" - I!147 O!144 T!104 .4 0x4 
+F "fgetc" - I!148 T!102 ?71-3 P!149 
+V "" - I!149 O!148 T!117 .4 0x4 
+F "fgets" - I!150 T!105 ?72-3 P!151 P!152 P!153 
+V "" - I!151 O!150 T!105 .4 0x4 
+V "" - I!152 O!150 T!102 .4 0x4 
+V "" - I!153 O!150 T!117 .4 0x4 
+F "fputc" - I!154 T!102 ?73-3 P!155 P!156 
+V "" - I!155 O!154 T!102 .4 0x4 
+V "" - I!156 O!154 T!117 .4 0x4 
+F "fputs" - I!157 T!102 ?74-3 P!158 P!159 
+V "" - I!158 O!157 T!123 .4 0x4 
+V "" - I!159 O!157 T!117 .4 0x4 
+F "getc" - I!160 T!102 ?75-3 P!161 
+V "" - I!161 O!160 T!117 .4 0x4 
+F "getchar" - I!162 T!102 ?76-3 
+F "gets" - I!163 T!105 ?77-3 P!164 
+V "" - I!164 O!163 T!105 .4 0x4 
+F "putc" - I!165 T!102 ?78-3 P!166 P!167 
+V "" - I!166 O!165 T!102 .4 0x4 
+V "" - I!167 O!165 T!117 .4 0x4 
+F "putchar" - I!168 T!102 ?79-3 P!169 
+V "" - I!169 O!168 T!102 .4 0x4 
+F "puts" - I!170 T!102 ?80-3 P!171 
+V "" - I!171 O!170 T!123 .4 0x4 
+F "ungetc" - I!172 T!102 ?81-3 P!173 P!174 
+V "" - I!173 O!172 T!102 .4 0x4 
+V "" - I!174 O!172 T!117 .4 0x4 
+F "fread" - I!175 T!103 ?83-3 P!176 P!177 P!178 P!179 
+V "" - I!176 O!175 T!54 .4 0x4 
+V "" - I!177 O!175 T!103 .4 0x4 
+V "" - I!178 O!175 T!103 .4 0x4 
+V "" - I!179 O!175 T!117 .4 0x4 
+F "fwrite" - I!180 T!103 ?84-3 P!181 P!183 P!184 P!185 
+V "" - I!181 O!180 T!182 .4 0x4 
+T "" MOD"C" KP I!182 T!2 0x4 
+V "" - I!183 O!180 T!103 .4 0x4 
+V "" - I!184 O!180 T!103 .4 0x4 
+V "" - I!185 O!180 T!117 .4 0x4 
+F "rewind" - I!186 T!2 ?87-3 P!187 
+V "" - I!187 O!186 T!117 .4 0x4 
+F "perror" - I!188 T!2 ?89-3 P!189 
+V "" - I!189 O!188 T!123 .4 0x4 
+T "" KS I!190 !21-6 0x8 VM!191 VM!192 
+V "quot" - I!191 O!190 T!102 !22-6 .4 0x4 BO0 BIS32 
+V "rem" - I!192 O!190 T!102 !23-6 .4 0x4 BO32 BIS32 
+T "div_t" KT I!193 T!190 !24-6 0x8 
+T "ldiv_t" KT I!194 T!193 !25-6 0x8 
+F "atof" - I!195 T!196 ?35-6 P!197 
+T "double" KBF I!196 0x8 
+V "" - I!197 O!195 T!123 .4 0x4 
+F "atoff" - I!198 T!199 ?36-6 P!200 
+T "float" KBF I!199 0x4 
+V "" - I!200 O!198 T!123 .4 0x4 
+F "atoi" - I!201 T!102 ?38-6 P!202 
+V "" - I!202 O!201 T!123 .4 0x4 
+F "atol" - I!203 T!5 ?39-6 P!204 
+V "" - I!204 O!203 T!123 .4 0x4 
+F "strtod" - I!205 T!196 ?41-6 P!206 P!207 
+V "" - I!206 O!205 T!123 .4 0x4 
+V "" - I!207 O!205 T!208 .4 0x4 
+T "" KP I!208 T!105 0x4 
+F "strtodf" - I!209 T!199 ?42-6 P!210 P!211 
+V "" - I!210 O!209 T!123 .4 0x4 
+V "" - I!211 O!209 T!208 .4 0x4 
+F "strtol" - I!212 T!5 ?44-6 P!213 P!214 P!215 
+V "" - I!213 O!212 T!123 .4 0x4 
+V "" - I!214 O!212 T!208 .4 0x4 
+V "" - I!215 O!212 T!102 .4 0x4 
+F "strtoul" - I!216 T!21 ?45-6 P!217 P!218 P!219 
+V "" - I!217 O!216 T!123 .4 0x4 
+V "" - I!218 O!216 T!208 .4 0x4 
+V "" - I!219 O!216 T!102 .4 0x4 
+F "rand" - I!220 T!102 ?47-6 
+F "srand" - I!221 T!2 ?48-6 P!222 
+V "" - I!222 O!221 T!112 .4 0x4 
+F "malloc" - I!223 T!54 ?50-6 P!224 
+V "" - I!224 O!223 T!103 .4 0x4 
+F "free" - I!225 T!2 ?51-6 P!226 
+V "" - I!226 O!225 T!54 .4 0x4 
+F "calloc" - I!227 T!54 ?52-6 P!228 P!229 
+V "" - I!228 O!227 T!103 .4 0x4 
+V "" - I!229 O!227 T!103 .4 0x4 
+F "realloc" - I!230 T!54 ?53-6 P!231 P!232 
+V "" - I!231 O!230 T!54 .4 0x4 
+V "" - I!232 O!230 T!103 .4 0x4 
+F "bsearch" - I!233 T!54 ?55-6 P!234 P!235 P!236 P!237 P!238 
+V "" - I!234 O!233 T!182 .4 0x4 
+V "" - I!235 O!233 T!182 .4 0x4 
+V "" - I!236 O!233 T!103 .4 0x4 
+V "" - I!237 O!233 T!103 .4 0x4 
+V "" - I!238 O!233 T!239 .4 0x4 
+T "" KP I!239 T!240 0x4 
+T "" KF I!240 T!102 0x0 P!241 P!242 
+V "" - I!241 O!240 T!182 .4 0x4 
+V "" - I!242 O!240 T!182 .4 0x4 
+F "qsort" - I!243 T!2 ?57-6 P!244 P!245 P!246 P!247 
+V "" - I!244 O!243 T!54 .4 0x4 
+V "" - I!245 O!243 T!103 .4 0x4 
+V "" - I!246 O!243 T!103 .4 0x4 
+V "" - I!247 O!243 T!248 .4 0x4 
+T "" KP I!248 T!249 0x4 
+T "" KF I!249 T!102 0x0 P!250 P!251 
+V "" - I!250 O!249 T!182 .4 0x4 
+V "" - I!251 O!249 T!182 .4 0x4 
+F "abs" - I!252 T!102 ?60-6 P!253 
+V "" - I!253 O!252 T!102 .4 0x4 
+F "labs" - I!254 T!5 ?61-6 P!255 
+V "" - I!255 O!254 T!5 .4 0x4 
+F "div" - I!256 T!193 ?62-6 P!257 P!258 
+V "" - I!257 O!256 T!102 .4 0x4 
+V "" - I!258 O!256 T!102 .4 0x4 
+F "ldiv" - I!259 T!194 ?63-6 P!260 P!261 
+V "" - I!260 O!259 T!5 .4 0x4 
+V "" - I!261 O!259 T!5 .4 0x4 
+F "abort" - I!262 T!2 ?65-6 
+T "" KS I!263 !68-6 0x10 VM!264 VM!266 
+V "quot" - I!264 O!263 T!265 !69-6 .4 0x8 BO0 BIS64 
+T "long long" KBS I!265 0x8 
+V "rem" - I!266 O!263 T!265 !70-6 .4 0x8 BO64 BIS64 
+T "lldiv_t" KT I!267 T!263 !71-6 0x10 
+F "atoll" - I!268 T!265 ?73-6 P!269 
+V "" - I!269 O!268 T!123 .4 0x4 
+F "strtoll" - I!270 T!265 ?74-6 P!271 P!272 P!273 
+V "" - I!271 O!270 T!123 .4 0x4 
+V "" - I!272 O!270 T!208 .4 0x4 
+V "" - I!273 O!270 T!102 .4 0x4 
+F "strtoull" - I!274 T!275 ?75-6 P!276 P!277 P!278 
+T "unsigned long long" KBU I!275 0x8 
+V "" - I!276 O!274 T!123 .4 0x4 
+V "" - I!277 O!274 T!208 .4 0x4 
+V "" - I!278 O!274 T!102 .4 0x4 
+F "llabs" - I!279 T!265 ?76-6 P!280 
+V "" - I!280 O!279 T!265 .4 0x8 
+F "lldiv" - I!281 T!267 ?77-6 P!282 P!283 
+V "" - I!282 O!281 T!265 .4 0x8 
+V "" - I!283 O!281 T!265 .4 0x8 
+T "boolean" KT I!284 T!58 !15-8 0x1 
+T "uint8" KT I!285 T!58 !16-8 0x1 
+T "uint08" KT I!286 T!58 !17-8 0x1 
+T "uint16" KT I!287 T!94 !18-8 0x2 
+T "uint32" KT I!288 T!21 !19-8 0x4 
+T "sint8" KT I!289 T!290 !20-8 0x1 
+T "signed char" KBS I!290 0x1 
+T "sint08" KT I!291 T!290 !21-8 0x1 
+T "sint16" KT I!292 T!293 !22-8 0x2 
+T "short" KBS I!293 0x2 
+T "sint32" KT I!294 T!5 !23-8 0x4 
+T "uint8_least" KT I!295 T!58 !24-8 0x1 
+T "uint08_least" KT I!296 T!58 !25-8 0x1 
+T "uint16_least" KT I!297 T!94 !26-8 0x2 
+T "uint32_least" KT I!298 T!21 !27-8 0x4 
+T "sint08_least" KT I!299 T!290 !28-8 0x1 
+T "sint8_least" KT I!300 T!290 !29-8 0x1 
+T "sint16_least" KT I!301 T!293 !30-8 0x2 
+T "sint32_least" KT I!302 T!5 !31-8 0x4 
+T "float32" KT I!303 T!199 !32-8 0x4 
+T "float64" KT I!304 T!196 !33-8 0x8 
+T "Std_ReturnType" KT I!305 T!285 !39-8 0x1 
+T "Std_StatusType" KT I!306 T!285 !53-8 0x1 
+T "" KS I!307 !56-8 0x8 VM!308 VM!309 VM!310 VM!311 VM!312 
+V "VendorID" - I!308 O!307 T!287 !57-8 .2 0x2 BO0 BIS16 
+V "ModuleID" - I!309 O!307 T!287 !58-8 .2 0x2 BO16 BIS16 
+V "MajorVer" - I!310 O!307 T!285 !59-8 .1 0x1 BO32 BIS8 
+V "MinorVer" - I!311 O!307 T!285 !60-8 .1 0x1 BO40 BIS8 
+V "PatchVer" - I!312 O!307 T!285 !61-8 .1 0x1 BO48 BIS8 
+T "Std_VersionType" KT I!313 T!307 !62-8 0x8 
+F "assert_failed" - I!314 T!102 #37-1 !38,45-1-1 P!318 P!319 
+T "" KP I!316 T!285 0x4 
+V "file" - I!318 O!314 T!316 !37-1 39-1 .4 0x4 
+V "line" - I!319 O!314 T!288 !37-1 40-1 .4 0x4 
 ****%CxSystemPath%\inc\builtin.h
 v2 
-:1598518250
+:1598609383
 #2
+****%CxSystemPath%\inc\stdio.h
+v2 
+:1598609383
+#3
+****%CxSystemPath%\inc\stddef.h
+v2 
+:1598609383
+#4
+****%CxSystemPath%\inc\stdarg.h
+v2 
+:1598609383
+#5
+****%CxSystemPath%\inc\stdlib.h
+v2 
+:1598609383
+#6
+****%CxSystemPath%\inc\stdint.h
+v2 
+:1598609383
+#7
+****..\Configs\Std_Types.h
+v2 
+:1598609383
+#8
+****..\Configs\Compiler.h
+v2 
+:1598609383
+#9

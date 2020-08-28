@@ -17,11 +17,12 @@
 ;-----------------------------------------------------------------------------
 ;	exception vector table
 ;-----------------------------------------------------------------------------
-    .extern _INTRLIN30UR0
-    .extern _INTRLIN30UR1
-    .extern _INTRLIN30UR2
+	.extern _INTRLIN30UR0
+	.extern _INTRLIN30UR1
+	.extern _INTRLIN30UR2
 	.extern _INTTAUB0I0
 	.extern _INTADCE0I1
+	.extern _INTPWGA22
     
 	.section "RESET", text
 	.align	512
@@ -305,7 +306,7 @@
 	.dw			#_Dummy_EI								; EIINT_CH_160
 	.dw			#_Dummy_EI								; EIINT_CH_161
 	.dw			#_Dummy_EI								; EIINT_CH_162
-	.dw			#_Dummy_EI								; EIINT_CH_163
+	.dw			#_INTPWGA22								; EIINT_CH_163
 	.dw			#_Dummy_EI								; EIINT_CH_164
 	.dw			#_Dummy_EI								; EIINT_CH_165
 	.dw			#_Dummy_EI								; EIINT_CH_166

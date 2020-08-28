@@ -19,7 +19,7 @@ static const Port_GpioCfgType PortGpioCfg[] =
     {  PORT_P3 ,  0x0000,  0xFFFD,  0x0008,  0x0000  },
     {  PORT_P10,  0x0000,  0xF7FF,  0x0000,  0x0800  },
     {  PORT_P11,  0x0000,  0xFFF0,  0x0000,  0x0001  },
-    {  PORT_P16,  0x0000,  0xF33F,  0x0008,  0x0000  },
+    {  PORT_P16,  0x0040,  0xF33F,  0x0008,  0x0000  },
     {  PORT_P17,  0x0000,  0xFDC0,  0x0000,  0x0000  },
     {  PORT_P21,  0x0000,  0xFFFF,  0x0000,  0x0000  },
     {  PORT_P22,  0x0000,  0xFFFF,  0x0000,  0x0000  },
@@ -39,6 +39,7 @@ static const Port_PpcrCfgType PortPpcrCfg[] =
     {  PORT_P0 ,  9,    0x00000000},  /* RLIN30RX */
     {  PORT_P3 ,  0,    0x00000000},  /* RIIC0SDA */
     {  PORT_P3 ,  1,    0x00000000},  /* RIIC0SCL */
+    {  PORT_P16,  6,    0x00000001},  /* PWGA22O */
 };
 
 /* Port Configuration */

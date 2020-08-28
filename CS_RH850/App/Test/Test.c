@@ -11,9 +11,12 @@ Author: Wander
 /******************************************************************************
                                     头文件
 ******************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
 #include "Uart.h"
 #include "rscan.h"
 #include "Pin.h"
+#include "Pwm.h"
 
 /******************************************************************************
                                     局部宏方法
@@ -63,16 +66,17 @@ void Test_Init(void)
 {
     Uart_transmit_string("hello world\r\n");
     Uart_transmit_string("Test_Init Success\r\n");
+    
 }
 
 
 /******************************************************************************
-* Function Name: Test_CallBack
-* Description  : Mcu初始化
+* Function Name: Can_Test
+* Description  : Can模块测试
 * Arguments    : None
 * Return Value : None
 ******************************************************************************/
-void Test_CallBack(void)
+void Can_Test(void)
 {
 
     Can_ReadRxBuffer(&CANRecData);
@@ -103,7 +107,45 @@ void Test_CallBack(void)
   }
 }
 
+static uint32 TickTimer = 0;
+/******************************************************************************
+* Function Name: Can_Test
+* Description  : Can模块测试
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void Pwm_Test(void)
+{
+  // static uint32 TickTimer = 0;
 
+  TickTimer ++;
+
+  if (TickTimer == 1)
+  {
+    Pwm_Start();
+  }
+
+  // if (TickTimer == 100)
+  // {
+  //   PWM_Stop();
+  // }
+
+  // if (TickTimer == 200)
+  // {
+  //   Pwm_Start();
+  // }
+
+  // if (TickTimer == 300)
+  // {
+  //   Pwm_SetDuty(0, 0xFFF);
+  // }
+
+  // if (TickTimer % 50 == 0)
+  // {
+  //   Pwm_SetDuty(0, 0xFFF);
+  // }
+
+}
 
 /******************************************************************************
 * Function Name: Test_Task
@@ -113,8 +155,9 @@ void Test_CallBack(void)
 ******************************************************************************/
 void Test_Task(void)
 {
-    Uart_transmit_string("this is a Uart test task runing\r\n");
-    Test_CallBack();
+    //Uart_transmit_string("this is a Uart test task runing\r\n");
+    Can_Test();
+    Pwm_Test();
     
     vTaskDelay(100);
 }

@@ -28,6 +28,7 @@
 -input=DefaultBuild\can_table.obj
 -input=DefaultBuild\rscan.obj
 -input=DefaultBuild\Adc.obj
+-input=DefaultBuild\Pwm.obj
 -debug
 -nocompress
 -NOOPtimize

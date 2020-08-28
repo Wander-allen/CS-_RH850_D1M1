@@ -4,23 +4,25 @@ Copyright (C) 2020 Querda Electronic Technology All Rights Reserved
 This software and code can be freely used for study and research. 
 For commercial purposes, please contact the owner for permission.
 
-File  : Interrupts.h 
+File  : Pwm.h 
 Author: Wander 
 ******************************************************************************/
-#ifndef INTERRUPPTS_H
-#define INTERRUPPTS_H
+#ifndef PWM_H
+#define PWM_H
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern void INTRLIN30UR0( void );
-extern void INTRLIN30UR1( void );
-extern void INTRLIN30UR2( void );
-extern void INTTAUB0I0(void);
-extern void INTADCE0I1(void);
-extern void INTPWGA22(void);
+#include "Std_Types.h"
+
+extern void Pwm_Init(void);
+extern void Pwm_Start(void);
+extern void PWM_Stop( void );
+extern void Pwm_SetDuty(uint8 ch, uint32 Duty);
 
 #ifdef __cplusplus
+
+
 }
 #endif
 #endif

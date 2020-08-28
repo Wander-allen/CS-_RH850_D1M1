@@ -25,6 +25,7 @@ Author: Wander
 #include "Taub.h"
 #include "rscan.h"
 #include "Adc.h"
+#include "Pwm.h"
 #include "Test.h"
 
 /******************************************************************************
@@ -98,6 +99,8 @@ void EcuM_Init(void)
     RS_CAN_init();
     ADC0_Init();
     ADC0_Start();
+    Pwm_Init();
+    //Pwm_Start();
     Test_Init();
 }
 

@@ -14,7 +14,6 @@ extern "C" {
 #endif
 
 extern void Test_Init(void);
-extern void Test_CallBack(void);
 extern void Test_Task(void);
 
 

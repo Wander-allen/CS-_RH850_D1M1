@@ -4,28 +4,42 @@ Copyright (C) 2020 Querda Electronic Technology All Rights Reserved
 This software and code can be freely used for study and research. 
 For commercial purposes, please contact the owner for permission.
 
-File  : EcuM.c 
+File  : Det.c   Error Detection
 Author: Wander 
 ******************************************************************************/
 
 /******************************************************************************
-                                    头文件
-******************************************************************************/
-/******************************************************************************
-                                    局部宏方法
+Pragma directive
 ******************************************************************************/
 
 /******************************************************************************
-                                局部常量定义&类型定义
+Includes
+******************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include "Std_Types.h"
+
+/******************************************************************************
+Define Register
 ******************************************************************************/
 
 /******************************************************************************
-                                    局部变量定义
+Global variables and functions
 ******************************************************************************/
 
 /******************************************************************************
-* Function Name: Det_Init
-* Description  : Mcu初始化
+* Function Name: assert_failed
+* Description  : 断言函数处理
 * Arguments    : None
 * Return Value : None
 ******************************************************************************/
+assert_failed(uint8* file, uint32 line)
+{
+    (void) file;
+    (void) line;
+    // fflush(stdout);
+    // fprintf(stderr,"\nAssert failed： %s, line %u\n",file, line);
+    // fflush(stderr);
+    // abort();
+}

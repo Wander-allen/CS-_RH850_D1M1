@@ -127,7 +127,7 @@ static void Clock_GeneratorInit(void)
                                                                     /* divider 6 (protected write) */
     while (SYS.CKDV_ICLKJITD_STAT.UINT32 != 3){}                    /* Wait until CLKJIT active */
 
-    /* Set CLKFIX clock to PLLFIXCLK/6, (PLL0CLK(480MHz) / 6 = 80MHz)  */
+    /* Set CLKJIT clock to PLLFIXCLK/6, (PLL0CLK(480MHz) / 6 = 80MHz)  */
     protected_write(SYS.PROTCMDD1.UINT32, SYS.PROTSD1.UINT32, SYS.CKSC_ICLKJITS_CTL.UINT32, 1);
                                                                     /* PLLFIXCLK/6 (protected write) */
     while (SYS.CKSC_ICLKJITS_ACT.UINT32 != 1){}                     /* Wait until Current active */

@@ -4,7 +4,7 @@ Copyright (C) 2020 Querda Electronic Technology All Rights Reserved
 This software and code can be freely used for study and research. 
 For commercial purposes, please contact the owner for permission.
 
-File  : EcuM.h      ECU management module
+File  : Det.h      Error Detection
 Author: Wander 
 ******************************************************************************/
 #ifndef ECUM_H
@@ -13,13 +13,22 @@ Author: Wander
 extern "C" {
 #endif
 
-#include <assert.h>
+/* Exported macro ------------------------------------------------------------*/
+#ifdef  USE_FULL_ASSERT
 
-#ifdef RHDEBUG
-#define assert_para(paramter)       assert(paramter)
+/**
+  * @brief  The assert_param macro is used for function's parameters check.
+  * @param  expr: If expr is false, it calls assert_failed function which reports 
+  *         the name of the source file and the source line number of the call 
+  *         that failed. If expr is true, it returns no value.
+  * @retval None
+  */
+  #define assert_param(expr) ((expr) ? (void)0 : assert_failed((uint8_t *)__FILE__, __LINE__))
+/* Exported functions ------------------------------------------------------- */
+  void assert_failed(uint8_t* file, uint32_t line);
 #else
-#define assert_para(paramter)
-#endif
+  #define assert_param(expr) ((void)0)
+#endif /* USE_FULL_ASSERT */
 
 
 #ifdef __cplusplus
