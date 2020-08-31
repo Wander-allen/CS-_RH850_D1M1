@@ -1,6 +1,6 @@
 ****..\App\Test\Test.c
 v2 
-:1598609382
+:1598871691
 #1
 F "__nop" - I!1 T!2 ?17-2 
 T "void" KBV I!2 0x0 
@@ -128,7 +128,7 @@ T "" MOD"C" KP I!123 T!106 0x4
 F "fscanf" - I!124 T!102 ?62-3 P!125 P!126 VARARG 
 V "" - I!125 O!124 T!117 .4 0x4 
 V "" - I!126 O!124 T!123 .4 0x4 
-F "printf" - I!127 T!102 ?63-3 P!128 VARARG 
+F "printf" - I!127 T!102 ?63-3 158-1 P!128 VARARG 
 V "" - I!128 O!127 T!123 .4 0x4 
 F "scanf" - I!129 T!102 ?64-3 P!130 VARARG 
 V "" - I!130 O!129 T!123 .4 0x4 
@@ -334,7 +334,7 @@ V "" - I!329 O!327 T!305 .1 0x1
 F "Uart_SetTxIrq" - I!330 T!2 ?28-7 P!331 P!332 
 V "" - I!331 O!330 T!285 .1 0x1 
 V "" - I!332 O!330 T!305 .1 0x1 
-F "Uart_transmit_string" - I!333 T!2 ?30-7 67-1 68-1 P!334 
+F "Uart_transmit_string" - I!333 T!2 ?30-7 68-1 69-1 P!334 
 V "" - I!334 O!333 T!335 .1 0x0 
 T "" KA0 I!335 T!106 0x0 
 T "U8" KT I!336 T!58 !64-11 0x1 
@@ -348,28 +348,28 @@ T "VU8" MOD"V" KT I!343 T!58 !71-11 0x1
 T "VU16" MOD"V" KT I!344 T!94 !72-11 0x2 
 T "VU32" MOD"V" KT I!345 T!21 !73-11 0x4 
 T "" KS I!346 !102-11 0x10 VM!347 VM!348 VM!349 VM!350 VM!351 VM!352 VM!353 VM!354 
-V "ID" - I!347 O!346 T!340 !103-11 #94-1 #96-1 93-1 94-1 .4 0x4 BO0 BIS29 
+V "ID" - I!347 O!346 T!340 !103-11 #95-1 #97-1 94-1 95-1 .4 0x4 BO0 BIS29 
 V "THLEN" - I!348 O!346 T!340 !104-11 .4 0x4 BO29 BIS1 
 V "RTR" - I!349 O!346 T!340 !105-11 .4 0x4 BO30 BIS1 
 V "IDE" - I!350 O!346 T!340 !106-11 .4 0x4 BO31 BIS1 
 V "TS" - I!351 O!346 T!340 !108-11 .4 0x4 BO32 BIS16 
 V "LBL" - I!352 O!346 T!340 !109-11 .4 0x4 BO48 BIS12 
 V "DLC" - I!353 O!346 T!340 !110-11 .4 0x4 BO60 BIS4 
-V "DB" - I!354 O!346 T!355 !111-11 #85-1 #103-1 83-1 .1 0x8 BO64 BIS64 
+V "DB" - I!354 O!346 T!355 !111-11 #86-1 #104-1 84-1 .1 0x8 BO64 BIS64 
 T "" KA8 I!355 T!336 0x8 
 T "Can_FrameType" KT I!356 T!346 !112-11 0x10 
 T "Can_RtnType" KT I!357 T!336 !116-11 0x1 
 F "RS_CAN_init" - I!358 T!2 ?224-11 
-F "Can_ReadRxBuffer" - I!359 T!357 ?229-11 82-1 P!360 
+F "Can_ReadRxBuffer" - I!359 T!357 ?229-11 83-1 P!360 
 V "" - I!360 O!359 T!361 .4 0x4 
 T "" KP I!361 T!356 0x4 
-F "Can_C0TrmByTxBuf" - I!362 T!357 ?230-11 106-1 P!363 P!364 
+F "Can_C0TrmByTxBuf" - I!362 T!357 ?230-11 107-1 P!363 P!364 
 V "" - I!363 O!362 T!336 .1 0x1 
 V "" - I!364 O!362 T!365 .4 0x4 
 T "" MOD"C" KP I!365 T!356 0x4 
 F "Can_SetRxRule" S I!366 T!2 ?232-11 
 V "CANTraStandData" GO I!367 T!356 ?235-11 .4 0x10 
-V "CANRecData" G I!368 T!356 ?236-11 #85-1 82-1 83-1 .4 0x10 
+V "CANRecData" G I!368 T!356 ?236-11 #86-1 83-1 84-1 .4 0x10 
 T "" KE I!369 T!102 0x4 EM0:"PORT_P0" EM1:"PORT_P1" EM3:"PORT_P3" EM10:"PORT_P10" EM11:"PORT_P11" EM16:"PORT_P16" EM17:"PORT_P17" EM21:"PORT_P21" EM22:"PORT_P22" EM42:"PORT_P42" EM43:"PORT_P43" EM44:"PORT_P44" EM45:"PORT_P45" EM46:"JPORT_PJP0" EM47:"PORT_NUM" 
 T "Port_ChannelType" KT I!370 T!369 !33-14 0x4 
 T "" KE I!371 T!102 0x4 EM0:"PIN0" EM1:"PIN1" EM2:"PIN2" EM3:"PIN3" EM4:"PIN4" EM5:"PIN5" EM6:"PIN6" EM7:"PIN7" EM8:"PIN8" EM9:"PIN9" EM10:"PIN10" EM11:"PIN11" EM12:"PIN12" EM13:"PIN13" EM14:"PIN14" EM15:"PIN15" 
@@ -435,73 +435,103 @@ F "Port_SetPinFun" - I!430 T!2 ?30-12 P!431 P!432 P!433
 V "" - I!431 O!430 T!370 .4 0x4 
 V "" - I!432 O!430 T!285 .1 0x1 
 V "" - I!433 O!430 T!288 .4 0x4 
-F "Pwm_Init" - I!434 T!2 ?18-15 
-F "Pwm_Start" - I!435 T!2 ?19-15 125-1 
-F "PWM_Stop" - I!436 T!2 ?20-15 
-F "Pwm_SetDuty" - I!437 T!2 ?21-15 P!438 P!439 
-V "" - I!438 O!437 T!285 .1 0x1 
-V "" - I!439 O!437 T!288 .4 0x4 
-V "ul_interrupt_counter" G I!440 T!21 !32-1 #88-1 #91-1 88-1 89-1 .4 0x4 
-V "CAN_Trans_Data" G I!441 T!356 !34-1 #34-1 #94-1 #96-1 #103-1 93-1 94-1 106-1 .4 0x10 
-F "Test_Init" - I!442 T!2 #65-1 !66,70-1-1 
-F "Can_Test" - I!443 T!2 #79-1 !80,108-1-1 159-1 
-V "TickTimer" GS I!444 T!288 !110-1 #110-1 #121-1 121-1 123-1 .4 0x4 
-F "Pwm_Test" - I!445 T!2 #117-1 !118,148-1-1 160-1 
-F "Test_Task" - I!446 T!2 #156-1 !157,163-1-1 
-F "vTaskDelay" - I!447 T!102 162-1 
+F "Pwm_Init" - I!434 T!2 ?19-15 124-1 
+F "Pwm_DeInit" - I!435 T!2 ?20-15 129-1 
+F "Pwm_SetDutyCycle" - I!436 T!2 ?24-15 134-1 P!437 P!438 
+V "" - I!437 O!436 T!285 .1 0x1 
+V "" - I!438 O!436 T!287 .2 0x2 
+F "Pwm_SetPeriodAndDuty" - I!439 T!2 ?25-15 P!440 P!441 P!442 
+V "" - I!440 O!439 T!285 .1 0x1 
+V "" - I!441 O!439 T!287 .2 0x2 
+V "" - I!442 O!439 T!287 .2 0x2 
+T "" KE I!443 T!102 0x4 EM0:"ADC_IDLE" EM1:"ADC_BUSY" EM2:"ADC_COMPLETED" 
+T "Adc_StatusType" KT I!444 T!443 !24-17 0x4 
+F "Adc_Init" - I!445 T!2 ?26-17 
+F "Adc_DeInit" - I!446 T!2 ?27-17 
+F "Adc_StopGroup" - I!447 T!2 ?29-17 P!448 
+V "" - I!448 O!447 T!285 .1 0x1 
+F "Adc_StartGroup" - I!449 T!2 ?30-17 154-1 P!450 P!451 
+V "" - I!450 O!449 T!285 .1 0x1 
+V "" - I!451 O!449 T!452 .4 0x4 
+T "" KP I!452 T!287 0x4 
+F "Adc_GetStatus" - I!453 T!444 ?31-17 150-1 P!454 
+V "" - I!454 O!453 T!285 .1 0x1 
+V "ul_interrupt_counter" G I!455 T!21 !33-1 #89-1 #92-1 89-1 90-1 .4 0x4 
+V "CAN_Trans_Data" G I!456 T!356 !35-1 #35-1 #95-1 #97-1 #104-1 94-1 95-1 107-1 .4 0x10 
+F "Test_Init" - I!457 T!2 #66-1 !67,71-1-1 
+F "Can_Test" - I!458 T!2 #80-1 !81,109-1-1 
+V "TickTimer" GS I!459 T!288 !111-1 #111-1 #120-1 120-1 122-1 127-1 132-1 .4 0x4 
+F "Pwm_Test" - I!460 T!2 #118-1 !119,136-1-1 173-1 
+V "Buffer" G I!461 T!287 !138-1 154-1 .2 0x2 
+F "Adc_Test" - I!462 T!2 #145-1 !146,161-1-1 174-1 
+V "Adc_Status" - I!463 O!462 T!444 !147-1 #150-1 152-1 156-1 .4 0x4 
+F "Test_Task" - I!464 T!2 #169-1 !170,177-1-1 
+F "vTaskDelay" - I!465 T!102 176-1 
 ****%CxSystemPath%\inc\builtin.h
 v2 
-:1598609382
+:1598871691
 #2
 ****%CxSystemPath%\inc\stdio.h
 v2 
-:1598609382
+:1598871691
 #3
 ****%CxSystemPath%\inc\stddef.h
 v2 
-:1598609382
+:1598871691
 #4
 ****%CxSystemPath%\inc\stdarg.h
 v2 
-:1598609382
+:1598871691
 #5
 ****%CxSystemPath%\inc\stdlib.h
 v2 
-:1598609382
+:1598871691
 #6
 ****..\Drivers\Inc\Uart.h
 v2 
-:1598609382
+:1598871691
 #7
 ****..\Configs\Std_Types.h
 v2 
-:1598609382
+:1598871691
 #8
 ****..\Configs\Compiler.h
 v2 
-:1598609382
+:1598871691
 #9
 ****..\Drivers\Inc\Mcu_Types.h
 v2 
-:1598609382
+:1598871691
 #10
 ****..\Drivers\Inc\rscan.h
 v2 
-:1598609382
+:1598871691
 #11
 ****..\Drivers\Inc\Pin.h
 v2 
-:1598609382
+:1598871691
 #12
 ****..\Configs\Pin_PBcfg.h
 v2 
-:1598609382
+:1598871691
 #13
 ****..\Configs\Pin_Define.h
 v2 
-:1598609382
+:1598871691
 #14
 ****..\Drivers\Inc\Pwm.h
 v2 
-:1598609382
+:1598871691
 #15
+****..\Configs\Pwm_Define.h
+v2 
+:1598871691
+#16
+****..\Drivers\Inc\Adc.h
+v2 
+:1598871691
+#17
+****..\Configs\Adc_Define.h
+v2 
+:1598871691
+#18

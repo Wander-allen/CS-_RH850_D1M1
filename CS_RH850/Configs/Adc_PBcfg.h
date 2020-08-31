@@ -12,23 +12,36 @@ Author: Steven
 
 #include "Std_Types.h"
 
-typedef struct
+typedef struct 
 {
-    uint8 CFG1;   /* ValidBits:6F */
-    uint8 CFG2;   /* ValidBits:FF */
-    uint16 SC2;   /* Reserved */
-    uint16 RES;   /* Reserved */
-    uint8 SC3;    /* Reserved */
-    uint8 ChNum;  /* Channel number of group */
-    const uint8* ChList; /* Channel list */
-    void(*EndCallback)(void);  /* 完成提示 */
-} Adc_GroupCfgType;
+    uint32 VirCh;   /* ValidValue:0-20 */
+    uint8  PhyCh;   /* ValidValue:0-15 */
+}Adc_ChCfgType;
+
+typedef struct 
+{
+    uint8   SGId;       /* Scan Group Id (0 - 3)*/
+    uint32  SGVCSP;     /* Scan Group x Start Virtual Channel */
+    uint32  SGVCEP;     /* Scan Group x End Virtual Channel */
+    uint32  SGCR;       /* Scan Group x Control */
+    void(*EndCallback)(void);  /* A/D conversion for SGx is completed. */
+}Adc_GroupCfgType;
+
+typedef struct 
+{
+    uint32  ADCR;
+    uint32  SMPCR;
+}Adc_ModuleCfgType;
 
 typedef struct
 {
+    const Adc_ChCfgType* ChCfg;
+    uint8 ChNum;
     const Adc_GroupCfgType* GroupCfg;
     uint8 GroupNum;
+    const Adc_ModuleCfgType* ModuleCfg;
 } Adc_ConfigType;
+
 
 #endif
 

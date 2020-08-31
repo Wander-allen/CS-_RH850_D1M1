@@ -10,8 +10,7 @@ Author: Steven
 #ifndef ADC_DEFINE_H
 #define ADC_DEFINE_H
 
-#define ADC_GRP_BAT_DET  0  /* 电压检测 */
-#define ADC_GRP_BL_TMP     1  /* 背光温度 */
+#define ADC_GRP_BL_TMP     0 /* 背光温度 */
 
 #endif
 

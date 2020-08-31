@@ -17,6 +17,7 @@ Author: Wander
 #include "rscan.h"
 #include "Pin.h"
 #include "Pwm.h"
+#include "Adc.h"
 
 /******************************************************************************
                                     局部宏方法
@@ -116,35 +117,47 @@ static uint32 TickTimer = 0;
 ******************************************************************************/
 void Pwm_Test(void)
 {
-  // static uint32 TickTimer = 0;
+    TickTimer++;
 
-  TickTimer ++;
+    if (TickTimer == 50)
+    {
+        Pwm_Init();
+    }
+    
+    if (TickTimer == 150)
+    {
+        Pwm_DeInit();
+    }
 
-  if (TickTimer == 1)
-  {
-    Pwm_Start();
-  }
+    if (TickTimer == 100)
+    {
+        Pwm_SetDutyCycle(PWM_CH_LED, 0x0FFF / 2);
+    }
+}
 
-  // if (TickTimer == 100)
-  // {
-  //   PWM_Stop();
-  // }
+uint16 Buffer;
+/******************************************************************************
+* Function Name: Can_Test
+* Description  : Can模块测试
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void Adc_Test(void)
+{
+    Adc_StatusType Adc_Status;
+    
 
-  // if (TickTimer == 200)
-  // {
-  //   Pwm_Start();
-  // }
+    Adc_Status = Adc_GetStatus(ADC_GRP_BL_TMP);
 
-  // if (TickTimer == 300)
-  // {
-  //   Pwm_SetDuty(0, 0xFFF);
-  // }
+    if (Adc_Status == ADC_IDLE)
+    {
+        Adc_StartGroup(ADC_GRP_BL_TMP, &Buffer);
 
-  // if (TickTimer % 50 == 0)
-  // {
-  //   Pwm_SetDuty(0, 0xFFF);
-  // }
-
+        if (Adc_Status == ADC_IDLE)
+        {
+            printf("read success\n");
+        }
+    }
 }
 
 /******************************************************************************
@@ -156,8 +169,9 @@ void Pwm_Test(void)
 void Test_Task(void)
 {
     //Uart_transmit_string("this is a Uart test task runing\r\n");
-    Can_Test();
+    //Can_Test();
     Pwm_Test();
+    Adc_Test();
     
     vTaskDelay(100);
 }

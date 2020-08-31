@@ -98,8 +98,8 @@ void EcuM_Init(void)
     Taub_Init();
     RS_CAN_init();
     ADC0_Init();
-    ADC0_Start();
-    Pwm_Init();
+    //ADC0_Start();
+    //Pwm_Init();
     //Pwm_Start();
     Test_Init();
 }

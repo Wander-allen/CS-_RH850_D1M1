@@ -81,11 +81,5 @@ void INTADCE0I1(void)
     INTADCE0I1_IsrHandle();
 }
 
-/* PWGA22 interrupt (INTPWGA22) service routine */
-#pragma interrupt INTPWGA22( enable = false, channel = 163, callt = false, fpu = false )
-void INTPWGA22(void)
-{
-    INTPWGA22_IsrHandle();
-}
 
 

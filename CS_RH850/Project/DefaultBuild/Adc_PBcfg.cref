@@ -1,4 +1,4 @@
-****..\Configs\Pin_PBcfg.c
+****..\Configs\Adc_PBcfg.c
 v2 
 :1598871693
 #1
@@ -134,59 +134,48 @@ V "MajorVer" - I!129 O!126 T!102 !59-4 .1 0x1 BO32 BIS8
 V "MinorVer" - I!130 O!126 T!102 !60-4 .1 0x1 BO40 BIS8 
 V "PatchVer" - I!131 O!126 T!102 !61-4 .1 0x1 BO48 BIS8 
 T "Std_VersionType" KT I!132 T!126 !62-4 0x8 
-T "" KE I!133 T!134 0x4 EM0:"PORT_P0" EM1:"PORT_P1" EM3:"PORT_P3" EM10:"PORT_P10" EM11:"PORT_P11" EM16:"PORT_P16" EM17:"PORT_P17" EM21:"PORT_P21" EM22:"PORT_P22" EM42:"PORT_P42" EM43:"PORT_P43" EM44:"PORT_P44" EM45:"PORT_P45" EM46:"JPORT_PJP0" EM47:"PORT_NUM" 
-T "int" KBS I!134 0x4 
-T "Port_ChannelType" KT I!135 T!133 !33-6 0x4 
-T "" KE I!136 T!134 0x4 EM0:"PIN0" EM1:"PIN1" EM2:"PIN2" EM3:"PIN3" EM4:"PIN4" EM5:"PIN5" EM6:"PIN6" EM7:"PIN7" EM8:"PIN8" EM9:"PIN9" EM10:"PIN10" EM11:"PIN11" EM12:"PIN12" EM13:"PIN13" EM14:"PIN14" EM15:"PIN15" 
-T "Pin_IdType" KT I!137 T!136 !53-6 0x4 
-T "" KE I!138 T!134 0x4 EM0:"Pin_Out" EM1:"Pin_In" 
-T "Port_ModType" KT I!139 T!138 !59-6 0x4 
-T "" KE I!140 T!134 0x4 EM0:"Normal_Port" EM1:"Alter_Func1" EM2:"Alter_Func2" EM3:"Alter_Func3" EM4:"Alter_Func4" EM5:"Alter_Func5" EM6:"Alter_Func6" 
-T "Port_FuncType" KT I!141 T!140 !70-6 0x4 
-T "" KE I!142 T!134 0x4 EM0:"Port_IP_SoftCtl" EM1:"Port_IP_DirCtl" 
-T "Port_IPCtlType" KT I!143 T!142 !76-6 0x4 
-T "" KE I!144 T!134 0x4 EM0:"PuPd_No_Set" EM1:"Port_Pu" EM2:"Port_Pd" 
-T "Port_pUpDType" KT I!145 T!144 !83-6 0x4 
-T "" KE I!146 T!134 0x4 EM0:"Port_IB_Off" EM1:"Port_IB_On" 
-T "Port_IBType" KT I!147 T!146 !89-6 0x4 
-T "" KE I!148 T!134 0x4 EM0:"Port_PBD_Off" EM1:"Port_PBD_On" 
-T "T_Port_PBDType" KT I!149 T!148 !95-6 0x4 
-T "" KE I!150 T!134 0x4 EM0:"Port_Push_Pull" EM1:"Port_Open_Drain" 
-T "T_Port_OPBFType" KT I!151 T!150 !101-6 0x4 
-T "" KS I!152 !20-3 0xc VM!153 VM!154 VM!155 VM!156 VM!157 
-V "Channel" - I!153 O!152 T!135 !21-3 .4 0x4 BO0 BIS32 
-V "PMC_JPMC" - I!154 O!152 T!104 !22-3 .2 0x2 BO32 BIS16 
-V "PM_JPM" - I!155 O!152 T!104 !23-3 .2 0x2 BO48 BIS16 
-V "PIBC_JPIBC" - I!156 O!152 T!104 !24-3 .2 0x2 BO64 BIS16 
-V "P_JP" - I!157 O!152 T!104 !25-3 .2 0x2 BO80 BIS16 
-T "Port_GpioCfgType" KT I!158 T!152 !26-3 0xc 
-T "" KS I!159 !30-3 0xc VM!160 VM!161 VM!162 
-V "Channel" - I!160 O!159 T!135 !31-3 .4 0x4 BO0 BIS32 
-V "Pin" - I!161 O!159 T!102 !32-3 .1 0x1 BO32 BIS8 
-V "PCRv" - I!162 O!159 T!105 !33-3 .4 0x4 BO64 BIS32 
-T "Port_PpcrCfgType" KT I!163 T!159 !34-3 0xc 
-T "" KS I!164 !37-3 0xc VM!165 VM!167 VM!169 VM!170 
-V "GpioCfg" - I!165 O!164 T!166 !38-3 .4 0x4 BO0 BIS32 
-T "" MOD"C" KP I!166 T!158 0x4 
-V "PpcrCfg" - I!167 O!164 T!168 !39-3 .4 0x4 BO32 BIS32 
-T "" MOD"C" KP I!168 T!163 0x4 
-V "GpioNum" - I!169 O!164 T!102 !40-3 .1 0x1 BO64 BIS8 
-V "PpcrNum" - I!170 O!164 T!102 !41-3 .1 0x1 BO72 BIS8 
-T "Port_ConfigType" KT I!171 T!164 !42-3 0xc 
-V "PortGpioCfg" GS I!172 T!174 !14-1 #14-1 48-1 50-1 50-1 .4 0xa8 
-T "" MOD"C" KA0 I!173 T!158 0x0 
-T "" MOD"C" KA14 I!174 T!158 0xa8 
-V "PortPpcrCfg" GS I!175 T!177 !33-1 #33-1 49-1 51-1 51-1 .4 0x54 
-T "" MOD"C" KA0 I!176 T!163 0x0 
-T "" MOD"C" KA7 I!177 T!163 0x54 
-V "PortConfig" GSO I!178 T!171 !46-1 #46-1 54-1 .4 0xc 
-V "PortCfgPtr" GO I!179 T!180 !54-1 #54-1 .4 0x4 
-T "" MOD"C" KP I!180 T!171 0x4 
+T "" KS I!133 !16-3 0x8 VM!134 VM!135 
+V "VirCh" - I!134 O!133 T!105 !17-3 .4 0x4 BO0 BIS32 
+V "PhyCh" - I!135 O!133 T!102 !18-3 .1 0x1 BO32 BIS8 
+T "Adc_ChCfgType" KT I!136 T!133 !19-3 0x8 
+T "" KS I!137 !22-3 0x14 VM!138 VM!139 VM!140 VM!141 VM!142 
+V "SGId" - I!138 O!137 T!102 !23-3 .1 0x1 BO0 BIS8 
+V "SGVCSP" - I!139 O!137 T!105 !24-3 .4 0x4 BO32 BIS32 
+V "SGVCEP" - I!140 O!137 T!105 !25-3 .4 0x4 BO64 BIS32 
+V "SGCR" - I!141 O!137 T!105 !26-3 .4 0x4 BO96 BIS32 
+V "EndCallback" - I!142 O!137 T!143 !27-3 .4 0x4 BO128 BIS32 
+T "" KP I!143 T!144 0x4 
+T "" KF I!144 T!2 0x0 
+T "Adc_GroupCfgType" KT I!145 T!137 !28-3 0x14 
+T "" KS I!146 !31-3 0x8 VM!147 VM!148 
+V "ADCR" - I!147 O!146 T!105 !32-3 .4 0x4 BO0 BIS32 
+V "SMPCR" - I!148 O!146 T!105 !33-3 .4 0x4 BO32 BIS32 
+T "Adc_ModuleCfgType" KT I!149 T!146 !34-3 0x8 
+T "" KS I!150 !37-3 0x14 VM!151 VM!153 VM!154 VM!156 VM!157 
+V "ChCfg" - I!151 O!150 T!152 !38-3 .4 0x4 BO0 BIS32 
+T "" MOD"C" KP I!152 T!136 0x4 
+V "ChNum" - I!153 O!150 T!102 !39-3 .1 0x1 BO32 BIS8 
+V "GroupCfg" - I!154 O!150 T!155 !40-3 .4 0x4 BO64 BIS32 
+T "" MOD"C" KP I!155 T!145 0x4 
+V "GroupNum" - I!156 O!150 T!102 !41-3 .1 0x1 BO96 BIS8 
+V "ModuleCfg" - I!157 O!150 T!158 !42-3 .4 0x4 BO128 BIS32 
+T "" MOD"C" KP I!158 T!149 0x4 
+T "Adc_ConfigType" KT I!159 T!150 !43-3 0x14 
+V "AdcChCfg" GS I!160 T!162 !12-1 #12-1 42-1 .4 0x8 
+T "" KA0 I!161 T!136 0x0 
+T "" KA1 I!162 T!136 0x8 
+V "AdcGroupCfg" GS I!163 T!165 !17-1 #17-1 44-1 45-1 .4 0x14 
+T "" MOD"C" KA0 I!164 T!145 0x0 
+T "" MOD"C" KA1 I!165 T!145 0x14 
+V "AdcModuleCfg" GSO I!166 T!149 !31-1 #31-1 46-1 .4 0x8 
+V "AdcConfig" GSO I!167 T!159 !40-1 #40-1 43-1 49-1 .4 0x14 
+V "AdcCfgPtr" GO I!168 T!169 !49-1 #49-1 .4 0x4 
+T "" MOD"C" KP I!169 T!159 0x4 
 ****%CxSystemPath%\inc\builtin.h
 v2 
 :1598871693
 #2
-****..\Configs\Pin_PBcfg.h
+****..\Configs\Adc_PBcfg.h
 v2 
 :1598871693
 #3
@@ -198,7 +187,3 @@ v2
 v2 
 :1598871693
 #5
-****..\Configs\Pin_Define.h
-v2 
-:1598871693
-#6

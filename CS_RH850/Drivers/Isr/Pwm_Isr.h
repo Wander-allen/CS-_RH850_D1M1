@@ -15,7 +15,7 @@ extern "C" {
 
 #include "Std_Types.h"
 
-extern void INTPWGA22_IsrHandle(void);
+//extern void INTPWGA22_IsrHandle(void);
 
 #ifdef __cplusplus
 }

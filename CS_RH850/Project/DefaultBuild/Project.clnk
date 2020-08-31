@@ -29,6 +29,8 @@
 -input=DefaultBuild\rscan.obj
 -input=DefaultBuild\Adc.obj
 -input=DefaultBuild\Pwm.obj
+-input=DefaultBuild\Pwm_PBcfg.obj
+-input=DefaultBuild\Adc_PBcfg.obj
 -debug
 -nocompress
 -NOOPtimize

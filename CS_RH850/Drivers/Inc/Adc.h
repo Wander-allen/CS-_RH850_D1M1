@@ -14,10 +14,21 @@ extern "C" {
 #endif
 
 #include "Std_Types.h"
+#include "Adc_Define.h"
 
-extern void ADC0_Init(void);
-extern void ADC0_Start(void);
-extern void ADC0_Stop(void);
+typedef enum
+{
+    ADC_IDLE,
+    ADC_BUSY,
+    ADC_COMPLETED,
+} Adc_StatusType;
+
+extern void Adc_Init(void);
+extern void Adc_DeInit(void);
+
+extern void Adc_StopGroup(uint8 GroupId);
+extern void Adc_StartGroup(uint8 GroupId, uint16* Buffer);
+extern Adc_StatusType Adc_GetStatus(uint8 GroupId);
 
 #ifdef __cplusplus
 }

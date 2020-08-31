@@ -14,11 +14,15 @@ extern "C" {
 #endif
 
 #include "Std_Types.h"
+#include "Pwm_Define.h"
 
 extern void Pwm_Init(void);
-extern void Pwm_Start(void);
-extern void PWM_Stop( void );
-extern void Pwm_SetDuty(uint8 ch, uint32 Duty);
+extern void Pwm_DeInit(void);
+// extern void Pwm_Start(void);
+// extern void PWM_Stop(void);
+
+extern void Pwm_SetDutyCycle(uint8 Ch, uint16 DutyCycle);
+extern void Pwm_SetPeriodAndDuty(uint8 Ch, uint16 Period, uint16 DutyCycle);
 
 #ifdef __cplusplus
 
