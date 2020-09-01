@@ -10,7 +10,11 @@ Author: Steven
 #ifndef PWM_DEINFE_H
 #define PWM_DEINFE_H
 
-#define PWM_CH_LED     0
+typedef enum
+{
+    PWM_CH_LED = 0,
+    
+}Pwm_ChannelType;
 
 #endif
 

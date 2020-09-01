@@ -31,6 +31,8 @@
 -input=DefaultBuild\Pwm.obj
 -input=DefaultBuild\Pwm_PBcfg.obj
 -input=DefaultBuild\Adc_PBcfg.obj
+-input=DefaultBuild\Eic.obj
+-input=DefaultBuild\Cpu.obj
 -debug
 -nocompress
 -NOOPtimize

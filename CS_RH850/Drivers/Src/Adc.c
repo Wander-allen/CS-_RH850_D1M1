@@ -19,8 +19,9 @@ Includes
 #include "Std_Types.h"
 #include "Det.h"
 #include "Adc_PBcfg.h"
+#include "Adc_Define.h"
 #include "Adc.h"
-
+#include "Eic.h"
 
 /******************************************************************************
 #Define Register
@@ -46,14 +47,9 @@ Includes
 #define ADCE0_SGTSELx(x)        (*(volatile uint32 *)(ADCE0_BASE + (0x0040 * (x)) + 0x41C))
 
 /******************************************************************************
-#Mask Configure
-******************************************************************************/
-
-/******************************************************************************
 Global variables and functions
 ******************************************************************************/
 extern const Adc_ConfigType* const AdcCfgPtr;
-Adc_StatusType Adc_status = ADC_IDLE;
 
 /******************************************************************************
 * Function Name: Adc_Init
@@ -112,8 +108,8 @@ void ADC0_Init(void)
         ADCE0_SGCRx(GroupId) = AdcCfgPtr->GroupCfg[i].SGCR;
     }
 
-
-    INTC2.EIC66.UINT16 = 0x004f;       /* enable Scan group 1 interrupt (INTADCE0I1) with reference table jump  */
+    /* enable Scan group 1 interrupt (INTADCE0I1) with reference table jump  */
+    Eic_Enable(66, TABLE_REFERENCE, PRIORITY_7);
 }
 
 /******************************************************************************
@@ -132,8 +128,6 @@ void Adc_DeInit(void)
         GroupId = AdcCfgPtr->GroupCfg[i].SGId;
         ADCE0_SGSTCRx(GroupId) = 0x00;/* Scan Group x Stop Trigger */
     }
-
-    Adc_status = ADC_IDLE;
 }
 
 /******************************************************************************
@@ -142,7 +136,7 @@ void Adc_DeInit(void)
 * Arguments    : None
 * Return Value : None
 ******************************************************************************/
-void Adc_StopGroup(uint8 ChId)
+void Adc_StopGroup(ADC_ChannelType ChId)
 {
     uint8 GroupId;
 
@@ -156,7 +150,7 @@ void Adc_StopGroup(uint8 ChId)
 * Arguments    : None
 * Return Value : None
 ******************************************************************************/
-void Adc_StartGroup(uint8 ChId, uint16* Buffer)
+void Adc_StartGroup(ADC_ChannelType ChId, uint16* Buffer)
 {
     uint8 GroupId;
     uint8 VirChId;
@@ -175,7 +169,7 @@ void Adc_StartGroup(uint8 ChId, uint16* Buffer)
 * Arguments    : None
 * Return Value : None
 ******************************************************************************/
-Adc_StatusType Adc_GetStatus(uint8 ChId)
+Adc_StatusType Adc_GetStatus(ADC_ChannelType ChId)
 {
     uint8 GroupId;
     uint32 Act;
@@ -195,8 +189,6 @@ Adc_StatusType Adc_GetStatus(uint8 ChId)
     return ADC_IDLE;
 }
 
-
-uint32 Result[19] = {0};
 /******************************************************************************
 * Function Name: Adc_Init
 * Description  : ADCE0 Scan group 1 interrupt (INTADCE0I1)

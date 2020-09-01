@@ -1,55 +1,75 @@
-﻿/******************************************************************************
+/******************************************************************************
 Copyright (C) 2020 Querda Electronic Technology All Rights Reserved
 
 This software and code can be freely used for study and research. 
 For commercial purposes, please contact the owner for permission.
 
-File  : Port.c 
+File  : Cpu.c 
 Author: Wander 
 ******************************************************************************/
 
 /******************************************************************************
 Pragma directive
 ******************************************************************************/
-/* Start user code for pragma. Do not edit comment generated here */
-/* End user code. Do not edit comment generated here */
 
 /******************************************************************************
 Includes
 ******************************************************************************/
-#include "ioDefine.h"
-#include "Mcu.h"
-#include "Clock.h"
+#include "Std_Types.h"
 
 /******************************************************************************
-#Define
+#Define Register
 ******************************************************************************/
 
 /******************************************************************************
 Global variables and functions
 ******************************************************************************/
-static void module_reset_release();
+extern void Cpu_Delay1US(void);
+extern void Cpu_DelayUS(uint16 USTime);
+extern void Cpu_DelayMS(uint16 MSTime);
 
 /******************************************************************************
-* Function Name: Mcu_Init
-* Description  : Mcu初始化
+* Function Name: Cpu_Delay1US
+* Description  : 延时1Us(实际测试2Us,10Us以上正常)
 * Arguments    : None
 * Return Value : None
 ******************************************************************************/
-void Mcu_Init(void)
+void Cpu_Delay1US(void)
 {
-    Clock_Init();
-    module_reset_release();
+    uint16 USTime = 51;
+    
+    while (USTime)
+    {
+        USTime--;
+    }
 }
 
 /******************************************************************************
-* Function Name: module_reset_release
-* Description  : Mcu初始化
+* Function Name: Cpu_DelayUS
+* Description  : 延时USTime
 * Arguments    : None
 * Return Value : None
 ******************************************************************************/
-static void module_reset_release()
+void Cpu_DelayUS(uint16 USTime)
 {
-  /* deactivate reset for all modules */
-  protected_write(SYS.PROTCMDMRST.UINT32,SYS.PROTSMRST.UINT32,SYS.MRSTC.UINT32,(0x00003fff)); 
+    while (USTime)
+    {
+        USTime--;
+        Cpu_Delay1US();
+    }
+}
+
+/******************************************************************************
+* Function Name: Cpu_DelayMS
+* Description  : 延时MSTime
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void Cpu_DelayMS(uint16 MSTime)
+{
+    while (MSTime)
+    {
+        MSTime--;
+        Cpu_DelayUS(1000);
+    }
 }

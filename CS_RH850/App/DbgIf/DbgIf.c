@@ -52,21 +52,22 @@ uint16 DbgIf_UartRxCallback(uint8 Ch, const uint8* Data, uint16 Length)
 ******************************************************************************/
 int Dbgif_printf(const char *format, ...)
 {
-	char buff[1024] = {0};
-	va_list ap;
-	//char *pScr = buff;
-	int size;
-	va_start(ap, format);
-	//cs+buzhi
-	//size = vsnprintf((char *)buff, sizeof(buff) - 1, format, ap);
-	va_end(ap);
+	// char buff[1024] = {0};
+	// va_list ap;
+	// //char *pScr = buff;
+	// int size;
+	// va_start(ap, format);
+	// //cs+buzhi
+	// //size = vsnprintf((char *)buff, sizeof(buff) - 1, format, ap);
+	// va_end(ap);
 
-    if (size > 0)
-    {
-		Uart_transmit_n_size(buff, size);
-	}
+    // if (size > 0)
+    // {
+	// 	Uart_transmit_n_size(buff, size);
+	// }
 	
-	return size;
+	// return size;
+	return 0;
 	
 }
 

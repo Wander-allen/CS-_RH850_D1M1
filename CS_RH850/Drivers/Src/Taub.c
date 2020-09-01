@@ -17,8 +17,7 @@ Includes
 ******************************************************************************/
 #include "ioDefine.h"
 #include "Taub_PBcfg.h"
-
-
+#include "Taub.h"
 
 /******************************************************************************
 #Define
@@ -43,6 +42,8 @@ void Taub_Init(void)
     TAUB0.CDR0 = TaubCfgPtr->TimeCfg->CDRv;
     TAUB0.TS.UINT16 = 0x0001;           /* start channel 0 */
     INTC1.EIC17.UINT16 =0x0046;         /* demask timer TAUB0 chanel 0 interrupt and enable reference table jump */
+
+    Taub_Start();
 }
 
 /******************************************************************************
@@ -66,7 +67,7 @@ void Taub_Start(void)
 void Taub_Stop(void)
 {
     TAUB0.TS.UINT16 = 0x0001;           /* stop channel 0 */
-    INTC1.EIC17.UINT16 =0xEFFFF;        /* mask timer TAUB0 chanel 0 interrupt and enable reference table jump method */
+    INTC1.EIC17.UINT16 =0xEFFF;        /* mask timer TAUB0 chanel 0 interrupt and enable reference table jump method */
 }
 
 /******************************************************************************

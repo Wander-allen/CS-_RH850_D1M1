@@ -90,17 +90,13 @@ END_OSCREATE()
 ******************************************************************************/
 void EcuM_Init(void)
 {
-    module_reset_release();
-    Clock_Init();
     Mcu_Init();
     Port_Init();
     Uart_Init();
     Taub_Init();
     RS_CAN_init();
     ADC0_Init();
-    //ADC0_Start();
-    //Pwm_Init();
-    //Pwm_Start();
+    Pwm_Init();
     Test_Init();
 }
 

@@ -10,7 +10,11 @@ Author: Steven
 #ifndef ADC_DEFINE_H
 #define ADC_DEFINE_H
 
-#define ADC_GRP_BL_TMP     0 /* 背光温度 */
+typedef enum
+{
+    ADC_GRP_BL_TMP = 0, /* 背光温度 */
+
+}ADC_ChannelType;
 
 #endif
 

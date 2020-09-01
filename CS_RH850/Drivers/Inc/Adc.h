@@ -26,9 +26,9 @@ typedef enum
 extern void Adc_Init(void);
 extern void Adc_DeInit(void);
 
-extern void Adc_StopGroup(uint8 GroupId);
-extern void Adc_StartGroup(uint8 GroupId, uint16* Buffer);
-extern Adc_StatusType Adc_GetStatus(uint8 GroupId);
+extern void Adc_StopGroup(ADC_ChannelType ChId);
+extern void Adc_StartGroup(ADC_ChannelType ChId, uint16* Buffer);
+extern Adc_StatusType Adc_GetStatus(ADC_ChannelType ChId);
 
 #ifdef __cplusplus
 }

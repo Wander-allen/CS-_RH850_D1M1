@@ -14,7 +14,6 @@ extern "C" {
 #endif
 
 #include "Std_Types.h"
-#include "Mcu_Types.h"
 
 extern void Uart_Init(void);
 extern void Uart_DeInit(void);

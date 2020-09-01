@@ -1,6 +1,6 @@
 ****..\Drivers\Src\Clock.c
 v2 
-:1598871693
+:1598948793
 #1
 F "__nop" - I!1 T!2 ?17-2 
 T "void" KBV I!2 0x0 
@@ -37727,40 +37727,32 @@ V "MajorVer" - I!37722 O!37719 T!37695 !59-5 .1 0x1 BO32 BIS8
 V "MinorVer" - I!37723 O!37719 T!37695 !60-5 .1 0x1 BO40 BIS8 
 V "PatchVer" - I!37724 O!37719 T!37695 !61-5 .1 0x1 BO48 BIS8 
 T "Std_VersionType" KT I!37725 T!37719 !62-5 0x8 
-T "" KE I!37726 T!37727 0x4 EM0:"MCU_PLL_STATUS_UNDEFINED" EM1:"MCU_PLL_STATUS_LOCKED" EM2:"MCU_PLL_STATUS_UNLOCKED" 
-T "int" KBS I!37727 0x4 
-T "Mcu_PllStatusType" KT I!37728 T!37726 !30-7 0x4 
-F "Mcu_Init" - I!37729 T!2 ?36-4 
-F "module_reset_release" - I!37730 T!2 ?37-4 
-F "Clock_OscInit" S I!37731 T!2 #60-1 !61,94-1-1 ?31-1 49-1 
-F "Clock_GeneratorInit" S I!37732 T!2 #102-1 !103,134-1-1 ?32-1 50-1 
-F "Clock_DomainInit" S I!37733 T!2 #142-1 !143,164-1-1 ?33-1 51-1 
-F "Clock_Init" - I!37734 T!2 #47-1 !48,52-1-1 
+F "Mcu_Init" - I!37726 T!2 ?26-4 
+F "Clock_OscInit" S I!37727 T!2 #60-1 !61,94-1-1 ?31-1 49-1 
+F "Clock_GeneratorInit" S I!37728 T!2 #102-1 !103,134-1-1 ?32-1 50-1 
+F "Clock_DomainInit" S I!37729 T!2 #142-1 !143,164-1-1 ?33-1 51-1 
+F "Clock_Init" - I!37730 T!2 #47-1 !48,52-1-1 
 ****%CxSystemPath%\inc\builtin.h
 v2 
-:1598871693
+:1598948793
 #2
 ****ioDefine.h
 v2 
-:1598871693
+:1598948793
 #3
 ****..\Drivers\Inc\Mcu.h
 v2 
-:1598871693
+:1598948793
 #4
 ****..\Configs\Std_Types.h
 v2 
-:1598871693
+:1598948793
 #5
 ****..\Configs\Compiler.h
 v2 
-:1598871693
+:1598948793
 #6
-****..\Drivers\Inc\Mcu_Types.h
-v2 
-:1598871693
-#7
 ****..\Drivers\Inc\Clock.h
 v2 
-:1598871693
-#8
+:1598948793
+#7
