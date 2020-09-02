@@ -18,6 +18,7 @@ extern void INTRLIN30UR1( void );
 extern void INTRLIN30UR2( void );
 extern void INTTAUB0I0(void);
 extern void INTADCE0I1(void);
+extern void INTWDTA0(void);
 
 #ifdef __cplusplus
 }

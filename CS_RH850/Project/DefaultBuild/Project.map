@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W3.02.00 )             01-Sep-2020 16:26:38
+Renesas Optimizing Linker (W3.02.00 )             02-Sep-2020 18:11:07
 
 *** Options ***
 
@@ -36,7 +36,6 @@ Renesas Optimizing Linker (W3.02.00 )             01-Sep-2020 16:26:38
 -input=DefaultBuild\Pwm.obj
 -input=DefaultBuild\Pwm_PBcfg.obj
 -input=DefaultBuild\Adc_PBcfg.obj
--input=DefaultBuild\Eic.obj
 -input=DefaultBuild\Cpu.obj
 -debug
 -nocompress
@@ -67,9 +66,9 @@ EIINTTBL
 .INIT_BSEC.const
                                   0000851c  00008523         8   4
 .text
-                                  00008524  0000ef29      6a06   2
+                                  00008524  0000f157      6c34   2
 .data
-                                  0000ef2c  0000f803       8d8   4
+                                  0000f158  0000fa2f       8d8   4
 .data.R
                                   fed80000  fed808d7       8d8   4
 .bss

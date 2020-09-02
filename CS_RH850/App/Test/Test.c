@@ -18,6 +18,7 @@ Author: Wander
 #include "Pin.h"
 #include "Pwm.h"
 #include "Adc.h"
+#include "Mcu.h"
 
 /******************************************************************************
                                     局部宏方法
@@ -169,13 +170,19 @@ void Adc_Test(void)
 ******************************************************************************/
 void Test_Task(void)
 {
+    while(1)
+    {
+
+        Mcu_GoDeepStop();
+
 #if (TEST == 1)
-    //Uart_transmit_string("this is a Uart test task runing\r\n");
-    Can_Test();
-    Pwm_Test();
-    Adc_Test();
+        //Uart_transmit_string("this is a Uart test task runing\r\n");
+        // Can_Test();
+        // Pwm_Test();
+        Adc_Test();
 #endif
-    
-    vTaskDelay(100);
+        vTaskDelay(100);
+    }
+
 }
     

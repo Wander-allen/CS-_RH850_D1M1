@@ -20,6 +20,7 @@ Includes
 #include "Uart_Isr.h"
 #include "Taub_Isr.h"
 #include "Adc_Isr.h"
+#include "Mcu_Isr.h"
 
 /******************************************************************************
 #Define
@@ -69,6 +70,13 @@ void INTTAUB0I0(void)
 void INTADCE0I1(void)
 {
     INTADCE0I1_IsrHandle();
+}
+
+/* WDTA0 75 % interrupt (INTWDTA0) service routine */
+#pragma interrupt INTWDTA0( enable = false, channel = 0, callt = false, fpu = false )
+void INTWDTA0(void)
+{
+    INTWDTA0_IsrHandle();
 }
 
 

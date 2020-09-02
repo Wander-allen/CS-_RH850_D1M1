@@ -21,7 +21,7 @@ Includes
 #include "Adc_PBcfg.h"
 #include "Adc_Define.h"
 #include "Adc.h"
-#include "Eic.h"
+#include "Mcu.h"
 
 /******************************************************************************
 #Define Register
@@ -109,7 +109,7 @@ void ADC0_Init(void)
     }
 
     /* enable Scan group 1 interrupt (INTADCE0I1) with reference table jump  */
-    Eic_Enable(66, TABLE_REFERENCE, PRIORITY_7);
+    Mcu_EicEnable(66, TABLE_REFERENCE, PRIORITY_7);
 }
 
 /******************************************************************************
@@ -190,7 +190,7 @@ Adc_StatusType Adc_GetStatus(ADC_ChannelType ChId)
 }
 
 /******************************************************************************
-* Function Name: Adc_Init
+* Function Name: INTADCE0I1_IsrHandle
 * Description  : ADCE0 Scan group 1 interrupt (INTADCE0I1)
 * Arguments    : None
 * Return Value : None

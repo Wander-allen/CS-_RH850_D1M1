@@ -4,11 +4,11 @@ Copyright (C) 2020 Querda Electronic Technology All Rights Reserved
 This software and code can be freely used for study and research. 
 For commercial purposes, please contact the owner for permission.
 
-File  : Eic.h   EI Level Interrupt Control for RH850 D1M1
+File  : Mcu_Types.h 
 Author: Wander 
 ******************************************************************************/
-#ifndef EIC_H
-#define EIC_H
+#ifndef MCU_TYPES_H
+#define MCU_TYPES_H
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -41,10 +41,6 @@ typedef enum
     PRIORITY_15,
 
 }Eic_PriorityType;
-
-extern void Eic_Enable(uint8 Ch, Eic_MethodType Method, Eic_PriorityType priority);
-extern void Eic_Disnable(uint8 Ch);
-
 
 #ifdef __cplusplus
 }

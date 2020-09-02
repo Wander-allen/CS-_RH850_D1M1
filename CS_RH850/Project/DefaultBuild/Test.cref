@@ -1,6 +1,6 @@
 ****..\App\Test\Test.c
 v2 
-:1598948794
+:1599041461
 #1
 F "__nop" - I!1 T!2 ?17-2 
 T "void" KBV I!2 0x0 
@@ -128,7 +128,7 @@ T "" MOD"C" KP I!123 T!106 0x4
 F "fscanf" - I!124 T!102 ?62-3 P!125 P!126 VARARG 
 V "" - I!125 O!124 T!117 .4 0x4 
 V "" - I!126 O!124 T!123 .4 0x4 
-F "printf" - I!127 T!102 ?63-3 159-1 P!128 VARARG 
+F "printf" - I!127 T!102 ?63-3 160-1 P!128 VARARG 
 V "" - I!128 O!127 T!123 .4 0x4 
 F "scanf" - I!129 T!102 ?64-3 P!130 VARARG 
 V "" - I!130 O!129 T!123 .4 0x4 
@@ -332,7 +332,7 @@ V "" - I!327 O!325 T!305 .1 0x1
 F "Uart_SetTxIrq" - I!328 T!2 ?27-7 P!329 P!330 
 V "" - I!329 O!328 T!285 .1 0x1 
 V "" - I!330 O!328 T!305 .1 0x1 
-F "Uart_transmit_string" - I!331 T!2 ?29-7 69-1 70-1 P!332 
+F "Uart_transmit_string" - I!331 T!2 ?29-7 70-1 71-1 P!332 
 V "" - I!332 O!331 T!333 .1 0x0 
 T "" KA0 I!333 T!106 0x0 
 T "U8" KT I!334 T!58 !64-10 0x1 
@@ -346,28 +346,28 @@ T "VU8" MOD"V" KT I!341 T!58 !71-10 0x1
 T "VU16" MOD"V" KT I!342 T!94 !72-10 0x2 
 T "VU32" MOD"V" KT I!343 T!21 !73-10 0x4 
 T "" KS I!344 !102-10 0x10 VM!345 VM!346 VM!347 VM!348 VM!349 VM!350 VM!351 VM!352 
-V "ID" - I!345 O!344 T!338 !103-10 #96-1 #98-1 95-1 96-1 .4 0x4 BO0 BIS29 
+V "ID" - I!345 O!344 T!338 !103-10 #97-1 #99-1 96-1 97-1 .4 0x4 BO0 BIS29 
 V "THLEN" - I!346 O!344 T!338 !104-10 .4 0x4 BO29 BIS1 
 V "RTR" - I!347 O!344 T!338 !105-10 .4 0x4 BO30 BIS1 
 V "IDE" - I!348 O!344 T!338 !106-10 .4 0x4 BO31 BIS1 
 V "TS" - I!349 O!344 T!338 !108-10 .4 0x4 BO32 BIS16 
 V "LBL" - I!350 O!344 T!338 !109-10 .4 0x4 BO48 BIS12 
 V "DLC" - I!351 O!344 T!338 !110-10 .4 0x4 BO60 BIS4 
-V "DB" - I!352 O!344 T!353 !111-10 #87-1 #105-1 85-1 .1 0x8 BO64 BIS64 
+V "DB" - I!352 O!344 T!353 !111-10 #88-1 #106-1 86-1 .1 0x8 BO64 BIS64 
 T "" KA8 I!353 T!334 0x8 
 T "Can_FrameType" KT I!354 T!344 !112-10 0x10 
 T "Can_RtnType" KT I!355 T!334 !116-10 0x1 
 F "RS_CAN_init" - I!356 T!2 ?224-10 
-F "Can_ReadRxBuffer" - I!357 T!355 ?229-10 84-1 P!358 
+F "Can_ReadRxBuffer" - I!357 T!355 ?229-10 85-1 P!358 
 V "" - I!358 O!357 T!359 .4 0x4 
 T "" KP I!359 T!354 0x4 
-F "Can_C0TrmByTxBuf" - I!360 T!355 ?230-10 108-1 P!361 P!362 
+F "Can_C0TrmByTxBuf" - I!360 T!355 ?230-10 109-1 P!361 P!362 
 V "" - I!361 O!360 T!334 .1 0x1 
 V "" - I!362 O!360 T!363 .4 0x4 
 T "" MOD"C" KP I!363 T!354 0x4 
 F "Can_SetRxRule" S I!364 T!2 ?232-10 
 V "CANTraStandData" GO I!365 T!354 ?235-10 .4 0x10 
-V "CANRecData" G I!366 T!354 ?236-10 #87-1 84-1 85-1 .4 0x10 
+V "CANRecData" G I!366 T!354 ?236-10 #88-1 85-1 86-1 .4 0x10 
 T "" KE I!367 T!102 0x4 EM0:"PORT_P0" EM1:"PORT_P1" EM3:"PORT_P3" EM10:"PORT_P10" EM11:"PORT_P11" EM16:"PORT_P16" EM17:"PORT_P17" EM21:"PORT_P21" EM22:"PORT_P22" EM42:"PORT_P42" EM43:"PORT_P43" EM44:"PORT_P44" EM45:"PORT_P45" EM46:"JPORT_PJP0" EM47:"PORT_NUM" 
 T "Port_ChannelType" KT I!368 T!367 !33-13 0x4 
 T "" KE I!369 T!102 0x4 EM0:"PIN0" EM1:"PIN1" EM2:"PIN2" EM3:"PIN3" EM4:"PIN4" EM5:"PIN5" EM6:"PIN6" EM7:"PIN7" EM8:"PIN8" EM9:"PIN9" EM10:"PIN10" EM11:"PIN11" EM12:"PIN12" EM13:"PIN13" EM14:"PIN14" EM15:"PIN15" 
@@ -435,9 +435,9 @@ V "" - I!430 O!428 T!285 .1 0x1
 V "" - I!431 O!428 T!288 .4 0x4 
 T "" KE I!432 T!102 0x4 EM0:"PWM_CH_LED" 
 T "Pwm_ChannelType" KT I!433 T!432 !17-15 0x4 
-F "Pwm_Init" - I!434 T!2 ?19-14 125-1 
-F "Pwm_DeInit" - I!435 T!2 ?20-14 130-1 
-F "Pwm_SetDutyCycle" - I!436 T!2 ?22-14 135-1 P!437 P!438 
+F "Pwm_Init" - I!434 T!2 ?19-14 126-1 
+F "Pwm_DeInit" - I!435 T!2 ?20-14 131-1 
+F "Pwm_SetDutyCycle" - I!436 T!2 ?22-14 136-1 P!437 P!438 
 V "" - I!437 O!436 T!433 .4 0x4 
 V "" - I!438 O!436 T!287 .2 0x2 
 F "Pwm_SetPeriodAndDuty" - I!439 T!2 ?23-14 P!440 P!441 P!442 
@@ -452,84 +452,105 @@ F "Adc_Init" - I!447 T!2 ?26-16
 F "Adc_DeInit" - I!448 T!2 ?27-16 
 F "Adc_StopGroup" - I!449 T!2 ?29-16 P!450 
 V "" - I!450 O!449 T!444 .4 0x4 
-F "Adc_StartGroup" - I!451 T!2 ?30-16 155-1 P!452 P!453 
+F "Adc_StartGroup" - I!451 T!2 ?30-16 156-1 P!452 P!453 
 V "" - I!452 O!451 T!444 .4 0x4 
 V "" - I!453 O!451 T!454 .4 0x4 
 T "" KP I!454 T!287 0x4 
-F "Adc_GetStatus" - I!455 T!446 ?31-16 151-1 P!456 
+F "Adc_GetStatus" - I!455 T!446 ?31-16 152-1 P!456 
 V "" - I!456 O!455 T!444 .4 0x4 
-V "ul_interrupt_counter" G I!457 T!21 !34-1 #90-1 #93-1 90-1 91-1 .4 0x4 
-V "CAN_Trans_Data" G I!458 T!354 !36-1 #36-1 #96-1 #98-1 #105-1 95-1 96-1 108-1 .4 0x10 
-F "Test_Init" - I!459 T!2 #67-1 !68,72-1-1 
-F "Can_Test" - I!460 T!2 #81-1 !82,110-1-1 174-1 
-V "TickTimer" GS I!461 T!288 !112-1 #112-1 #121-1 121-1 123-1 128-1 133-1 .4 0x4 
-F "Pwm_Test" - I!462 T!2 #119-1 !120,137-1-1 175-1 
-V "Buffer" G I!463 T!287 !139-1 155-1 .2 0x2 
-F "Adc_Test" - I!464 T!2 #146-1 !147,162-1-1 176-1 
-V "Adc_Status" - I!465 O!464 T!446 !148-1 #151-1 153-1 157-1 .4 0x4 
-F "Test_Task" - I!466 T!2 #170-1 !171,180-1-1 
-F "vTaskDelay" - I!467 T!102 179-1 
+T "" KE I!457 T!102 0x4 EM0:"DIRECT_BRANCH" EM1:"TABLE_REFERENCE" 
+T "Eic_MethodType" KT I!458 T!457 !22-19 0x4 
+T "" KE I!459 T!102 0x4 EM0:"PRIORITY_0" EM1:"PRIORITY_1" EM2:"PRIORITY_2" EM3:"PRIORITY_3" EM4:"PRIORITY_4" EM5:"PRIORITY_5" EM6:"PRIORITY_6" EM7:"PRIORITY_7" EM8:"PRIORITY_8" EM9:"PRIORITY_9" EM10:"PRIORITY_10" EM11:"PRIORITY_11" EM12:"PRIORITY_12" EM13:"PRIORITY_13" EM14:"PRIORITY_14" EM15:"PRIORITY_15" 
+T "Eic_PriorityType" KT I!460 T!459 !43-19 0x4 
+F "Mcu_Init" - I!461 T!2 ?21-18 
+F "Mcu_SoftReset" - I!462 T!2 ?22-18 
+F "Mcu_GoDeepStop" - I!463 T!2 ?23-18 176-1 
+F "Mcu_EicEnable" - I!464 T!2 ?24-18 P!465 P!466 P!467 
+V "" - I!465 O!464 T!285 .1 0x1 
+V "" - I!466 O!464 T!458 .4 0x4 
+V "" - I!467 O!464 T!460 .4 0x4 
+F "MCu_EicDisnable" - I!468 T!2 ?25-18 P!469 
+V "" - I!469 O!468 T!285 .1 0x1 
+V "ul_interrupt_counter" G I!470 T!21 !35-1 #91-1 #94-1 91-1 92-1 .4 0x4 
+V "CAN_Trans_Data" G I!471 T!354 !37-1 #37-1 #97-1 #99-1 #106-1 96-1 97-1 109-1 .4 0x10 
+F "Test_Init" - I!472 T!2 #68-1 !69,73-1-1 
+F "Can_Test" - I!473 T!2 #82-1 !83,111-1-1 
+V "TickTimer" GS I!474 T!288 !113-1 #113-1 #122-1 122-1 124-1 129-1 134-1 .4 0x4 
+F "Pwm_Test" - I!475 T!2 #120-1 !121,138-1-1 
+V "Buffer" G I!476 T!287 !140-1 156-1 .2 0x2 
+F "Adc_Test" - I!477 T!2 #147-1 !148,163-1-1 182-1 
+V "Adc_Status" - I!478 O!477 T!446 !149-1 #152-1 154-1 158-1 .4 0x4 
+F "Test_Task" - I!479 T!2 #171-1 !172,187-1-1 
+F "vTaskDelay" - I!480 T!102 184-1 
 ****%CxSystemPath%\inc\builtin.h
 v2 
-:1598948794
+:1599041461
 #2
 ****%CxSystemPath%\inc\stdio.h
 v2 
-:1598948794
+:1599041461
 #3
 ****%CxSystemPath%\inc\stddef.h
 v2 
-:1598948794
+:1599041461
 #4
 ****%CxSystemPath%\inc\stdarg.h
 v2 
-:1598948794
+:1599041461
 #5
 ****%CxSystemPath%\inc\stdlib.h
 v2 
-:1598948794
+:1599041461
 #6
 ****..\Drivers\Inc\Uart.h
 v2 
-:1598948794
+:1599041461
 #7
 ****..\Configs\Std_Types.h
 v2 
-:1598948794
+:1599041461
 #8
 ****..\Configs\Compiler.h
 v2 
-:1598948794
+:1599041461
 #9
 ****..\Drivers\Inc\rscan.h
 v2 
-:1598948794
+:1599041461
 #10
 ****..\Drivers\Inc\Pin.h
 v2 
-:1598948794
+:1599041461
 #11
 ****..\Configs\Pin_PBcfg.h
 v2 
-:1598948794
+:1599041461
 #12
 ****..\Configs\Pin_Define.h
 v2 
-:1598948794
+:1599041461
 #13
 ****..\Drivers\Inc\Pwm.h
 v2 
-:1598948794
+:1599041461
 #14
 ****..\Configs\Pwm_Define.h
 v2 
-:1598948794
+:1599041461
 #15
 ****..\Drivers\Inc\Adc.h
 v2 
-:1598948794
+:1599041461
 #16
 ****..\Configs\Adc_Define.h
 v2 
-:1598948794
+:1599041461
 #17
+****..\Drivers\Inc\Mcu.h
+v2 
+:1599041461
+#18
+****..\Drivers\Inc\Mcu_Types.h
+v2 
+:1599041461
+#19

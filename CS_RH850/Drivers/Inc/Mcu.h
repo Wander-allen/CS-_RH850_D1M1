@@ -14,16 +14,15 @@ extern "C" {
 #endif
 
 #include "Std_Types.h"
+#include "Mcu_Types.h"
 
-#define protected_write(preg,pstatus,reg,value)\
-do{\
-    (preg)=0xa5u;\
-    (reg)=(value);\
-    (reg)=~(value);\
-    (reg)=(value);\
-}while((pstatus)==1u)
+#define Mcu_FeedDog        Wdta_Clear
 
 extern void Mcu_Init(void);
+extern void Mcu_SoftReset(void);
+extern void Mcu_GoDeepStop(void);
+extern void Mcu_EicEnable(uint8 Ch, Eic_MethodType Method, Eic_PriorityType priority);
+extern void MCu_EicDisnable(uint8 Ch);
 
 #if 0
 extern void Mcu_Init(const Mcu_ConfigType * ConfigPtr);

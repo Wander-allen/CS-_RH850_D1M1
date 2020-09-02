@@ -22,6 +22,7 @@
 	.extern _INTRLIN30UR2
 	.extern _INTTAUB0I0
 	.extern _INTADCE0I1
+	.extern _INTWDTA0
     
 	.section "RESET", text
 	.align	512
@@ -142,7 +143,7 @@
 
 	.section "EIINTTBL", const
 	.align	512
-	.dw			#_Dummy_EI								; EIINT_CH_0
+	.dw			#_INTWDTA0								; EIINT_CH_0
 	.dw			#_Dummy_EI								; EIINT_CH_1
 	.dw			#_Dummy_EI								; EIINT_CH_2
 	.dw			#_Dummy_EI								; EIINT_CH_3

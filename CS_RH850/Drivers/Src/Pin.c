@@ -20,20 +20,12 @@ Includes
 #include "Pin.h"
 
 /******************************************************************************
-Define Register(n : Group  m : Pin)
+Rigister Struct
 ******************************************************************************/
-#define    PORTU0_BASE      (0xFF618000)    /* Group n = 0 */
-#define    PORTUn_BASE      (0xFF610000)    /* Group n > 0 */
-#define    PORTO0_BASE      (0xFFC18000)    /* Group n = 0 */
-#define    PORTOn_BASE      (0xFFC10000)    /* Group n > 0 */
-#define    JPORTUn_Base     (0xFF620000)    /* Group JP0 */
-#define    JPORTOn_Base     (0xFFC20000)    /* Group JP0 */
-
 /* PCRn 寄存器结构体定义  The small end format */
 typedef union 
 {
     uint32 Value;
-
     struct 
     {
         uint32 PFC      :1;
@@ -66,8 +58,16 @@ typedef union
         uint32 PINC     :1;
         uint32 reserve9 :1;
     };
-
 }Port_PCRnType;
+/******************************************************************************
+Define Register(n : Group  m : Pin)
+******************************************************************************/
+#define    PORTU0_BASE      (0xFF618000)    /* Group n = 0 */
+#define    PORTUn_BASE      (0xFF610000)    /* Group n > 0 */
+#define    PORTO0_BASE      (0xFFC18000)    /* Group n = 0 */
+#define    PORTOn_BASE      (0xFFC10000)    /* Group n > 0 */
+#define    JPORTUn_Base     (0xFF620000)    /* Group JP0 */
+#define    JPORTOn_Base     (0xFFC20000)    /* Group JP0 */
 
 /* PCRn_m */
 #define PORT_PCR0_m(m)       (*(volatile Port_PCRnType *)(PORTU0_BASE + 0x2000 + (m) * 4))

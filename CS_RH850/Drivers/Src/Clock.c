@@ -24,6 +24,13 @@ Includes
 /******************************************************************************
 #Define
 ******************************************************************************/
+#define protected_write(preg,pstatus,reg,value)\
+do{\
+    (preg)=0xa5u;\
+    (reg)=(value);\
+    (reg)=~(value);\
+    (reg)=(value);\
+}while((pstatus)==1u)
 
 /******************************************************************************
 Global variables and functions
@@ -63,7 +70,7 @@ static void Clock_OscInit(void)
     SYS.MOSCC.BIT.MOSCAMPSEL = 1;                               /* Select the MainOsc frequency 8MHz*/
     SYS.MOSCST.BIT.MOSCCLKST = 0x8000;                          /* Select the correct MainOsc stabilization time */
                                                                 /* 0x8000 / frh = 4ms */
-    protected_write(SYS.PROTCMD0.UINT32, SYS.PROTS0.UINT32 ,SYS.MOSCE.UINT32, 1);/* trigger enable (protected write) */
+    protected_write(SYS.PROTCMD0.UINT32, SYS.PROTS0.UINT32, SYS.MOSCE.UINT32, 1);/* trigger enable (protected write) */
     while (SYS.MOSCS.BIT.MOSCCLKACT == 0){}                     /* Wait until MainOsc active*/
 
     /* Configure the PLL0 clock generators 480MHz */
@@ -161,5 +168,8 @@ static void Clock_DomainInit(void)
                                                                     /* CKLJIT /2 (protected write) */
     while (SYS.CKSC_IADCED_ACT.UINT32 != 1){}                       /* Wait until Current active C_ISO_TAUB01  */
 
+    /* Set C_AWO_WDTA clock to LS IntOsc fRL (240 kHz) / 128 */
+    protected_write(SYS.PROTCMD0.UINT32, SYS.PROTS0.UINT32, SYS.CKSC_AWDTA0D_CTL.UINT32, 1);
+    while ( SYS.CKSC_AWDTA0D_ACT.UINT32 != 1){}
 }
 
