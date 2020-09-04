@@ -89,7 +89,7 @@ typedef struct
 
 /* EI Level Interrupt Control Registers */
 #define INT1_EICn(n)       (*(volatile uint16*)(0xFFFEEA00UL + (n) * 2))
-#define INT2_EICn(n)       (*(volatile uint16*)(0xFFFFB040UL + (n) * 2))
+#define INT2_EICn(n)       (*(volatile uint16*)(0xFFFFB040UL + (n - 32) * 2))
 #define PBG_FSGD0BPROT0    (*(volatile uint32*)(0xFFC4C000UL))
 
 /******************************************************************************
@@ -155,7 +155,7 @@ void Mcu_EicEnable(uint8 Ch, Eic_MethodType Method, Eic_PriorityType priority)
     if (Ch >= 32)
     {
         PBG_FSGD0BPROT0 = 0x07FFFFFF;
-        INT2_EICn(Ch - 32) = TmpEicValue;
+        INT2_EICn(Ch) = TmpEicValue;
         return;
     }
 

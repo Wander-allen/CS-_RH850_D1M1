@@ -113,10 +113,13 @@ void RS_CAN_init(void)
     /* ==== buffer setting ==== */    
     //RSCAN0RMNB = 0x10;  //Can_SetGlobalBuffer--16
     RSCAN0.RMNB.UINT32 = 0x10;  //Can_SetGlobalBuffer--16
-    
+    RSCAN0.RFCC0.UINT32 = 0x00007602;
+
     /* Set THLEIE disabled, MEIE(FIFO Message Lost Interrupt disabled)  */
     //RSCAN0GCTR &= 0xfffff8ff;
     RSCAN0.GCTR.UINT32 &= 0xfffff8ff;
+    INTC2.EIC70.UINT16 = 0x0047;
+
 
     /* If GlobalChannel in halt or reset mode */
     if (RSCAN0.GSTS.UINT32 & 0x03) 
@@ -141,6 +144,8 @@ void RS_CAN_init(void)
             /* While reset mode */
         }
     } 
+
+    RSCAN0.RFCC0.UINT32 |= 0x00000001;
 }
 
 /******************************************************************************
@@ -186,7 +191,7 @@ static void Can_SetRxRule(void)
     /* Rx rule write disable */
     RSCAN0.GAFLECTR.UINT32 &= 0xfffffeff;
 }
-
+#if 0
 /*****************************************************************************
 ** Function:    Can_ReadRx_buffer
 ** Description: This code shows how to read message from Rx buffer
@@ -217,58 +222,58 @@ Can_RtnType Can_ReadRxBuffer(Can_FrameType* pFrame)
     }
     else
     {
-            /* Get Rx buffer that has new message */
-            if (TempCRBRCF0 != CAN_CLR) 
+        /* Get Rx buffer that has new message */
+        if (TempCRBRCF0 != CAN_CLR) 
+        {
+            pCRBRCF = &(RSCAN0.RMND0.UINT32);
+            for (BufIdx = 0U; BufIdx < CAN_CRBRCF0_RX_BUF_NUM; ++BufIdx) //CAN_CRBRCF0_RX_BUF_NUM=32
             {
-                pCRBRCF = &(RSCAN0.RMND0.UINT32);
-                for (BufIdx = 0U; BufIdx < CAN_CRBRCF0_RX_BUF_NUM; ++BufIdx) //CAN_CRBRCF0_RX_BUF_NUM=32
+                if ((TempCRBRCF0 & CAN_1_BIT_MASK) == CAN_SET) //CAN_1_BIT_MASK==0x1; CAN_SET=0x1
                 {
-                    if ((TempCRBRCF0 & CAN_1_BIT_MASK) == CAN_SET) //CAN_1_BIT_MASK==0x1; CAN_SET=0x1
-                    {
-                        break;	//if checked bit is 1, that means there is a new message in corresponding receive buffer 
-                    }
-                    TempCRBRCF0 = TempCRBRCF0 >> CAN_B1_BIT_POS; //CAN_B1_BIT_POS=0x1
+                    break;	//if checked bit is 1, that means there is a new message in corresponding receive buffer 
                 }
+                TempCRBRCF0 = TempCRBRCF0 >> CAN_B1_BIT_POS; //CAN_B1_BIT_POS=0x1
             }
-            else if (TempCRBRCF1 != CAN_CLR)
+        }
+        else if (TempCRBRCF1 != CAN_CLR)
+        {
+            pCRBRCF = &(RSCAN0.RMND0.UINT32);
+            for (BufIdx = 0U; BufIdx < CAN_CRBRCF1_RX_BUF_NUM; ++BufIdx) 
             {
-                pCRBRCF = &(RSCAN0.RMND0.UINT32);
-                for (BufIdx = 0U; BufIdx < CAN_CRBRCF1_RX_BUF_NUM; ++BufIdx) 
+                if ((TempCRBRCF1 & CAN_1_BIT_MASK) == CAN_SET) 
                 {
-                    if ((TempCRBRCF1 & CAN_1_BIT_MASK) == CAN_SET) 
-                    {
-                        break;
-                    }
-                    TempCRBRCF1 = TempCRBRCF1 >> CAN_B1_BIT_POS;
+                    break;
                 }
-                BufIdx += CAN_CRBRCF0_RX_BUF_NUM;	//CAN_CRBRCF0_RX_BUF_NUM ==32U
+                TempCRBRCF1 = TempCRBRCF1 >> CAN_B1_BIT_POS;
             }
-            /* Calculate index value in CRBRCFi */
-            CRBRCFiBufIdx = BufIdx & CAN_5_BIT_MASK;	//CAN_5_BIT_MASK  0x1fU  0B11111
+            BufIdx += CAN_CRBRCF0_RX_BUF_NUM;	//CAN_CRBRCF0_RX_BUF_NUM ==32U
+        }
+        /* Calculate index value in CRBRCFi */
+        CRBRCFiBufIdx = BufIdx & CAN_5_BIT_MASK;	//CAN_5_BIT_MASK  0x1fU  0B11111
 
+        do 
+        {
+            /* Clear Rx complete flag of corresponding Rx buffer */
             do 
             {
-                /* Clear Rx complete flag of corresponding Rx buffer */
-                do 
-                {
-                    CLR_BIT(*pCRBRCF, CRBRCFiBufIdx);	//To clear a flag to 0, the program must write 0 to the flag
-                } while (GET_BIT(*pCRBRCF, CRBRCFiBufIdx) == CAN_SET);
+                CLR_BIT(*pCRBRCF, CRBRCFiBufIdx);	//To clear a flag to 0, the program must write 0 to the flag
+            } while (GET_BIT(*pCRBRCF, CRBRCFiBufIdx) == CAN_SET);
 
-                /* Read out message from Rx buffer */
-                pRxBuffer = (Can_FrameType*) &(RSCAN0.RMID0.UINT32);
-                *pFrame = pRxBuffer[BufIdx];
+            /* Read out message from Rx buffer */
+            pRxBuffer = (Can_FrameType*) &(RSCAN0.RMID0.UINT32);
+            *pFrame = pRxBuffer[BufIdx];
 
-                /* Judge if current message is overwritten */
-                OverwrittenFlag = GET_BIT(*pCRBRCF, CRBRCFiBufIdx);
-                /* message is overwritten */
-                if (OverwrittenFlag == CAN_SET) 
-                {
-                    /* User process for message overwritten */
-                    //Usr_HandleRxBufOverwritten(BufIdx);
-                }
-            } while (OverwrittenFlag == CAN_SET);
+            /* Judge if current message is overwritten */
+            OverwrittenFlag = GET_BIT(*pCRBRCF, CRBRCFiBufIdx);
+            /* message is overwritten */
+            if (OverwrittenFlag == CAN_SET) 
+            {
+                /* User process for message overwritten */
+                //Usr_HandleRxBufOverwritten(BufIdx);
+            }
+        } while (OverwrittenFlag == CAN_SET);
 
-            RtnValue = CAN_RTN_OK;
+        RtnValue = CAN_RTN_OK;
     }
 
     return RtnValue;
@@ -309,7 +314,7 @@ Can_RtnType Can_C0TrmByTxBuf(U8 TxBufIdx, const Can_FrameType* pFrame)
 
     return CAN_RTN_OK;
 }
-
+#endif
     /* Create Can_FrameType for send and receive data */
     const Can_FrameType CANTraStandData={
     //CiTBpA
@@ -370,6 +375,8 @@ void rscan_test(void)
         Port_FlipPin(PORT_P17, 9);
     }
 }
+
+
 
 
 #if 0

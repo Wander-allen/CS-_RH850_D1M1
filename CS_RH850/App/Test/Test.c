@@ -14,7 +14,8 @@ Author: Wander
 #include <stdio.h>
 #include <stdlib.h>
 #include "Uart.h"
-#include "rscan.h"
+//#include "rscan.h"
+#include "Can.h"
 #include "Pin.h"
 #include "Pwm.h"
 #include "Adc.h"
@@ -89,9 +90,9 @@ void Can_Test(void)
     }
 
   ul_interrupt_counter++;               /* count interrupt occurences */
-  if(ul_interrupt_counter>9)
+  if(ul_interrupt_counter == 9)
   {
-    ul_interrupt_counter=0;
+    ul_interrupt_counter=9;
     //PORT_ISOPNOT16=0x02u;                 /* toggle port P16.1 (LED26 on main board) */
     if(CAN_Trans_Data.ID<0xFF)
       CAN_Trans_Data.ID++;
@@ -173,11 +174,11 @@ void Test_Task(void)
     while(1)
     {
 
-        Mcu_GoDeepStop();
+        // Mcu_GoDeepStop();
 
 #if (TEST == 1)
         //Uart_transmit_string("this is a Uart test task runing\r\n");
-        // Can_Test();
+        Can_Test();
         // Pwm_Test();
         Adc_Test();
 #endif

@@ -23,6 +23,8 @@
 	.extern _INTTAUB0I0
 	.extern _INTADCE0I1
 	.extern _INTWDTA0
+	.extern _INTRCANGRECC
+	.extern _INTRCAN1TRX
     
 	.section "RESET", text
 	.align	512
@@ -213,7 +215,7 @@
 	.dw			#_Dummy_EI								; EIINT_CH_67
 	.dw			#_Dummy_EI								; EIINT_CH_68
 	.dw			#_Dummy_EI								; EIINT_CH_69
-	.dw			#_Dummy_EI								; EIINT_CH_70
+	.dw			#_INTRCANGRECC								; EIINT_CH_70
 	.dw			#_Dummy_EI								; EIINT_CH_71
 	.dw			#_Dummy_EI								; EIINT_CH_72
 	.dw			#_Dummy_EI								; EIINT_CH_73
@@ -263,7 +265,7 @@
 	.dw			#_Dummy_EI								; EIINT_CH_117
 	.dw			#_Dummy_EI								; EIINT_CH_118
 	.dw			#_Dummy_EI								; EIINT_CH_119
-	.dw			#_Dummy_EI								; EIINT_CH_120
+	.dw			#_INTRCAN1TRX								; EIINT_CH_120
 	.dw			#_Dummy_EI								; EIINT_CH_121
 	.dw			#_Dummy_EI								; EIINT_CH_122
 	.dw			#_Dummy_EI								; EIINT_CH_123

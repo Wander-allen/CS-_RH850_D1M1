@@ -1,6 +1,6 @@
 ****..\Drivers\Isr\Interrupts.c
 v2 
-:1599041458
+:1599215742
 #1
 F "__nop" - I!1 T!2 ?17-2 
 T "void" KBV I!2 0x0 
@@ -37739,35 +37739,40 @@ F "INTRLIN30UR2" I I!37734 T!2 #56-1 !57,59-1-1
 F "INTTAUB0I0" I I!37735 T!2 #63-1 !64,66-1-1 
 F "INTADCE0I1" I I!37736 T!2 #70-1 !71,73-1-1 
 F "INTWDTA0" I I!37737 T!2 #77-1 !78,80-1-1 
+F "INTRCANGRECC" I I!37738 T!2 #84-1 !85,87-1-1 
+F "INTRCANGRECC_IsrHandle" - I!37739 T!37740 86-1 
+T "int" KBS I!37740 0x4 
+F "INTRCAN1TRX" I I!37741 T!2 #91-1 !92,94-1-1 
+F "INTRCAN1TRX_IsrHandle" - I!37742 T!37740 93-1 
 ****%CxSystemPath%\inc\builtin.h
 v2 
-:1599041458
+:1599215742
 #2
 ****..\Configs\Std_Types.h
 v2 
-:1599041458
+:1599215742
 #3
 ****..\Configs\Compiler.h
 v2 
-:1599041458
+:1599215742
 #4
 ****ioDefine.h
 v2 
-:1599041458
+:1599215742
 #5
 ****..\Drivers\Isr\Uart_Isr.h
 v2 
-:1599041458
+:1599215742
 #6
 ****..\Drivers\Isr\Taub_Isr.h
 v2 
-:1599041458
+:1599215742
 #7
 ****..\Drivers\Isr\Adc_Isr.h
 v2 
-:1599041458
+:1599215742
 #8
 ****..\Drivers\Isr\Mcu_Isr.h
 v2 
-:1599041458
+:1599215742
 #9

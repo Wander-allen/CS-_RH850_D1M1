@@ -350,6 +350,13 @@
       <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
       <ParentItem>f41d3634-51b7-4635-bfe8-659efb276ed5</ParentItem>
     </Instance>
+    <Instance Guid="10eef4e1-62d5-4576-81a9-e43ca9974b2d">
+      <Name>Can.h</Name>
+      <Type>File</Type>
+      <RelativePath>..\Drivers\Inc\Can.h</RelativePath>
+      <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
+      <ParentItem>f41d3634-51b7-4635-bfe8-659efb276ed5</ParentItem>
+    </Instance>
     <Instance Guid="d0fec32a-e754-4483-854c-636ab9e348f8">
       <Name>Pin.c</Name>
       <Type>File</Type>
@@ -424,6 +431,13 @@
       <Name>Cpu.c</Name>
       <Type>File</Type>
       <RelativePath>..\Drivers\Src\Cpu.c</RelativePath>
+      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
+      <ParentItem>c37fa6f3-0c0f-4899-8bb6-206626018c38</ParentItem>
+    </Instance>
+    <Instance Guid="afbd862b-165e-4013-beaf-90bf6e0a35fb">
+      <Name>Can.c</Name>
+      <Type>File</Type>
+      <RelativePath>..\Drivers\Src\Can.c</RelativePath>
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>c37fa6f3-0c0f-4899-8bb6-206626018c38</ParentItem>
     </Instance>
@@ -848,7 +862,9 @@
       <SourceItemType32>CSource</SourceItemType32>
       <SourceItemGuid33>b8a9678b-7555-4a92-9927-b37a1dedd711</SourceItemGuid33>
       <SourceItemType33>CSource</SourceItemType33>
-      <SourceItemCount>34</SourceItemCount>
+      <SourceItemGuid34>afbd862b-165e-4013-beaf-90bf6e0a35fb</SourceItemGuid34>
+      <SourceItemType34>CSource</SourceItemType34>
+      <SourceItemCount>35</SourceItemCount>
       <LastDeviceChangedCounter>0</LastDeviceChangedCounter>
     </Instance>
     <Instance Guid="989d6783-59a0-4525-8ee4-a067fda90fe2">
@@ -1884,6 +1900,14 @@
       <ItemAddTime>637346659491993873</ItemAddTime>
       <ItemAddTimeCount>0</ItemAddTimeCount>
     </Instance>
+    <Instance Guid="afbd862b-165e-4013-beaf-90bf6e0a35fb">
+      <ItemAddTime>637348353909987440</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="10eef4e1-62d5-4576-81a9-e43ca9974b2d">
+      <ItemAddTime>637348354065778197</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
     <Instance Guid="149baf2a-1b8c-4f78-9702-3ac495e87f5a">
       <TimeTagModified-SourceItem0--0>-8586044617426162533</TimeTagModified-SourceItem0--0>
       <SourceItem0-IsLockedByUser>False</SourceItem0-IsLockedByUser>
@@ -2023,6 +2047,10 @@
       <SourceItem33-IsLockedByUser>False</SourceItem33-IsLockedByUser>
       <SourceItem33-IndividualCompileOption-0>False</SourceItem33-IndividualCompileOption-0>
       <SourceItem33-BuildingTarget-0>True</SourceItem33-BuildingTarget-0>
+      <TimeTagModified-SourceItem34--0>-8586023970944788368</TimeTagModified-SourceItem34--0>
+      <SourceItem34-IsLockedByUser>False</SourceItem34-IsLockedByUser>
+      <SourceItem34-IndividualCompileOption-0>False</SourceItem34-IndividualCompileOption-0>
+      <SourceItem34-BuildingTarget-0>True</SourceItem34-BuildingTarget-0>
     </Instance>
   </Class>
   <Class Guid="44fa27c9-0aa0-4297-bd3b-2c5c5bdb8881">

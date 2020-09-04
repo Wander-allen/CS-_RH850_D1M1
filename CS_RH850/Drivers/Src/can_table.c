@@ -74,15 +74,15 @@
 /* Rx Rule Table */
 const can_cre_type RX_RULE_TABLE_LIST[RX_RULE_NUM] = {
 /* CAN 0 reception rules */
-    {0x00000010UL, 0xDFFFFFF0UL, 0x00008000UL, 0x00000000UL}, /* NO.000 : std data frm ID = H'10~1F will be accepted, destination Rx Buffer0 */
-    {0x00000020UL, 0xDFFFFFF0UL, 0x00008100UL, 0x00000000UL}, /* NO.001 : std data frm ID = H'20~2F will be accepted, destination Rx Buffer1 */
+    {0x00000010UL, 0xDFFFF000UL, 0x00000000UL, 0x00000001UL}, /* NO.000 : std data frm ID = H'10~1F will be accepted, destination Rx Buffer0 */
+    {0x00000020UL, 0xDFFFFFF0UL, 0x00000000UL, 0x00000001UL}, /* NO.001 : std data frm ID = H'20~2F will be accepted, destination Rx Buffer1 */
     {0x00000030UL, 0xDFFFFFF0UL, 0x00008200UL, 0x00000000UL}, /* NO.002 : std data frm ID = H'30~3F will be accepted, destination Rx Buffer2 */
     {0x00000040UL, 0xDFFFFFF0UL, 0x00008300UL, 0x00000000UL}, /* NO.003 : std data frm ID = H'40~4F will be accepted, destination Rx Buffer3 */
     {0x00000050UL, 0xDFFFFFFFUL, 0x00008400UL, 0x00000000UL}, /* NO.004 : std data frm ID = H'50 will be accepted, destination Rx Buffer4 */
     {0x00000060UL, 0xDFFFFFFFUL, 0x00008500UL, 0x00000000UL}, /* NO.005 : std data frm ID = H'60 will be accepted, destination Rx Buffer5 */
     
 /* CAN 1 reception rules */
-    {0x00000010UL, 0xDFFFFFF0UL, 0x00008600UL, 0x00000000UL}, /* NO.000 : std data frm ID = H'10~1F will be accepted, destination Rx Buffer6 */
+    {0x00000080UL, 0xDFFFFFF0UL, 0x00008600UL, 0x00000000UL}, /* NO.000 : std data frm ID = H'10~1F will be accepted, destination Rx Buffer6 */
     {0x00000020UL, 0xDFFFFFF0UL, 0x00008700UL, 0x00000000UL}, /* NO.001 : std data frm ID = H'20~2F will be accepted, destination Rx Buffer7 */
     {0x00000030UL, 0xDFFFFFF0UL, 0x00008800UL, 0x00000000UL}, /* NO.002 : std data frm ID = H'30~3F will be accepted, destination Rx Buffer8 */
     {0x00000040UL, 0xDFFFFFF0UL, 0x00008900UL, 0x00000000UL}, /* NO.003 : std data frm ID = H'40~4F will be accepted, destination Rx Buffer9 */

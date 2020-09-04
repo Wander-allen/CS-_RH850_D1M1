@@ -24,6 +24,7 @@ Author: Wander
 #include "Clock.h"
 #include "Taub.h"
 #include "rscan.h"
+// #include "Can.h"
 #include "Adc.h"
 #include "Pwm.h"
 #include "Test.h"
@@ -94,7 +95,8 @@ void EcuM_Init(void)
     Port_Init();
     Uart_Init();
     Taub_Init();
-    RS_CAN_init();
+    //RS_CAN_init();
+    Can_Init();
     ADC0_Init();
     Pwm_Init();
     Test_Init();
