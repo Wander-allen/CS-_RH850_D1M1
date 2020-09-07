@@ -33,6 +33,7 @@
 -input=DefaultBuild\Adc_PBcfg.obj
 -input=DefaultBuild\Cpu.obj
 -input=DefaultBuild\Can.obj
+-input=DefaultBuild\Can_PBcfg.obj
 -debug
 -nocompress
 -NOOPtimize

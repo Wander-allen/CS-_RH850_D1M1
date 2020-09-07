@@ -15,6 +15,7 @@ extern "C" {
 
 #include "Std_Types.h"
 
+extern void INTRCAN1ERR_IsrHandle(void);
 extern void INTRCANGRECC_IsrHandle(void);
 extern void INTRCAN1TRX_IsrHandle(void);
 

@@ -15,7 +15,7 @@ Author: Steven
 /* Can procotol data unit type */
 typedef struct 
 {
-    uint8* Data;
+    uint8 Data[8];
     uint32 Id;
     uint16 TxPduId;
     uint8 Length;

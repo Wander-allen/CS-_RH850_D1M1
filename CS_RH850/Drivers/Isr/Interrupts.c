@@ -79,6 +79,13 @@ void INTWDTA0(void)
     INTWDTA0_IsrHandle();
 }
 
+/* Channel 1 error interrupt (INTRCAN1ERR) service routine */
+#pragma interrupt INTRCAN1ERR( enable = false, channel = 118, callt = false, fpu = false )
+void INTRCAN1ERR(void)
+{
+    INTRCAN1ERR_IsrHandle();
+}
+
 /* RSCAN Channel 0 to 2 RX FIFO interrupt(INTRCANGRECC) service routine */
 #pragma interrupt INTRCANGRECC( enable = false, channel = 70, callt = false, fpu = false )
 void INTRCANGRECC(void)

@@ -25,6 +25,7 @@
 	.extern _INTWDTA0
 	.extern _INTRCANGRECC
 	.extern _INTRCAN1TRX
+	.extern _INTRCAN1ERR
     
 	.section "RESET", text
 	.align	512
@@ -263,7 +264,7 @@
 	.dw			#_Dummy_EI								; EIINT_CH_115
 	.dw			#_Dummy_EI								; EIINT_CH_116
 	.dw			#_Dummy_EI								; EIINT_CH_117
-	.dw			#_Dummy_EI								; EIINT_CH_118
+	.dw			#_INTRCAN1ERR								; EIINT_CH_118
 	.dw			#_Dummy_EI								; EIINT_CH_119
 	.dw			#_INTRCAN1TRX								; EIINT_CH_120
 	.dw			#_Dummy_EI								; EIINT_CH_121

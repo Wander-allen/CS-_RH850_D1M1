@@ -8,15 +8,15 @@ File  : Can_PBcfg.cNxp S32K14x FlexCAN Driver(Rx FIFO mode)
 Author: Steven
 ******************************************************************************/
 #include "Can_PBcfg.h"
-// #include "CanIf_Cbk.h"
-// #include "jlrx_can.h"
 
-static const Can_IfCfgType CanIfCfg[] =
+
+static const Can_RuleCfgType CanRuleCfg[] =
 {
     /* CAN 1 reception rules */
-    {0x00000010UL, 0xDFFFF000UL, 0x00000000UL, 0x00000001UL}, 
+    {0x00000010UL, 0xDFFFF000UL, 0x00000000UL, 0x00000001UL}, /* Receive FIFO Buffer 接收所有帧 0x000 - 0xFFF*/
 };
 
+//SJW =3TQ, TSEG1=11TQ, TSEG2=4TQ, BRP=0
 static const Can_ChCfgType CanChCfg[] = 
 {
     /* Ch, CmCFG        RNCSm RNCEm*/
@@ -29,8 +29,8 @@ static const Can_ConfigType CanConfig =
     NULL, /* TxCallback */
     NULL, /* ModeCsCbk */
     NULL, /* BusoffCbk */
-    CanIfCfg,  /* IfCfg */
-    sizeof(CanIfCfg)/sizeof(CanIfCfg[0]),  /* RuleNum */
+    CanRuleCfg,  /* IfCfg */
+    sizeof(CanRuleCfg)/sizeof(CanRuleCfg[0]),  /* RuleNum */
     CanChCfg,  /* ChCfg */
     sizeof(CanChCfg)/sizeof(CanChCfg[0]),  /* ChNum */
 };

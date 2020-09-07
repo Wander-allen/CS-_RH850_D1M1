@@ -21,6 +21,7 @@ extern void INTADCE0I1(void);
 extern void INTWDTA0(void);
 extern void INTRCANGRECC(void);
 extern void INTRCAN1TRX(void);
+extern void INTRCAN1ERR(void);
 
 #ifdef __cplusplus
 }

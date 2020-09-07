@@ -8,13 +8,6 @@ File  : MCU.h
 Author: Wander 
 ******************************************************************************/
 
-/******************************************************************************
-* File Name    : clock.h
-* Version      : 1.0.0.0
-* Device(s)    : R7F701442
-* Description  : This file implements SMC pin code generation.
-* Creation Date: 2020-08-11
-******************************************************************************/
 #ifndef MCU_H
 #define MCU_H
 #ifdef __cplusplus

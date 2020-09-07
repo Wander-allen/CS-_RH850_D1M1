@@ -191,7 +191,7 @@ static void Can_SetRxRule(void)
     /* Rx rule write disable */
     RSCAN0.GAFLECTR.UINT32 &= 0xfffffeff;
 }
-#if 0
+#if 1
 /*****************************************************************************
 ** Function:    Can_ReadRx_buffer
 ** Description: This code shows how to read message from Rx buffer
@@ -280,6 +280,7 @@ Can_RtnType Can_ReadRxBuffer(Can_FrameType* pFrame)
 }
 
 
+#else
 
 Can_RtnType Can_C0TrmByTxBuf(U8 TxBufIdx, const Can_FrameType* pFrame)
 {
@@ -366,49 +367,5 @@ Can_RtnType Can_C0TrmByTxBuf(U8 TxBufIdx, const Can_FrameType* pFrame)
     0x00                             //DB7
     }
     };
-void rscan_test(void)
-{
-    Can_ReadRxBuffer(&CANRecData);
-    if(CANRecData.DB[0]==0x01)
-    {
-        CANRecData.DB[0]=0x0;
-        Port_FlipPin(PORT_P17, 9);
-    }
-}
 
 
-
-
-#if 0
- /*****************************************************************************
-** Function:    RS_CAN_error
-** Description: This function sends/receives and compares data of the CAN-Channels
-** Parameter:   None
-** Return:      error 1
-**              no error 0  
-******************************************************************************/
-int RS_CAN_error(void)
-{
-    int rs_count, error,i;
-
-    if(Can_C3TrmByTxBuf(1,&CANTraStandData)== CAN_RTN_OK)
-    {
-
-        //Delay
-        for(i=0;i<10000;i++);                 //Wait for CAN receive interrupt
-                    
-        Can_ReadRxBuffer(&CANRecData);        //Channel4 receive the Messages
-    }
-    
-    /* Compare each sent and received value */
-    error=0;
-    for(rs_count=0; rs_count<8; rs_count++)
-    {
-        if(CANTraStandData.DB[rs_count] != CANRecData.DB[rs_count])
-        {
-            error=1;
-        }
-    }
-    return error;
-}
-#endif

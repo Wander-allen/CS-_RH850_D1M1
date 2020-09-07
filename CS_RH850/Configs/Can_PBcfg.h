@@ -19,12 +19,7 @@ typedef enum
     CAN0,
     CAN1,
     CAN2,
-    CAN_MAx
 }Can_ChannelType;
-
-#define CAN0    (0x40024000)
-#define CAN1    (0x40025000)
-#define CAN2    (0x4002B000)
 
 /* Receive rule setting */
 typedef struct 
@@ -33,7 +28,7 @@ typedef struct
     uint32 PTR;
     uint32 DF0;
     uint32 DF1;
-}Can_IfCfgType;
+}Can_RuleCfgType;
 
 /* Can Channel Configure */
 typedef struct 
@@ -50,8 +45,8 @@ typedef struct
     void(*TxCallback)(uint16 TxPduId);
     void(*ModeCsCbk)(uint8 CanCh, Can_CsModeType Mode);
     void(*BusoffCbk)(uint8 Ch);
-    const Can_IfCfgType Ifc_Cfg;
-    uint8 IFC_Cfg;
+    const Can_RuleCfgType* Rule_Cfg;
+    uint8 RuleNum;
     const Can_ChCfgType* ChCfg;
     uint8 ChNum;
 } Can_ConfigType;

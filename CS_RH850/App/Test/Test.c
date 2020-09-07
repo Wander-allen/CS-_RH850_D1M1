@@ -33,32 +33,6 @@ Author: Wander
 /******************************************************************************
                                     局部变量定义
 ******************************************************************************/
-unsigned long ul_interrupt_counter;     /* interrupt occurences counter */
-/* Create Can_FrameType for send and receive data */
-Can_FrameType CAN_Trans_Data={
-  //CiTBpA
-  0x18,
-  0,
-  0,
-  0,        
-
-  //CiTBpB
-  0x0000,                            
-  0x000,                            
-  0x8,    
-
-  {
-    0x12,                            //DB0
-    0x34,                            //DB1
-    0x56,                            //DB2
-    0x78,                            //DB3
-    //CiTBpD
-    0x87,                            //DB4
-    0x65,                            //DB5
-    0x43,                            //DB6
-    0x21                             //DB7
-  }
-};
 
 /******************************************************************************
 * Function Name: Test_Init
@@ -68,12 +42,12 @@ Can_FrameType CAN_Trans_Data={
 ******************************************************************************/
 void Test_Init(void)
 {
-    Uart_transmit_string("hello world\r\n");
-    Uart_transmit_string("Test_Init Success\r\n");
+    // Uart_transmit_string("hello world\r\n");
+    // Uart_transmit_string("Test_Init Success\r\n");
     
 }
 
-
+Can_PduType TmpCanFrameData = {0};
 /******************************************************************************
 * Function Name: Can_Test
 * Description  : Can模块测试
@@ -82,33 +56,25 @@ void Test_Init(void)
 ******************************************************************************/
 void Can_Test(void)
 {
+    static uint8 InitFlag = 0;
+    uint8 i;
 
-    Can_ReadRxBuffer(&CANRecData);
-    if(CANRecData.DB[0]==0x01)
+    if (InitFlag == 0)
     {
-        CANRecData.DB[0]=0x0;
+        for (i = 0; i < 8; i++)
+        {
+            TmpCanFrameData.Data[i] = i * 2;
+        }
     }
 
-  ul_interrupt_counter++;               /* count interrupt occurences */
-  if(ul_interrupt_counter == 9)
-  {
-    ul_interrupt_counter=9;
-    //PORT_ISOPNOT16=0x02u;                 /* toggle port P16.1 (LED26 on main board) */
-    if(CAN_Trans_Data.ID<0xFF)
-      CAN_Trans_Data.ID++;
+    /* Can White */
+    if(TmpCanFrameData.Id<0xFF)
+      TmpCanFrameData.Id++;
     else
-      CAN_Trans_Data.ID=0x01;
-
-#if 0
-    if(CAN_Trans_Data.DB[0]<0xFF)
-      CAN_Trans_Data.DB[0]++;       /* change DB0 (first data byte send) */
-    else
-#else
-      CAN_Trans_Data.DB[0]=0x01;    /* always send "0x01" as DB0 (first data byte) */
-#endif
-
-    Can_C0TrmByTxBuf(17, &CAN_Trans_Data);
-  }
+      TmpCanFrameData.Id=0x01;
+    
+    TmpCanFrameData.Length = 8;
+    CAN_Transmit(CAN1, &TmpCanFrameData);
 }
 
 static uint32 TickTimer = 0;
@@ -138,7 +104,7 @@ void Pwm_Test(void)
     }
 }
 
-uint16 Buffer;
+
 /******************************************************************************
 * Function Name: Can_Test
 * Description  : Can模块测试
@@ -147,6 +113,8 @@ uint16 Buffer;
 ******************************************************************************/
 void Adc_Test(void)
 {
+    uint16 Buffer;
+
     Adc_StatusType Adc_Status;
     
 
@@ -180,7 +148,7 @@ void Test_Task(void)
         //Uart_transmit_string("this is a Uart test task runing\r\n");
         Can_Test();
         // Pwm_Test();
-        Adc_Test();
+        // Adc_Test();
 #endif
         vTaskDelay(100);
     }
