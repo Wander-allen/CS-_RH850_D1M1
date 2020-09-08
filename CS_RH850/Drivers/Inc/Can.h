@@ -19,7 +19,13 @@ extern "C" {
 
 
 extern void Can_Init(void);
+extern void Can_PollFunction(void);
 extern Std_ReturnType CAN_Transmit(Can_ChannelType Channel, const Can_PduType* pFrame);
+extern Std_ReturnType Can_SetMode(Can_ChannelType Channel, Can_CsModeType CsMode);
+extern Can_CsModeType Can_GetMode(Can_ChannelType Channel);
+extern uint8 Can_GetCanChNum(void);
+extern uint8 Can_GetHthCanCh(uint8 Hth);
+extern uint8 Can_GetHrhCanCh(uint8 Hrh);
 
 #ifdef __cplusplus
 }

@@ -8,6 +8,7 @@ File  : Can_PBcfg.cNxp S32K14x FlexCAN Driver(Rx FIFO mode)
 Author: Steven
 ******************************************************************************/
 #include "Can_PBcfg.h"
+#include "CanSm_Cbk.h"
 
 
 static const Can_RuleCfgType CanRuleCfg[] =
@@ -28,7 +29,7 @@ static const Can_ConfigType CanConfig =
     NULL, /* RxCallback */
     NULL, /* TxCallback */
     NULL, /* ModeCsCbk */
-    NULL, /* BusoffCbk */
+    CanSm_BusoffCallback, /* BusoffCbk */
     CanRuleCfg,  /* IfCfg */
     sizeof(CanRuleCfg)/sizeof(CanRuleCfg[0]),  /* RuleNum */
     CanChCfg,  /* ChCfg */

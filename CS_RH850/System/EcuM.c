@@ -23,8 +23,8 @@ Author: Wander
 #include "Uart.h"
 #include "Clock.h"
 #include "Taub.h"
-#include "rscan.h"
-// #include "Can.h"
+#include "CanSm.h"
+#include "Can.h"
 #include "Adc.h"
 #include "Pwm.h"
 #include "Test.h"
@@ -95,8 +95,8 @@ void EcuM_Init(void)
     Port_Init();
     Uart_Init();
     Taub_Init();
-    //RS_CAN_init();
     Can_Init();
+    CanSm_Init();
     ADC0_Init();
     Pwm_Init();
     Test_Init();
@@ -219,6 +219,7 @@ static void  vEcu_10ms_Task(void *pvParameters)
     for( ;; )
     {     
         //Port_FlipPin(PORT_P17, 9);
+        CanSm_PollFunction();
         
         vTaskDelay(10/portTICK_RATE_MS);
     }
@@ -237,7 +238,8 @@ static void  vEcu_100ms_Task(void *pvParameters)
     for( ;; )
     {     
         //Port_FlipPin(PORT_P17, 9);
-        
+
+        Can_PollFunction();
         vTaskDelay(100/portTICK_RATE_MS);
     }
 }

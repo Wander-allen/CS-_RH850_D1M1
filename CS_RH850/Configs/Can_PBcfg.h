@@ -19,6 +19,7 @@ typedef enum
     CAN0,
     CAN1,
     CAN2,
+    CAN_MAX
 }Can_ChannelType;
 
 /* Receive rule setting */

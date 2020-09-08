@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W3.02.00 )             07-Sep-2020 17:56:04
+Renesas Optimizing Linker (W3.02.00 )             08-Sep-2020 17:12:07
 
 *** Options ***
 
@@ -30,8 +30,6 @@ Renesas Optimizing Linker (W3.02.00 )             07-Sep-2020 17:56:04
 -input=DefaultBuild\Taub.obj
 -input=DefaultBuild\Interrupts.obj
 -input=DefaultBuild\Taub_PBcfg.obj
--input=DefaultBuild\can_table.obj
--input=DefaultBuild\rscan.obj
 -input=DefaultBuild\Adc.obj
 -input=DefaultBuild\Pwm.obj
 -input=DefaultBuild\Pwm_PBcfg.obj
@@ -39,6 +37,10 @@ Renesas Optimizing Linker (W3.02.00 )             07-Sep-2020 17:56:04
 -input=DefaultBuild\Cpu.obj
 -input=DefaultBuild\Can.obj
 -input=DefaultBuild\Can_PBcfg.obj
+-input=DefaultBuild\CanSm.obj
+-input=DefaultBuild\CanIf_PBcfg.obj
+-input=DefaultBuild\CanSm_PBcfg.obj
+-input=DefaultBuild\CanTp_PBcfg.obj
 -debug
 -nocompress
 -NOOPtimize
@@ -62,18 +64,18 @@ RESET
 EIINTTBL
                                   00000200  000005ff       400   200
 .const
-                                  00008000  0000852f       530   4
+                                  00008000  00008473       474   4
 .INIT_DSEC.const
-                                  00008530  0000853b         c   4
+                                  00008474  0000847f         c   4
 .INIT_BSEC.const
-                                  0000853c  00008543         8   4
+                                  00008480  00008487         8   4
 .text
-                                  00008544  0000f645      7102   2
+                                  00008488  0000f51b      7094   2
 .data
-                                  0000f648  0000ff23       8dc   4
+                                  0000f51c  0000fde7       8cc   4
 .data.R
-                                  fed80000  fed808db       8dc   4
+                                  fed80000  fed808cb       8cc   4
 .bss
-                                  fed808dc  fed8584f      4f74   4
+                                  fed808cc  fed85847      4f7c   4
 .stack.bss
-                                  fed85850  fed85a4f       200   4
+                                  fed85848  fed85a47       200   4

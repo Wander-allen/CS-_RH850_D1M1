@@ -14,12 +14,12 @@ Author: Wander
 #include <stdio.h>
 #include <stdlib.h>
 #include "Uart.h"
-//#include "rscan.h"
 #include "Can.h"
 #include "Pin.h"
 #include "Pwm.h"
 #include "Adc.h"
 #include "Mcu.h"
+#include "CanSm.h"
 
 /******************************************************************************
                                     局部宏方法

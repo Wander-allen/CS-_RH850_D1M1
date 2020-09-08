@@ -4,7 +4,7 @@ Copyright (C) 2020 Querda Electronic Technology All Rights Reserved
 This software and code can be freely used for study and research. 
 For commercial purposes, please contact the owner for permission.
 
-File  : Adc.c 
+File  : Can.c 
 Author: Wander 
 ******************************************************************************/
 
@@ -180,7 +180,7 @@ void Can_Init(void)
 
     /* Set THLEIE disabled, MEIE(FIFO Message Lost Interrupt disabled)  */
     RSCAN0_GCTR &= 0xfffff8ff;
-    RSCAN0_CmCTR(1) |= 0x00000100;    //Bus Error Interrupt Enable
+    RSCAN0_CmCTR(1) |= 0x00600800;    //Bus Error Interrupt Enable
     RSCAN0_TMIECy(0) |= 0xFFFF0000;   //Transmit buffer (16- 31) interrupt is enabled.
     Mcu_EicEnable(70, TABLE_REFERENCE, PRIORITY_7); /* Channel 0 to 2 RX FIFO interrupt */
     Mcu_EicEnable(118, TABLE_REFERENCE, PRIORITY_7);/* Channel 1 error interrupt */
@@ -276,7 +276,85 @@ static void Can_SetRxRule(void)
 ******************************************************************************/
 Std_ReturnType Can_SetMode(Can_ChannelType Channel, Can_CsModeType CsMode)
 {
-    
+    switch (CsMode)
+    {
+        case CAN_CS_STOP: 
+            RSCAN0_GCTR &= 0xfffffffc; 
+            RSCAN0_CmCTR(Channel) |= 0x02; 
+            break;
+
+        case CAN_CS_START: 
+            RSCAN0_GCTR &= 0xfffffffc; 
+            RSCAN0_CmCTR(Channel) &= 0xfffffffc; 
+            break;
+
+        case CAN_CS_SLEEP: 
+            RSCAN0_GCTR |= 0x05;
+            RSCAN0_CmCTR(Channel) |= 0x05; 
+            break;
+
+        default:break;
+    }
+
+    return STD_OK;
+}
+
+/*****************************************************************************
+** Function:    Can_GetMode
+** Description: 
+** Parameter:   None
+** Return:      none
+******************************************************************************/
+Can_CsModeType Can_GetMode(Can_ChannelType Channel)
+{
+    if ((RSCAN0_CmSTS(Channel) & 0x03) == 0)
+    {
+        return CAN_CS_START;
+    }
+
+    if ((RSCAN0_CmSTS(Channel) & 0x02) == 2)
+    {
+        return CAN_CS_STOP;
+    }
+
+    return CAN_CS_SLEEP;
+}
+
+/*****************************************************************************
+** Function:    Can_SetMode
+** Description: 
+** Parameter:   None
+** Return:      none
+******************************************************************************/
+uint8 Can_GetCanChNum(void)
+{
+    return  CanCfgPtr->ChNum;
+}
+
+/*****************************************************************************
+** Function:    Can_GetHthCanCh
+** Description: 
+** Parameter:   None
+** Return:      none
+******************************************************************************/
+uint8 Can_GetHthCanCh(uint8 Hth)
+{
+    (void)Hth;
+
+    return 1;
+}
+
+/*****************************************************************************
+** Function:    Can_GetHrhCanCh
+** Description: 
+** Parameter:   None
+** Return:      none
+******************************************************************************/
+uint8 Can_GetHrhCanCh(uint8 Hrh)
+{
+    (void)Hrh;
+
+    return 1;
 }
 
 /*****************************************************************************
@@ -341,6 +419,14 @@ void Can_PollFunction(void)
 void INTRCAN1ERR_IsrHandle(void)
 {
     RSCAN0CmERFL(1) &= 0x00UL;  //Clear All Error Flag
+
+    if (CanCfgPtr->BusoffCbk != NULL)
+    {
+        (CanCfgPtr->BusoffCbk)(CAN1);
+    }
+
+    Can_SetMode(CAN1, CAN_CS_STOP);
+
 }
 
 /******************************************************************************
