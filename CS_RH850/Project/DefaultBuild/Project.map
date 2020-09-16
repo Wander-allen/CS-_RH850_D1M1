@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W3.02.00 )             08-Sep-2020 17:12:07
+Renesas Optimizing Linker (W3.02.00 )             16-Sep-2020 10:21:20
 
 *** Options ***
 
@@ -41,6 +41,7 @@ Renesas Optimizing Linker (W3.02.00 )             08-Sep-2020 17:12:07
 -input=DefaultBuild\CanIf_PBcfg.obj
 -input=DefaultBuild\CanSm_PBcfg.obj
 -input=DefaultBuild\CanTp_PBcfg.obj
+-input=DefaultBuild\Crc.obj
 -debug
 -nocompress
 -NOOPtimize
@@ -70,12 +71,12 @@ EIINTTBL
 .INIT_BSEC.const
                                   00008480  00008487         8   4
 .text
-                                  00008488  0000f51b      7094   2
+                                  00008488  0000f557      70d0   2
 .data
-                                  0000f51c  0000fde7       8cc   4
+                                  0000f558  0000fe23       8cc   4
 .data.R
                                   fed80000  fed808cb       8cc   4
 .bss
-                                  fed808cc  fed85847      4f7c   4
+                                  fed808cc  fed8584b      4f80   4
 .stack.bss
-                                  fed85848  fed85a47       200   4
+                                  fed8584c  fed85a4b       200   4

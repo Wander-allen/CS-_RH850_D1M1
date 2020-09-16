@@ -20,6 +20,7 @@ Author: Wander
 #include "Adc.h"
 #include "Mcu.h"
 #include "CanSm.h"
+#include "Crc.h"
 
 /******************************************************************************
                                     局部宏方法
@@ -33,7 +34,7 @@ Author: Wander
 /******************************************************************************
                                     局部变量定义
 ******************************************************************************/
-
+uint16 CrcRetData;
 /******************************************************************************
 * Function Name: Test_Init
 * Description  : Mcu初始化
@@ -42,6 +43,8 @@ Author: Wander
 ******************************************************************************/
 void Test_Init(void)
 {
+    Crc_Init();
+    CrcRetData = Crc_GetCalData();
     // Uart_transmit_string("hello world\r\n");
     // Uart_transmit_string("Test_Init Success\r\n");
     

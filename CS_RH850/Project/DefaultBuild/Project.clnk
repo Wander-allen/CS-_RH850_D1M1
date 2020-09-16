@@ -36,6 +36,7 @@
 -input=DefaultBuild\CanIf_PBcfg.obj
 -input=DefaultBuild\CanSm_PBcfg.obj
 -input=DefaultBuild\CanTp_PBcfg.obj
+-input=DefaultBuild\Crc.obj
 -debug
 -nocompress
 -NOOPtimize
