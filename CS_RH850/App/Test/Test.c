@@ -1,11 +1,11 @@
 ﻿/******************************************************************************
 Copyright (C) 2020 Querda Electronic Technology All Rights Reserved
 
-This software and code can be freely used for study and research. 
+This software and code can be freely used for study and research.
 For commercial purposes, please contact the owner for permission.
 
 File  : EcuM.c      ECU management module
-Author: Wander 
+Author: Wander
 ******************************************************************************/
 
 /******************************************************************************
@@ -45,9 +45,9 @@ void Test_Init(void)
 {
     Crc_Init();
     CrcRetData = Crc_GetCalData();
-    // Uart_transmit_string("hello world\r\n");
-    // Uart_transmit_string("Test_Init Success\r\n");
-    
+    Uart_transmit_string("hello world\r\n");
+    Uart_transmit_string("Test_Init Success\r\n");
+
 }
 
 Can_PduType TmpCanFrameData = {0};
@@ -71,11 +71,11 @@ void Can_Test(void)
     }
 
     /* Can White */
-    if(TmpCanFrameData.Id<0xFF)
-      TmpCanFrameData.Id++;
+    if (TmpCanFrameData.Id < 0xFF)
+        TmpCanFrameData.Id++;
     else
-      TmpCanFrameData.Id=0x01;
-    
+        TmpCanFrameData.Id = 0x01;
+
     TmpCanFrameData.Length = 8;
     CAN_Transmit(CAN1, &TmpCanFrameData);
 }
@@ -95,7 +95,7 @@ void Pwm_Test(void)
     {
         Pwm_Init();
     }
-    
+
     if (TickTimer == 150)
     {
         Pwm_DeInit();
@@ -119,7 +119,7 @@ void Adc_Test(void)
     uint16 Buffer;
 
     Adc_StatusType Adc_Status;
-    
+
 
     Adc_Status = Adc_GetStatus(ADC_GRP_BL_TMP);
 
@@ -142,14 +142,14 @@ void Adc_Test(void)
 ******************************************************************************/
 void Test_Task(void)
 {
-    while(1)
+    while (1)
     {
 
         // Mcu_GoDeepStop();
 
 #if (TEST == 1)
-        //Uart_transmit_string("this is a Uart test task runing\r\n");
-        Can_Test();
+        Uart_transmit_string("this is a Uart test task runing\r\n");
+        // Can_Test();
         // Pwm_Test();
         // Adc_Test();
 #endif
@@ -157,4 +157,3 @@ void Test_Task(void)
     }
 
 }
-    
